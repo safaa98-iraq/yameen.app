@@ -55,6 +55,47 @@ return [
         's3_title' => 'FAQ',
     ],
 
+    'fixer' => [
+        'result_hint' => 'As it will appear in your app',
+        'paste_title' => 'How to paste in :app',
+        'font_note' => 'Use a font that includes connected Arabic letter forms in your app, or you will see boxes instead of letters.',
+    ],
+
+    'pdf' => [
+        'input_label' => 'Text copied from PDF',
+        'placeholder' => 'Paste the text here',
+        'copy' => 'Copy text',
+        'reverse' => 'Reverse order',
+        'undo_reverse' => 'Undo reverse',
+        'status_auto' => 'The order was reversed, so it was fixed automatically.',
+        'status_unsure' => 'The text direction is unclear. Reverse the order if it looks backwards.',
+        'status_logical' => 'The order is correct; letters were restored to their base forms.',
+        'status_manual' => 'Order reversed manually.',
+        'status_kept' => 'Order kept as is.',
+    ],
+
+    'cleaner' => [
+        'options_label' => 'Cleaning options',
+        'tashkeel' => 'Remove diacritics',
+        'tatweel' => 'Remove tatweel',
+        'alef' => 'Unify alef',
+        'ya' => 'Unify ya',
+        'spaces' => 'Collapse spaces',
+        'trim' => 'Trim lines',
+        'digits_label' => 'Digits',
+        'digits_none' => 'Unchanged',
+        'digits_western' => 'Western 123',
+        'digits_arabic' => 'Eastern ١٢٣',
+        'copy' => 'Copy text',
+    ],
+
+    'content' => [
+        'faq' => 'FAQ',
+        'related' => 'Related tools',
+        'software_pages' => 'Fixer for other apps',
+        'fix_for' => 'Fixer for :app',
+    ],
+
     'placeholder' => [
         'title' => 'This page is being prepared',
         'body' => 'This tool is coming soon. You can use the fixer on the home page.',

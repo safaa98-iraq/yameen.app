@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\Route;
 
 // Loaded once per locale from routes/web.php. Do not add locale prefixes here.
@@ -10,12 +11,11 @@ $styles = implode('|', config('yameen.font_styles'));
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
-// Tools (implemented in phase 1+; placeholders until then)
-Route::get('/fix', [PageController::class, 'placeholder'])->name('fix')->defaults('page', 'fix');
-Route::get('/fix/{software}', [PageController::class, 'placeholder'])->name('fix.software')
-    ->where('software', $software)->defaults('page', 'fix');
-Route::get('/pdf-fix', [PageController::class, 'placeholder'])->name('pdf-fix')->defaults('page', 'pdf-fix');
-Route::get('/clean', [PageController::class, 'placeholder'])->name('clean')->defaults('page', 'clean');
+// Text tools
+Route::get('/fix', [ToolController::class, 'fix'])->name('fix');
+Route::get('/fix/{software}', [ToolController::class, 'fix'])->name('fix.software')->where('software', $software);
+Route::get('/pdf-fix', [ToolController::class, 'pdfFix'])->name('pdf-fix');
+Route::get('/clean', [ToolController::class, 'clean'])->name('clean');
 
 // Fonts (phase 2)
 Route::get('/fonts', [PageController::class, 'placeholder'])->name('fonts')->defaults('page', 'fonts');

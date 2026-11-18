@@ -246,3 +246,33 @@
         margin-block-start: 1rem;
     }
 }
+
+/* Rendered Markdown inside content sections. */
+@layer components {
+    .content-md > * + * {
+        margin-block-start: 1rem;
+    }
+
+    .content-md ul {
+        list-style: disc;
+        padding-inline-start: 1.25rem;
+    }
+
+    .content-md ol {
+        list-style: decimal;
+        padding-inline-start: 1.25rem;
+    }
+
+    .content-md li + li {
+        margin-block-start: 0.5rem;
+    }
+
+    .content-md strong {
+        font-weight: 600;
+    }
+
+    .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}

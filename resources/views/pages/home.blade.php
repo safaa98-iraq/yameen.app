@@ -1,9 +1,7 @@
 <x-layouts.app>
-    <div class="pt-8 md:pt-12 pb-8">
-        <h1 class="text-h3 md:text-h2 font-semibold leading-tight max-w-3xl">{{ __('ui.home.h1') }}</h1>
-    </div>
+    <x-page-intro :h1="__('ui.home.h1')" />
 
-    <x-tool-panel id="home" />
+    <x-tool.fixer id="home" />
 
     <div class="mt-18">
         <x-section num="01" :title="__('ui.home.s1_title')">
@@ -20,5 +18,7 @@
                 @endforeach
             </ol>
         </x-section>
+
+        <x-related-tools />
     </div>
 </x-layouts.app>
