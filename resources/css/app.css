@@ -1,0 +1,248 @@
+@import 'tailwindcss';
+
+@import './fonts.css';
+
+@source '../../storage/framework/views/*.php';
+
+/*
+ * Design tokens. Colours are defined once as plain custom properties so a
+ * dark theme can later override them on :root without touching markup.
+ */
+:root {
+    --paper: #faf9fc;
+    --surface: #ffffff;
+    --lav-50: #f4f1fb;
+    --lav-100: #e9e3f7;
+    --lav-200: #d6ccf0;
+    --lav-500: #8b77cf;
+    --lav-700: #5b4a9e;
+    --lav-800: #4a3b86;
+    --ink: #1e1a2b;
+    --muted: #6b6680;
+    --line: #e6e2ee;
+    --warn: #9a4a2e;
+}
+
+/* Remove Tailwind's default palettes, radii, shadows and type scale. */
+@theme {
+    --color-*: initial;
+    --radius-*: initial;
+    --shadow-*: initial;
+    --text-*: initial;
+    --font-*: initial;
+    --container-*: initial;
+
+    --font-ar: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+    --font-en: 'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+    --font-mark: 'Reem Kufi', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+    --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+    /* Type scale (px): 13 / 15 / 17 / 20 / 26 / 34 / 48, plus specimen sizes. */
+    --text-meta: 0.8125rem;
+    --text-small: 0.9375rem;
+    --text-body: 1.0625rem;
+    --text-lead: 1.25rem;
+    --text-h3: 1.625rem;
+    --text-h2: 2.125rem;
+    --text-h1: 3rem;
+    --text-specimen: 2.5rem;
+    --text-specimen-lg: 4.5rem;
+
+    --radius-control: 6px;
+    --radius-panel: 10px;
+    --radius-full: 9999px;
+
+    --shadow-popover: 0 1px 2px rgb(30 26 43 / 0.08);
+
+    --container-content: 75rem; /* 1200px */
+    --container-prose: 42rem;
+
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+@theme inline {
+    --color-paper: var(--paper);
+    --color-surface: var(--surface);
+    --color-lav-50: var(--lav-50);
+    --color-lav-100: var(--lav-100);
+    --color-lav-200: var(--lav-200);
+    --color-lav-500: var(--lav-500);
+    --color-lav-700: var(--lav-700);
+    --color-lav-800: var(--lav-800);
+    --color-ink: var(--ink);
+    --color-muted: var(--muted);
+    --color-line: var(--line);
+    --color-warn: var(--warn);
+    --color-transparent: transparent;
+    --color-current: currentColor;
+}
+
+@layer base {
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-rendering: optimizeLegibility;
+    }
+
+    body {
+        background: var(--paper);
+        color: var(--ink);
+        font-size: var(--text-body);
+        font-family: var(--font-en);
+        line-height: 1.5;
+    }
+
+    html[lang='ar'] body {
+        font-family: var(--font-ar);
+        line-height: 1.7;
+    }
+
+    ::selection {
+        background: var(--lav-100);
+        color: var(--ink);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--lav-700);
+        outline-offset: 2px;
+    }
+
+    a {
+        color: var(--lav-700);
+        text-underline-offset: 0.2em;
+    }
+
+    a:hover {
+        color: var(--lav-800);
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    /* Buttons: one primary per screen. 44px minimum height for touch. */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 2.75rem;
+        padding-inline: 1rem;
+        border: 1px solid transparent;
+        border-radius: var(--radius-control);
+        font-size: var(--text-small);
+        font-weight: 500;
+        line-height: 1.2;
+        text-decoration: none;
+        cursor: pointer;
+        transition-property: background-color, border-color, color;
+    }
+
+    .btn-primary {
+        background: var(--lav-700);
+        color: var(--surface);
+    }
+
+    .btn-primary:hover {
+        background: var(--lav-800);
+        color: var(--surface);
+    }
+
+    .btn-primary-lg {
+        min-height: 3.25rem;
+        padding-inline: 1.5rem;
+        font-size: var(--text-body);
+    }
+
+    .btn-secondary {
+        background: var(--surface);
+        border-color: var(--line);
+        color: var(--ink);
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--lav-200);
+        background: var(--lav-50);
+        color: var(--ink);
+    }
+
+    /* Filter / option chips: the only pill shape in the UI. */
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        min-height: 2.75rem;
+        padding-inline: 0.875rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-full);
+        background: var(--surface);
+        color: var(--ink);
+        font-size: var(--text-small);
+        cursor: pointer;
+        transition-property: background-color, border-color;
+        user-select: none;
+    }
+
+    .chip:hover {
+        border-color: var(--lav-200);
+    }
+
+    .chip:has(input:checked),
+    .chip[aria-pressed='true'] {
+        background: var(--lav-100);
+        border-color: var(--lav-200);
+    }
+
+    .chip:has(input:focus-visible) {
+        outline: 2px solid var(--lav-700);
+        outline-offset: 2px;
+    }
+
+    @media (min-width: 768px) {
+        .chip {
+            min-height: 2.25rem;
+        }
+    }
+
+    .field {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-control);
+        background: var(--surface);
+        color: var(--ink);
+        transition-property: border-color;
+    }
+
+    .field:hover {
+        border-color: var(--lav-200);
+    }
+
+    .field:focus-visible {
+        outline: 2px solid var(--lav-700);
+        outline-offset: 0;
+        border-color: var(--lav-700);
+    }
+
+    .label {
+        display: block;
+        font-size: var(--text-meta);
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: 0.01em;
+    }
+
+    /* Numbered content section: "01  Title" with a 1px rule above. */
+    .section-num {
+        font-family: var(--font-mark);
+        font-weight: 500;
+        color: var(--lav-500);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .prose-ui p + p {
+        margin-block-start: 1rem;
+    }
+}

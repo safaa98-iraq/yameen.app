@@ -1,0 +1,34 @@
+import Alpine from 'alpinejs';
+import { readSharedText, writeSharedText } from './lib/shared-text';
+
+// Shared text across tools, persisted per browser session.
+Alpine.store('text', {
+    value: readSharedText(),
+    set(value) {
+        this.value = value;
+        writeSharedText(value);
+    },
+});
+
+// Auto-growing textarea: <textarea x-data x-autogrow>
+Alpine.directive('autogrow', (el) => {
+    const resize = () => {
+        el.style.height = 'auto';
+        el.style.height = `${el.scrollHeight + 2}px`;
+    };
+    el.addEventListener('input', resize);
+    queueMicrotask(resize);
+});
+
+// Ctrl/Cmd + Enter triggers the page's primary action: <button data-primary-action>
+document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' || !(event.ctrlKey || event.metaKey)) return;
+    const target = document.querySelector('[data-primary-action]');
+    if (target) {
+        event.preventDefault();
+        target.click();
+    }
+});
+
+window.Alpine = Alpine;
+Alpine.start();
