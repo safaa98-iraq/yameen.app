@@ -24,4 +24,19 @@ return [
     ],
 
     'font_styles' => ['kufi', 'naskh', 'sans', 'serif', 'display', 'handwriting'],
+
+    'fonts' => [
+        // Build output of scripts/fonts/build.py (fonts.json + files/).
+        'path' => storage_path('app/fonts'),
+        // Public URL of the font files. public/font-files is a symlink to {path}/files.
+        // Not under /fonts, which is a page route.
+        'public_url' => env('FONT_FILES_URL', '/font-files'),
+        'python' => env('FONTS_PYTHON', 'python3'),
+        'overrides' => resource_path('fonts/overrides.json'),
+        'pairings' => resource_path('fonts/pairings.json'),
+        'default_sample' => [
+            'ar' => 'الخط العربي فن يبدأ من اليمين',
+            'en' => 'الخط العربي فن يبدأ من اليمين',
+        ],
+    ],
 ];

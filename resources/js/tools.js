@@ -1,7 +1,8 @@
 // Alpine components for the text tools. Each tool loads its text library on
 // demand, so pages without tools never download it.
 import { copyText } from './lib/clipboard';
-import { CLEAN_DEFAULTS } from './text/cleaner';
+import { CLEAN_DEFAULTS } from './text/clean-defaults';
+import { loadFont } from './lib/font-loader';
 
 const COPIED_MS = 1500;
 
@@ -23,10 +24,22 @@ export function registerTools(Alpine) {
     Alpine.data('fixer', (initial = {}) => ({
         ...copyable(),
         opts: { stripTashkeel: true, shape: true, reverse: true },
-        font: initial.font ?? 'IBM Plex Sans Arabic',
+        fonts: initial.fonts ?? [],
+        font: initial.font ?? null, // slug
         lib: null,
         async init() {
+            this.$watch('font', () => this.loadSelected());
+            this.loadSelected();
             this.lib = await import('./text/fixer');
+        },
+        get selected() {
+            return this.fonts.find((f) => f.slug === this.font) ?? null;
+        },
+        loadSelected() {
+            if (this.selected) loadFont(this.selected, 400);
+        },
+        get fontFamily() {
+            return this.selected ? `'${this.selected.family}', var(--font-ar)` : 'var(--font-ar)';
         },
         get output() {
             return this.lib ? this.lib.fixText(this.$store.text.value, this.opts) : '';

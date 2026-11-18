@@ -1,0 +1,108 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Font extends Model
+{
+    use HasFactory;
+
+    protected $guarded = ['id'];
+
+    protected function casts(): array
+    {
+        return [
+            'weights' => 'array',
+            'files' => 'array',
+            'presentation_forms' => 'boolean',
+            'diacritics' => 'boolean',
+            'variable' => 'boolean',
+            'has_license_file' => 'boolean',
+            'popularity' => 'integer',
+            'date_added' => 'date',
+        ];
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    public function scopeArabic(Builder $q): Builder
+    {
+        return $q->where('kind', 'arabic');
+    }
+
+    public function scopeRanked(Builder $q): Builder
+    {
+        return $q->orderBy('popularity')->orderBy('name');
+    }
+
+    /** CSS family name used when the font is loaded in the browser. */
+    public function cssFamily(): string
+    {
+        return 'yf-'.$this->slug;
+    }
+
+    public function fileUrl(int|string $weight, string $type = 'preview'): ?string
+    {
+        $file = $this->files[(string) $weight][$type] ?? null;
+
+        return $file ? self::publicBase().'/'.$this->slug.'/'.$file : null;
+    }
+
+    public function licenseUrl(): ?string
+    {
+        return $this->has_license_file ? self::publicBase().'/'.$this->slug.'/OFL.txt' : null;
+    }
+
+    public function nearestWeight(int $target = 400): int
+    {
+        $weights = $this->weights ?: [400];
+        usort($weights, fn ($a, $b) => abs($a - $target) <=> abs($b - $target) ?: $a <=> $b);
+
+        return (int) $weights[0];
+    }
+
+    public static function publicBase(): string
+    {
+        return rtrim(config('yameen.fonts.public_url'), '/');
+    }
+
+    /** @font-face + font-family snippet for the user's own project. */
+    public function cssSnippet(?int $weight = null): string
+    {
+        $weights = $weight ? [$this->nearestWeight($weight)] : $this->weights;
+        $faces = collect($weights)->map(fn ($w) => implode("\n", [
+            '@font-face {',
+            "  font-family: '{$this->name}';",
+            "  src: url('fonts/{$this->slug}-{$w}.woff2') format('woff2');",
+            "  font-weight: {$w};",
+            '  font-style: normal;',
+            '  font-display: swap;',
+            '}',
+        ]))->implode("\n\n");
+
+        $fallback = in_array($this->style, ['serif', 'naskh'], true) ? 'serif' : 'sans-serif';
+
+        return "/* {$this->name}: {$this->google_url} */\n{$faces}\n\n.arabic {\n  font-family: '{$this->name}', {$fallback};\n}";
+    }
+
+    /** Compact data for the browser (font loader, selectors, filters). */
+    public function toClient(): array
+    {
+        return [
+            'slug' => $this->slug,
+            'name' => $this->name,
+            'family' => $this->cssFamily(),
+            'style' => $this->style,
+            'weights' => $this->weights,
+            'apps' => $this->presentation_forms,
+            'diacritics' => $this->diacritics,
+            'preview' => collect($this->weights)->mapWithKeys(fn ($w) => [$w => $this->fileUrl($w)])->all(),
+        ];
+    }
+}

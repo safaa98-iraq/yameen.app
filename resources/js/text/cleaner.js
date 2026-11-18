@@ -1,15 +1,9 @@
 // Text cleaner: independent, composable normalizations.
 import { DIACRITICS } from './arabic';
+import { CLEAN_DEFAULTS } from './clean-defaults';
 
-export const CLEAN_DEFAULTS = Object.freeze({
-    tashkeel: true,
-    tatweel: true,
-    alef: false,
-    yaMaqsura: false,
-    digits: 'none', // 'none' | 'western' | 'arabic'
-    spaces: true,
-    trimLines: true,
-});
+export { CLEAN_DEFAULTS };
+
 
 const ARABIC_INDIC = '٠١٢٣٤٥٦٧٨٩';
 const PERSIAN = '۰۱۲۳۴۵۶۷۸۹';

@@ -17,7 +17,10 @@ it('renders every software page with its paste instructions in both locales', fu
     $this->get('/en/fix/'.$slug)
         ->assertOk()
         ->assertSee('How to paste in '.$name);
-})->with(collect((require __DIR__.'/../../config/yameen.php')['software'])->map(fn ($name, $slug) => [$slug, $name])->values()->all());
+})->with([
+    ['photoshop', 'Photoshop'], ['after-effects', 'After Effects'], ['premiere', 'Premiere Pro'],
+    ['illustrator', 'Illustrator'], ['unity', 'Unity'], ['blender', 'Blender'], ['cinema-4d', 'Cinema 4D'],
+]);
 
 it('gives each software page a unique title and description', function () {
     $titles = collect(config('yameen.software'))->keys()->map(function ($slug) {

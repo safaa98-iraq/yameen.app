@@ -6,64 +6,64 @@ import { isMark } from './arabic';
 
 // [isolated, final, initial, medial]. Right-joining letters have only two forms.
 export const FORMS = {
-    'ء': ['ﺀ'], // ء (non-joining)
-    'آ': ['ﺁ', 'ﺂ'], // آ
-    'أ': ['ﺃ', 'ﺄ'], // أ
-    'ؤ': ['ﺅ', 'ﺆ'], // ؤ
-    'إ': ['ﺇ', 'ﺈ'], // إ
-    'ئ': ['ﺉ', 'ﺊ', 'ﺋ', 'ﺌ'], // ئ
-    'ا': ['ﺍ', 'ﺎ'], // ا
-    'ب': ['ﺏ', 'ﺐ', 'ﺑ', 'ﺒ'], // ب
-    'ة': ['ﺓ', 'ﺔ'], // ة
-    'ت': ['ﺕ', 'ﺖ', 'ﺗ', 'ﺘ'], // ت
-    'ث': ['ﺙ', 'ﺚ', 'ﺛ', 'ﺜ'], // ث
-    'ج': ['ﺝ', 'ﺞ', 'ﺟ', 'ﺠ'], // ج
-    'ح': ['ﺡ', 'ﺢ', 'ﺣ', 'ﺤ'], // ح
-    'خ': ['ﺥ', 'ﺦ', 'ﺧ', 'ﺨ'], // خ
-    'د': ['ﺩ', 'ﺪ'], // د
-    'ذ': ['ﺫ', 'ﺬ'], // ذ
-    'ر': ['ﺭ', 'ﺮ'], // ر
-    'ز': ['ﺯ', 'ﺰ'], // ز
-    'س': ['ﺱ', 'ﺲ', 'ﺳ', 'ﺴ'], // س
-    'ش': ['ﺵ', 'ﺶ', 'ﺷ', 'ﺸ'], // ش
-    'ص': ['ﺹ', 'ﺺ', 'ﺻ', 'ﺼ'], // ص
-    'ض': ['ﺽ', 'ﺾ', 'ﺿ', 'ﻀ'], // ض
-    'ط': ['ﻁ', 'ﻂ', 'ﻃ', 'ﻄ'], // ط
-    'ظ': ['ﻅ', 'ﻆ', 'ﻇ', 'ﻈ'], // ظ
-    'ع': ['ﻉ', 'ﻊ', 'ﻋ', 'ﻌ'], // ع
-    'غ': ['ﻍ', 'ﻎ', 'ﻏ', 'ﻐ'], // غ
-    'ف': ['ﻑ', 'ﻒ', 'ﻓ', 'ﻔ'], // ف
-    'ق': ['ﻕ', 'ﻖ', 'ﻗ', 'ﻘ'], // ق
-    'ك': ['ﻙ', 'ﻚ', 'ﻛ', 'ﻜ'], // ك
-    'ل': ['ﻝ', 'ﻞ', 'ﻟ', 'ﻠ'], // ل
-    'م': ['ﻡ', 'ﻢ', 'ﻣ', 'ﻤ'], // م
-    'ن': ['ﻥ', 'ﻦ', 'ﻧ', 'ﻨ'], // ن
-    'ه': ['ﻩ', 'ﻪ', 'ﻫ', 'ﻬ'], // ه
-    'و': ['ﻭ', 'ﻮ'], // و
-    'ى': ['ﻯ', 'ﻰ'], // ى
-    'ي': ['ﻱ', 'ﻲ', 'ﻳ', 'ﻴ'], // ي
+    '\u0621': ['\uFE80'], // ء (non-joining)
+    '\u0622': ['\uFE81', '\uFE82'], // آ
+    '\u0623': ['\uFE83', '\uFE84'], // أ
+    '\u0624': ['\uFE85', '\uFE86'], // ؤ
+    '\u0625': ['\uFE87', '\uFE88'], // إ
+    '\u0626': ['\uFE89', '\uFE8A', '\uFE8B', '\uFE8C'], // ئ
+    '\u0627': ['\uFE8D', '\uFE8E'], // ا
+    '\u0628': ['\uFE8F', '\uFE90', '\uFE91', '\uFE92'], // ب
+    '\u0629': ['\uFE93', '\uFE94'], // ة
+    '\u062A': ['\uFE95', '\uFE96', '\uFE97', '\uFE98'], // ت
+    '\u062B': ['\uFE99', '\uFE9A', '\uFE9B', '\uFE9C'], // ث
+    '\u062C': ['\uFE9D', '\uFE9E', '\uFE9F', '\uFEA0'], // ج
+    '\u062D': ['\uFEA1', '\uFEA2', '\uFEA3', '\uFEA4'], // ح
+    '\u062E': ['\uFEA5', '\uFEA6', '\uFEA7', '\uFEA8'], // خ
+    '\u062F': ['\uFEA9', '\uFEAA'], // د
+    '\u0630': ['\uFEAB', '\uFEAC'], // ذ
+    '\u0631': ['\uFEAD', '\uFEAE'], // ر
+    '\u0632': ['\uFEAF', '\uFEB0'], // ز
+    '\u0633': ['\uFEB1', '\uFEB2', '\uFEB3', '\uFEB4'], // س
+    '\u0634': ['\uFEB5', '\uFEB6', '\uFEB7', '\uFEB8'], // ش
+    '\u0635': ['\uFEB9', '\uFEBA', '\uFEBB', '\uFEBC'], // ص
+    '\u0636': ['\uFEBD', '\uFEBE', '\uFEBF', '\uFEC0'], // ض
+    '\u0637': ['\uFEC1', '\uFEC2', '\uFEC3', '\uFEC4'], // ط
+    '\u0638': ['\uFEC5', '\uFEC6', '\uFEC7', '\uFEC8'], // ظ
+    '\u0639': ['\uFEC9', '\uFECA', '\uFECB', '\uFECC'], // ع
+    '\u063A': ['\uFECD', '\uFECE', '\uFECF', '\uFED0'], // غ
+    '\u0641': ['\uFED1', '\uFED2', '\uFED3', '\uFED4'], // ف
+    '\u0642': ['\uFED5', '\uFED6', '\uFED7', '\uFED8'], // ق
+    '\u0643': ['\uFED9', '\uFEDA', '\uFEDB', '\uFEDC'], // ك
+    '\u0644': ['\uFEDD', '\uFEDE', '\uFEDF', '\uFEE0'], // ل
+    '\u0645': ['\uFEE1', '\uFEE2', '\uFEE3', '\uFEE4'], // م
+    '\u0646': ['\uFEE5', '\uFEE6', '\uFEE7', '\uFEE8'], // ن
+    '\u0647': ['\uFEE9', '\uFEEA', '\uFEEB', '\uFEEC'], // ه
+    '\u0648': ['\uFEED', '\uFEEE'], // و
+    '\u0649': ['\uFEEF', '\uFEF0'], // ى
+    '\u064A': ['\uFEF1', '\uFEF2', '\uFEF3', '\uFEF4'], // ي
     // Persian / Kurdish / Urdu letters (Presentation Forms-A)
-    'پ': ['ﭖ', 'ﭗ', 'ﭘ', 'ﭙ'], // پ
-    'چ': ['ﭺ', 'ﭻ', 'ﭼ', 'ﭽ'], // چ
-    'ژ': ['ﮊ', 'ﮋ'], // ژ
-    'ڤ': ['ﭪ', 'ﭫ', 'ﭬ', 'ﭭ'], // ڤ
-    'ک': ['ﮎ', 'ﮏ', 'ﮐ', 'ﮑ'], // ک
-    'گ': ['ﮒ', 'ﮓ', 'ﮔ', 'ﮕ'], // گ
-    'ی': ['ﯼ', 'ﯽ', 'ﯾ', 'ﯿ'], // ی
+    '\u067E': ['\uFB56', '\uFB57', '\uFB58', '\uFB59'], // پ
+    '\u0686': ['\uFB7A', '\uFB7B', '\uFB7C', '\uFB7D'], // چ
+    '\u0698': ['\uFB8A', '\uFB8B'], // ژ
+    '\u06A4': ['\uFB6A', '\uFB6B', '\uFB6C', '\uFB6D'], // ڤ
+    '\u06A9': ['\uFB8E', '\uFB8F', '\uFB90', '\uFB91'], // ک
+    '\u06AF': ['\uFB92', '\uFB93', '\uFB94', '\uFB95'], // گ
+    '\u06CC': ['\uFBFC', '\uFBFD', '\uFBFE', '\uFBFF'], // ی
 };
 
 // Lam + alef variant → [isolated, final] ligature.
-const LAM = 'ل';
+const LAM = '\u0644';
 export const LAM_ALEF = {
-    'آ': ['ﻵ', 'ﻶ'],
-    'أ': ['ﻷ', 'ﻸ'],
-    'إ': ['ﻹ', 'ﻺ'],
-    'ا': ['ﻻ', 'ﻼ'],
+    '\u0622': ['\uFEF5', '\uFEF6'],
+    '\u0623': ['\uFEF7', '\uFEF8'],
+    '\u0625': ['\uFEF9', '\uFEFA'],
+    '\u0627': ['\uFEFB', '\uFEFC'],
 };
 
-const ZWNJ = '‌';
-const ZWJ = '‍';
-const TATWEEL = 'ـ';
+const ZWNJ = '\u200C';
+const ZWJ = '\u200D';
+const TATWEEL = '\u0640';
 
 /** Can this character connect to the following letter? */
 function joinsForward(ch) {
@@ -80,7 +80,7 @@ function joinsBackward(ch) {
 }
 
 /**
- * Convert logical Arabic text into presentation forms. Text order is unchanged.
+ * Convert logical Arabic text into presentation forms (isolated letters are kept as base letters). Text order is unchanged.
  * Marks stay after their base letter and do not break joining.
  * ZWJ/ZWNJ affect joining and are removed from the output.
  */
@@ -128,14 +128,17 @@ export function shape(text) {
         const joinNext = nx >= 0 && joinsForward(ch) && joinsBackward(chars[nx]);
 
         let form;
-        if (forms.length === 1) form = forms[0];
-        else if (forms.length === 2) form = forms[joinPrev ? 1 : 0];
-        else if (joinPrev && joinNext) form = forms[3];
-        else if (joinNext) form = forms[2];
-        else if (joinPrev) form = forms[1];
-        else form = forms[0];
+        if (forms.length === 1) form = 0;
+        else if (forms.length === 2) form = joinPrev ? 1 : 0;
+        else if (joinPrev && joinNext) form = 3;
+        else if (joinNext) form = 2;
+        else if (joinPrev) form = 1;
+        else form = 0;
 
-        out += form;
+        // Isolated letters stay as base letters: apps without shaping already draw
+        // them in isolated form, and many fonts (Cairo, Tajawal, Almarai...) only
+        // include initial, medial and final presentation forms.
+        out += form === 0 ? ch : forms[form];
     }
     return out;
 }

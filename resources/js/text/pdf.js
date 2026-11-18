@@ -19,15 +19,15 @@ for (const [iso, fin] of Object.values(LAM_ALEF)) {
 
 /** NFKC applied to the Arabic presentation blocks only; everything else is untouched. */
 export function normalizePresentationForms(text) {
-    return text.replace(/[ﭐ-﷿ﹰ-﻿]/g, (ch) => {
-        if (ch === '﻿') return ''; // byte order mark / zero-width no-break space
+    return text.replace(/[\uFB50-\uFDFF\uFE70-\uFEFF]/g, (ch) => {
+        if (ch === '\uFEFF') return ''; // byte order mark / zero-width no-break space
         // Isolated harakat (FE70–FE7F) decompose to "space + mark": keep the mark only.
         return ch.normalize('NFKC').replace(/ /g, '');
     });
 }
 
 const WORD = new RegExp(`${ARABIC_CHAR.source}+`, 'g');
-const LETTERS_ONLY = /[ً-ٰٟـ]/g;
+const LETTERS_ONLY = /[\u064B-\u065F\u0670ـ]/g;
 
 /**
  * Guess whether Arabic text is in reversed (visual) order.
@@ -68,7 +68,7 @@ export function detectReversed(text) {
 
 /** Reverse each line from visual to logical order, keeping Latin and numbers intact. */
 export function reverseLines(text) {
-    return mapLines(text, (line) => toVisual(line, /[؀-ۿﭐ-﻿]/.test(line) ? 'rtl' : 'ltr'));
+    return mapLines(text, (line) => toVisual(line, /[\u0600-ۿ\uFB50-\uFEFF]/.test(line) ? 'rtl' : 'ltr'));
 }
 
 /**

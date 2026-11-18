@@ -1,6 +1,13 @@
 {{-- Fixer: input panel on --lav-50, result panel on --surface. --}}
-@props(['id' => 'fixer', 'font' => 'IBM Plex Sans Arabic'])
-<div class="grid gap-4 lg:grid-cols-2" x-data="fixer({ font: @js($font) })">
+@props(['id' => 'fixer', 'font' => null])
+@inject('catalog', 'App\Support\FontCatalog')
+@php
+    $appFonts = $catalog->forApps();
+    $selected = $catalog->find($font ?? request()->query('font'));
+    $selected = ($selected && $selected->presentation_forms) ? $selected : $catalog->defaultForApps();
+@endphp
+<div class="grid gap-4 lg:grid-cols-2"
+     x-data="fixer({ fonts: @js($appFonts->map->toClient()->values()), font: @js($selected?->slug) })">
     <section class="rounded-panel bg-lav-50 border border-line p-4 md:p-6 flex flex-col gap-4" aria-label="{{ __('ui.tool.input_label') }}">
         <x-tool.input :id="$id.'-input'" />
 
@@ -16,7 +23,11 @@
         <div>
             <label for="{{ $id }}-font" class="label">{{ __('ui.tool.font_label') }}</label>
             <select id="{{ $id }}-font" x-model="font" class="field mt-2 h-11 px-3 text-small">
-                <option value="IBM Plex Sans Arabic">IBM Plex Sans Arabic</option>
+                @forelse ($appFonts as $f)
+                    <option value="{{ $f->slug }}" @selected($selected?->is($f))>{{ $f->name }}</option>
+                @empty
+                    <option value="">IBM Plex Sans Arabic</option>
+                @endforelse
             </select>
         </div>
     </section>
@@ -30,7 +41,7 @@
         {{-- Shown exactly as an app without bidi support will display it: left to right, no reordering. --}}
         <div class="flex-1 min-h-36" aria-live="polite">
             <p x-show="output" x-cloak x-text="output" dir="ltr" data-result
-               :style="{ fontFamily: `'${font}', var(--font-ar)`, unicodeBidi: 'bidi-override' }"
+               :style="{ fontFamily, unicodeBidi: 'bidi-override' }"
                class="text-h2 leading-normal whitespace-pre-wrap break-words text-end"></p>
             <p x-show="!output" class="text-small text-muted">{{ __('ui.tool.empty') }}</p>
         </div>

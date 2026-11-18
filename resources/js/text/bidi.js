@@ -6,7 +6,7 @@ let bidi;
 const engine = () => (bidi ??= bidiFactory());
 
 // Explicit directional formatting characters: not needed once text is in visual order.
-const BIDI_CONTROLS = /[‎‏؜‪-‮⁦-⁩]/g;
+const BIDI_CONTROLS = /[\u200E\u200F\u061C\u202A-\u202E\u2066-\u2069]/g;
 
 /**
  * Reorder one line from logical to visual (left-to-right) order.

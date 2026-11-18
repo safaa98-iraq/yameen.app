@@ -42,3 +42,37 @@ npm test
 - `resources/css/app.css`: design tokens (`--paper`, `--lav-*`, `--ink`, ...).
   Colours are only defined as CSS variables so a dark theme can be added later.
 - `resources/svg/wordmark.svg`: wordmark outlines generated from Reem Kufi 600.
+
+## Fonts
+
+Font files are built from [google/fonts](https://github.com/google/fonts) and are
+not committed. On a fresh server:
+
+```bash
+pip install -r scripts/fonts/requirements.txt
+php artisan migrate
+php artisan fonts:sync
+```
+
+`fonts:sync` runs `scripts/fonts/build.py`, which:
+
+1. Clones google/fonts sparsely (only `ofl/*/METADATA.pb`, then the Arabic families).
+2. Keeps families whose subsets include `arabic`, plus the Latin families named in
+   `resources/fonts/pairings.json`.
+3. Instances variable fonts to static weights and writes, per weight, a full TTF
+   (export), a full WOFF2 and an Arabic-only preview WOFF2, with hashed filenames.
+4. Checks each family for the presentation forms the fixer outputs and for GPOS mark
+   positioning of diacritics.
+5. Writes `storage/app/fonts/fonts.json`; the command imports it into the `fonts` table
+   and links `public/font-files` to the files.
+
+Re-running only rebuilds families whose folder changed. To re-import after editing
+`resources/fonts/overrides.json` (styles such as kufi/naskh, popularity order,
+sample text, hidden families):
+
+```bash
+php artisan fonts:sync --skip-build
+```
+
+Files are served from `/font-files/...` (not `/fonts/...`, which are page routes).
+Configure Cloudflare/your web server to cache that path with a long `Cache-Control`.

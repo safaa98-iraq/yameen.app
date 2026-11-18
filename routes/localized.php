@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FontController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\Route;
@@ -17,12 +18,12 @@ Route::get('/fix/{software}', [ToolController::class, 'fix'])->name('fix.softwar
 Route::get('/pdf-fix', [ToolController::class, 'pdfFix'])->name('pdf-fix');
 Route::get('/clean', [ToolController::class, 'clean'])->name('clean');
 
-// Fonts (phase 2)
-Route::get('/fonts', [PageController::class, 'placeholder'])->name('fonts')->defaults('page', 'fonts');
-Route::get('/fonts/compare', [PageController::class, 'placeholder'])->name('fonts.compare')->defaults('page', 'fonts-compare');
-Route::get('/fonts/pairing', [PageController::class, 'placeholder'])->name('fonts.pairing')->defaults('page', 'fonts-pairing');
-Route::get('/fonts/style/{style}', [PageController::class, 'placeholder'])->name('fonts.style')
-    ->where('style', $styles)->defaults('page', 'fonts');
+// Fonts
+Route::get('/fonts', [FontController::class, 'index'])->name('fonts');
+Route::get('/fonts/compare', [FontController::class, 'compare'])->name('fonts.compare');
+Route::get('/fonts/pairing', [FontController::class, 'pairing'])->name('fonts.pairing');
+Route::get('/fonts/style/{style}', [FontController::class, 'index'])->name('fonts.style')->where('style', $styles);
+Route::get('/fonts/{font}', [FontController::class, 'show'])->name('fonts.show')->where('font', '[a-z0-9-]+');
 
 // Export (phase 5)
 Route::get('/export', [PageController::class, 'placeholder'])->name('export')->defaults('page', 'export');

@@ -1,0 +1,14 @@
+[
+  {"arabic": "ibm-plex-sans-arabic", "latin": "IBM Plex Sans", "use": "ui"},
+  {"arabic": "noto-naskh-arabic", "latin": "Noto Serif", "use": "reading"},
+  {"arabic": "noto-kufi-arabic", "latin": "Noto Sans", "use": "ui"},
+  {"arabic": "amiri", "latin": "EB Garamond", "use": "reading"},
+  {"arabic": "cairo", "latin": "Source Sans 3", "use": "ui"},
+  {"arabic": "tajawal", "latin": "DM Sans", "use": "ui"},
+  {"arabic": "readex-pro", "latin": "Lexend", "use": "ui"},
+  {"arabic": "almarai", "latin": "Work Sans", "use": "ui"},
+  {"arabic": "el-messiri", "latin": "Playfair Display", "use": "display"},
+  {"arabic": "markazi-text", "latin": "Source Serif 4", "use": "reading"},
+  {"arabic": "vazirmatn", "latin": "Inter", "use": "ui"},
+  {"arabic": "alexandria", "latin": "Poppins", "use": "display"}
+]

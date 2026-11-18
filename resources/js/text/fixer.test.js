@@ -13,40 +13,40 @@ describe('fixText', () => {
 
     it('fixes a sentence and reverses word order', () => {
         // سلام عليكم
-        const salam = u(0xfee1, 0xfefc, 0xfeb3);
+        const salam = u(0x0645, 0xfefc, 0xfeb3);
         const alaykum = u(0xfee2, 0xfedc, 0xfef4, 0xfee0, 0xfecb);
         expect(fixText('سلام عليكم')).toBe(`${alaykum} ${salam}`);
     });
 
     it('uses lam-alef ligatures in isolated and final position', () => {
-        expect(fixText('لا')).toBe(u(0xfefb));
-        expect(shape('سلام')).toBe(u(0xfeb3, 0xfefc, 0xfee1));
+        expect(fixText("لا")).toBe(u(0xfefb));
+        expect(shape('سلام')).toBe(u(0xfeb3, 0xfefc, 0x0645));
         // الأمل: alef, lam+hamza-alef (isolated, alef does not join forward), meem, lam
-        expect(shape('الأمل')).toBe(u(0xfe8d, 0xfef7, 0xfee3, 0xfede));
-        expect(shape('إلى')).toBe(u(0xfe87, 0xfedf, 0xfef0));
+        expect(shape('الأمل')).toBe(u(0x0627, 0xfef7, 0xfee3, 0xfede));
+        expect(shape('إلى')).toBe(u(0x0625, 0xfedf, 0xfef0));
     });
 
     it('handles taa marbuta', () => {
         // مدرسة
-        expect(fixText('مدرسة')).toBe(u(0xfe94, 0xfeb3, 0xfead, 0xfeaa, 0xfee3));
+        expect(fixText('مدرسة')).toBe(u(0xfe94, 0xfeb3, 0x0631, 0xfeaa, 0xfee3));
     });
 
     it('handles hamza forms', () => {
-        expect(fixText('سماء')).toBe(u(0xfe80, 0xfe8e, 0xfee4, 0xfeb3));
-        expect(shape('مسؤول')).toBe(u(0xfee3, 0xfeb4, 0xfe86, 0xfeed, 0xfedd));
+        expect(fixText('سماء')).toBe(u(0x0621, 0xfe8e, 0xfee4, 0xfeb3));
+        expect(shape('مسؤول')).toBe(u(0xfee3, 0xfeb4, 0xfe86, 0x0648, 0x0644));
         expect(shape('قائد')).toBe(u(0xfed7, 0xfe8e, 0xfe8b, 0xfeaa));
-        expect(shape('إسلام')).toBe(u(0xfe87, 0xfeb3, 0xfefc, 0xfee1));
-        expect(shape('آمن')).toBe(u(0xfe81, 0xfee3, 0xfee6));
+        expect(shape('إسلام')).toBe(u(0x0625, 0xfeb3, 0xfefc, 0x0645));
+        expect(shape('آمن')).toBe(u(0x0622, 0xfee3, 0xfee6));
     });
 
     it('keeps Latin words in left-to-right order inside Arabic text', () => {
-        const ana = u(0xfe8e, 0xfee7, 0xfe83);
-        const uhibb = u(0xfe90, 0xfea3, 0xfe83);
+        const ana = u(0xfe8e, 0xfee7, 0x0623);
+        const uhibb = u(0xfe90, 0xfea3, 0x0623);
         expect(fixText('أنا أحب Photoshop')).toBe(`Photoshop ${uhibb} ${ana}`);
     });
 
     it('keeps numbers in left-to-right order', () => {
-        expect(fixText('عام 2026')).toBe(`2026 ${u(0xfee1, 0xfe8e, 0xfecb)}`);
+        expect(fixText('عام 2026')).toBe(`2026 ${u(0x0645, 0xfe8e, 0xfecb)}`);
         expect(fixText('السعر 12.5 دينار')).toContain('12.5');
     });
 
@@ -64,7 +64,7 @@ describe('fixText', () => {
     });
 
     it('processes each line independently and preserves empty lines', () => {
-        const salam = u(0xfee1, 0xfefc, 0xfeb3);
+        const salam = u(0x0645, 0xfefc, 0xfeb3);
         const marhaba = u(0xfe8e, 0xfe92, 0xfea3, 0xfeae, 0xfee3);
         expect(fixText('سلام\nمرحبا')).toBe(`${salam}\n${marhaba}`);
         expect(fixText('سلام\n\nمرحبا')).toBe(`${salam}\n\n${marhaba}`);
@@ -85,7 +85,7 @@ describe('fixText', () => {
         // مَن → visual: noon final, then meem initial followed by its fatha
         expect(fixText('مَن', { stripTashkeel: false })).toBe(u(0xfee6, 0xfee3, 0x064e));
         // a mark between lam and alef stays after the ligature
-        expect(shape('لَا')).toBe(u(0xfefb, 0x064e));
+        expect(shape("لَا")).toBe(u(0xfefb, 0x064e));
     });
 
     it('respects the option toggles', () => {
@@ -99,7 +99,7 @@ describe('fixText', () => {
     });
 
     it('breaks joining at ZWNJ and removes it', () => {
-        expect(fixText('ب‌ب')).toBe(u(0xfe8f, 0xfe8f));
+        expect(fixText('ب‌ب')).toBe(u(0x0628, 0x0628));
     });
 
     it('joins through tatweel', () => {
@@ -111,8 +111,15 @@ describe('fixText', () => {
         expect(shape('پی')).toBe(u(0xfb58, 0xfbfd));
     });
 
+    it('keeps isolated letters as base letters so fonts without isolated forms still work', () => {
+        expect(shape('و')).toBe('و');
+        expect(shape('ب ب')).toBe('ب ب');
+        expect(shape('دار')).toBe('دار'); // nothing joins
+        expect(shape('باب')).toBe(u(0xfe91, 0xfe8e, 0x0628)); // beh initial, alef final, beh isolated
+    });
+
     it('treats hamza as non-joining', () => {
         // شيء: sheen initial, yeh final, hamza isolated
-        expect(shape('شيء')).toBe(u(0xfeb7, 0xfef2, 0xfe80));
+        expect(shape('شيء')).toBe(u(0xfeb7, 0xfef2, 0x0621));
     });
 });

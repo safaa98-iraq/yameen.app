@@ -1,0 +1,22 @@
+{
+ "source_commit": "test",
+ "fonts": [
+  {"slug": "cairo", "name": "Cairo", "kind": "arabic", "folder": "cairo", "designer": "Mohamed Gaber", "license": "OFL",
+   "category": "SANS_SERIF", "style": "sans", "date_added": "2016-06-20", "weights": [400, 700], "variable": true,
+   "files": {"400": {"ttf": "cairo-400.a.ttf", "woff2": "cairo-400.a.woff2", "preview": "cairo-400-arabic.a.woff2"},
+             "700": {"ttf": "cairo-700.a.ttf", "woff2": "cairo-700.a.woff2", "preview": "cairo-700-arabic.a.woff2"}},
+   "has_license_file": true, "google_url": "https://fonts.google.com/specimen/Cairo",
+   "presentation_forms": 1.0, "arabic_coverage": 1.0, "diacritics": true},
+  {"slug": "reem-kufi", "name": "Reem Kufi", "kind": "arabic", "folder": "reemkufi", "designer": "Khaled Hosny", "license": "OFL",
+   "category": "SANS_SERIF", "style": "sans", "date_added": "2016-06-20", "weights": [400], "variable": true,
+   "files": {"400": {"ttf": "r.ttf", "woff2": "r.woff2", "preview": "r-arabic.woff2"}},
+   "has_license_file": true, "google_url": "https://fonts.google.com/specimen/Reem+Kufi",
+   "presentation_forms": 0.4, "arabic_coverage": 1.0, "diacritics": false},
+  {"slug": "cascadia-code", "name": "Cascadia Code", "kind": "arabic", "folder": "cascadiacode", "designer": "", "license": "OFL",
+   "category": "MONOSPACE", "style": "sans", "weights": [400], "variable": false,
+   "files": {"400": {"preview": "c.woff2"}}, "has_license_file": false, "presentation_forms": 1.0, "diacritics": false},
+  {"slug": "source-sans-3", "name": "Source Sans 3", "kind": "latin", "folder": "sourcesans3", "designer": "Paul D. Hunt", "license": "OFL",
+   "category": "SANS_SERIF", "style": "sans", "weights": [400, 700], "variable": true,
+   "files": {"400": {"preview": "s-400-latin.woff2"}, "700": {"preview": "s-700-latin.woff2"}}, "has_license_file": true}
+ ]
+}

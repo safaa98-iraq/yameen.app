@@ -1,6 +1,7 @@
 import Alpine from 'alpinejs';
 import { readSharedText, writeSharedText } from './lib/shared-text';
 import { registerTools } from './tools';
+import { registerFonts } from './fonts';
 
 // Shared text across tools, persisted per browser session.
 Alpine.store('text', {
@@ -32,6 +33,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 registerTools(Alpine);
+registerFonts(Alpine);
 
 window.Alpine = Alpine;
 Alpine.start();
