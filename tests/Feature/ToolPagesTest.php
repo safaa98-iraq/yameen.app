@@ -57,3 +57,13 @@ it('renders the garbled words tool in both locales', function () {
     $this->get('/garbled-text')->assertOk()->assertSee('x-data="garbledFixer"', false)->assertSee('تصحيح الكلمات المشوهة');
     $this->get('/en/garbled-text')->assertOk()->assertSee('Fix garbled words');
 });
+
+it('parses the front matter of every content file', function () {
+    $repo = app(\App\Support\Content\ContentRepository::class);
+    foreach (glob(resource_path('content/*/{,blog/}*.md'), GLOB_BRACE) as $file) {
+        $locale = basename(dirname($file)) === 'blog' ? basename(dirname($file, 2)) : basename(dirname($file));
+        $slug = (basename(dirname($file)) === 'blog' ? 'blog/' : '').basename($file, '.md');
+        $page = $repo->parse($slug, $locale, file_get_contents($file));
+        expect($page->title)->not->toBe('', $file)->and($page->description)->not->toBe('', $file);
+    }
+});

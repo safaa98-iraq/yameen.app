@@ -228,8 +228,10 @@ return [
     ],
 
     'garbled' => [
-        'input_label' => 'Garbled text',
-        'placeholder' => 'Paste text with words like «يف», «عىل» or «اجلماهريية»',
+        'input_label' => 'Text copied from PDF',
+        'placeholder' => 'Paste the text as you copied it from the PDF, whatever it looks like: reversed, with separated letters, or with words like «يف» and «عىل».',
+        'join' => 'Join lines into paragraphs',
+        'reversed' => 'The text was reversed, so its order was restored.',
         'loading' => 'Loading the dictionary…',
         'legend' => 'Fixed words are highlighted like this:',
         'legend_sample' => 'word',

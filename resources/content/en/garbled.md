@@ -2,7 +2,7 @@
 title: Fix garbled Arabic words copied from PDF («يف» for «في») | Yameen
 description: Paste Arabic text with words like «يف», «عىل» or «اجلماهريية» copied from a PDF. Yameen fixes them automatically and highlights every word it changed.
 h1: Fix garbled words
-intro: Words like «يف», «عىل» and «كربالء» instead of «في», «على» and «كربلاء»? Paste the text here and we fix and highlight each word.
+intro: 'Paste text as you copied it from a PDF: reversed, with odd letters, or with words like «يف» and «عىل». We fix it in one step and highlight every word we changed.'
 faq:
 - q: Why do these garbled words appear?
   a: Some PDFs exported from Word with certain Arabic fonts store each pair of connected letters in reverse order. When copied, every such pair arrives swapped, so «في» becomes «يف» and «على» becomes «عىل».

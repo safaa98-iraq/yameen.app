@@ -13,7 +13,7 @@ export function isMark(ch) {
 }
 
 /** Any Arabic letter, in base or presentation form. */
-export const ARABIC_CHAR = /[\u0600-ۿݐ-ݿࢠ-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+export const ARABIC_CHAR = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
 
 export const PRESENTATION_FORM = /[\uFB50-\uFDFF\uFE70-\uFEFF]/;
 

@@ -157,17 +157,19 @@ export function registerTools(Alpine) {
         };
     });
 
-    // Garbled words from PDFs: always repairs, highlights each changed word.
+    // Garbled PDF text: one step, no buttons. Reverses visual order, restores
+    // letters, repairs swapped pairs, joins lines; highlights changed words.
     Alpine.data('garbledFixer', () => {
         let memo = null;
         return {
             ...copyable(),
-            pdf: null,
+            lib: null,
             words: null,
             dict: null,
             dictState: 'idle', // idle | loading | ready | failed
+            join: true,
             async init() {
-                [this.pdf, this.words] = await Promise.all([import('./text/pdf'), import('./text/pdf-words')]);
+                [this.lib, this.words] = await Promise.all([import('./text/garbled'), import('./text/pdf-words')]);
                 this.loadDictionary();
             },
             async loadDictionary() {
@@ -185,15 +187,10 @@ export function registerTools(Alpine) {
             },
             get result() {
                 const text = this.$store.text.value;
-                const empty = { text: '', fixed: 0, parts: [] };
-                if (!this.dict || !text.trim()) return empty;
-                const key = text + '\u0000' + this.dictState;
+                if (!this.lib || !text.trim()) return { text: '', parts: [], fixed: 0, reversed: false };
+                const key = [text, this.dictState, this.join].join('\u0000');
                 if (memo?.key === key) return memo.value;
-                const logical = this.pdf.normalizePresentationForms(text);
-                const lines = this.words.repairLines(logical, this.dict);
-                const value = this.words.repairSwappedWords(lines, this.dict, {
-                    aggressive: this.words.swapSignals(logical) >= 1,
-                });
+                const value = this.lib.fixGarbledText(text, this.dict, { join: this.join });
                 memo = { key, value };
                 return value;
             },

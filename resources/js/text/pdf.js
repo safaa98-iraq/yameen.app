@@ -77,7 +77,11 @@ export function detectReversed(text) {
 
 /** Reverse each line from visual to logical order, keeping Latin and numbers intact. */
 export function reverseLines(text) {
-    return mapLines(text, (line) => toVisual(line, /[\u0600-ۿ\uFB50-\uFEFF]/.test(line) ? 'rtl' : 'ltr'));
+    return mapLines(text, (line) => {
+        const out = toVisual(line, /[\u0600-\u06FF\uFB50-\uFEFF]/.test(line) ? 'rtl' : 'ltr');
+        // Reordering puts a percent sign before its number («%0.85»); put it back after.
+        return out.replace(/(^|[\s(])([%\u066A])(\d[\d.,\u066B]*)/g, '$1$3$2');
+    });
 }
 
 /**
