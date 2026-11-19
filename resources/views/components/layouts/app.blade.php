@@ -14,7 +14,7 @@
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}">
     <meta name="theme-color" content="#FAF9FC">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
     @foreach (Locales::all() as $code => $meta)
         <link rel="alternate" hreflang="{{ $code }}" href="{{ Locales::switchUrl($code) }}">
     @endforeach

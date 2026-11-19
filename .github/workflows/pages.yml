@@ -1,0 +1,103 @@
+# Static preview on GitHub Pages: tests, font build, static export, deploy.
+# Only browser-side features work on Pages (fixer, PDF fix, cleaner, fonts).
+# Accounts, credits and payments need the real PHP server.
+name: Preview (GitHub Pages)
+
+on:
+  push:
+    branches: [claude/clever-dirac-e1qa6s]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+      APP_ENV: production
+      APP_DEBUG: 'false'
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
+      CACHE_STORE: array
+      SESSION_DRIVER: array
+    steps:
+      - uses: actions/checkout@v4
+
+      # Fails fast if Pages is not enabled (Settings > Pages > Source: GitHub Actions).
+      - uses: actions/configure-pages@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: intl, mbstring, pdo_sqlite
+          tools: composer
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/fonts/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          composer install --no-interaction --prefer-dist --no-progress
+          npm ci
+          pip install -r scripts/fonts/requirements.txt
+
+      - name: Prepare app
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          touch database/database.sqlite
+          php artisan migrate --force
+
+      - name: Tests
+        run: |
+          npm run build
+          npx vitest run
+          ./vendor/bin/pest
+
+      # Font builds take several minutes; reuse previous output (the script only
+      # rebuilds families that changed upstream).
+      - uses: actions/cache@v4
+        with:
+          path: storage/app/fonts
+          key: fonts-${{ hashFiles('scripts/fonts/build.py', 'resources/fonts/pairings.json') }}-${{ github.run_id }}
+          restore-keys: |
+            fonts-${{ hashFiles('scripts/fonts/build.py', 'resources/fonts/pairings.json') }}-
+            fonts-
+
+      - name: Build fonts
+        run: php artisan fonts:sync
+
+      - name: Export static site
+        run: |
+          ASSET_URL="$BASE_URL" npm run build
+          ASSET_URL="$BASE_URL" php artisan site:export _site --base-url="$BASE_URL"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

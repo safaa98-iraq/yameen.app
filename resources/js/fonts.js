@@ -83,6 +83,11 @@ export function registerFonts(Alpine) {
         weight: 400,
         sample,
         init() {
+            const params = new URLSearchParams(window.location.search);
+            for (const key of ['a', 'b']) {
+                const slug = params.get(key);
+                if (slug && this.byslug(slug)) this[key] = slug;
+            }
             this.load();
             this.$watch('a', () => this.load());
             this.$watch('b', () => this.load());

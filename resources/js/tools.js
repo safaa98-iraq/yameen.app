@@ -28,6 +28,9 @@ export function registerTools(Alpine) {
         font: initial.font ?? null, // slug
         lib: null,
         async init() {
+            // ?font=slug also works on statically exported pages.
+            const fromUrl = new URLSearchParams(window.location.search).get('font');
+            if (fromUrl && this.fonts.some((f) => f.slug === fromUrl)) this.font = fromUrl;
             this.$watch('font', () => this.loadSelected());
             this.loadSelected();
             this.lib = await import('./text/fixer');
