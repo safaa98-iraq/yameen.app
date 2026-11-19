@@ -137,3 +137,17 @@ Make yourself admin: `php artisan tinker --execute="App\Models\User::where('emai
   location ~ ^/(build|font-files)/ { add_header Cache-Control "public, max-age=31536000, immutable"; try_files $uri =404; }
   ```
   In Cloudflare, add a Cache Rule for `/font-files/*` and `/build/*` (respect origin headers).
+
+### Garbled-text accuracy benchmark
+
+`scripts/bench/garbled.bench.test.js` corrupts real Arabic paragraphs the way Word-exported
+PDFs do (ligature pairs stored in reverse) and measures the repair:
+
+```bash
+CORPUS=path/to/arabic/texts npx vitest run --config vitest.bench.config.js
+```
+
+On 120 news articles (~28,000 words): 94% of corrupted words restored, 0.33% of correct words
+changed, 97.4–97.8% word accuracy. Remaining errors are mostly words valid both ways
+(«السالم/السلام», «صالح/صلاح») that need sentence context, and rare names.
+The dictionary is rebuilt with `build_dictionary.py ar_full.txt:8 arwiki-2022-08-29.txt`.

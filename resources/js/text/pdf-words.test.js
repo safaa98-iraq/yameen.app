@@ -36,6 +36,22 @@ describe('swapped letter pairs from PDFs', () => {
         expect(r.fixed).toBe(3);
     });
 
+    it('fixes function words that are only valid one way in formal text', () => {
+        expect(repair('ال يمكن حتت أي ظرف عىل اإلطالق')).toBe('لا يمكن تحت أي ظرف على الإطلاق');
+    });
+
+    it('reads «هل» as a question only at the start of a sentence', () => {
+        expect(repair('هل قرأت الكتاب؟ قدم هل يف املوعد')).toBe('هل قرأت الكتاب؟ قدم له في الموعد');
+    });
+
+    it('keeps «الـ» with tatweel', () => {
+        expect(repair('أداة الـ PDF يف النص عىل الأقل')).toBe('أداة الـ PDF في النص على الأقل');
+    });
+
+    it('fixes the swapped article on names missing from the dictionary', () => {
+        expect(repair('صرح املتحدث احلوثي يف بيان عىل موقع')).toBe('صرح المتحدث الحوثي في بيان على موقع');
+    });
+
     it('leaves correct text untouched', () => {
         const ok = 'استخدمت بيانات طولية من النشرات الإحصائية الرسمية لمحافظة كربلاء بين عامي 2017 و2024';
         expect(repair(ok)).toBe(ok);

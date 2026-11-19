@@ -11,6 +11,7 @@ const LETTERS = /[ء-غف-ي]+/g;
 const MARKS = /[ؐ-ًؚ-ٰٟ]/g;
 const PREFIXES = ['وال', 'فال', 'بال', 'كال', 'لل', 'ال', 'و', 'ف', 'ب', 'ل', 'ك'];
 const MAX_SWAPS = 3;
+const RARE_RANK = 150000;
 
 /** Build a lookup from the word list text (one word per line, most frequent first). */
 export function buildDictionary(text) {
@@ -52,17 +53,23 @@ export function swapSignals(text) {
     return n;
 }
 
+function isRareOrUnknown(dict, word) {
+    const r = wordRank(dict, word);
+    return r === Infinity || r > RARE_RANK;
+}
+
 /**
  * Variants of a word with up to MAX_SWAPS non-overlapping adjacent letters swapped.
  * Yields { word, keys } where keys are the swapped pairs as they appear in the
  * input (e.g. "ني" for «بني» → «بين»).
  */
-function* swapVariants(word) {
+function* swapVariants(word, allowed = (key) => LIKELY.has(key)) {
     const n = word.length;
     function* pick(start, left, chars, keys) {
         if (left === 0 || start >= n - 1) return;
         for (let i = start; i < n - 1; i++) {
-            if (chars[i] === chars[i + 1]) continue;
+            // Only pairs that fonts draw as one ligature get swapped by this corruption.
+            if (chars[i] === chars[i + 1] || !allowed(chars[i] + chars[i + 1])) continue;
             const next = chars.slice();
             [next[i], next[i + 1]] = [next[i + 1], next[i]];
             const nextKeys = [...keys, chars[i] + chars[i + 1]];
@@ -90,6 +97,7 @@ const LIGATURES = [
     ['جحخ', 'مى'],
     ['سشصض', 'رىي'],
     ['فق', 'ىي'],
+    ['ك', 'الىمي'],
 ];
 const LIKELY = new Set();
 for (const [firsts, seconds] of LIGATURES) {
@@ -101,7 +109,12 @@ for (const [firsts, seconds] of LIGATURES) {
 const COMMON_SWAPS = {
     يف: 'في', هلا: 'لها', هبا: 'بها', هلم: 'لهم', هبم: 'بهم', هلن: 'لهن',
     هلذا: 'لهذا', هبذا: 'بهذا', هلذه: 'لهذه', هبذه: 'بهذه', فيام: 'فيما', بيام: 'بيما', كام: 'كما',
+    // «ال» is never a word on its own; «ام»/«هب» without hamza are not used in formal text.
+    ال: 'لا', ام: 'ما', هب: 'به', حتت: 'تحت', غري: 'غير', بني: 'بين', ىلع: 'على', ىلإ: 'إلى',
 };
+
+/** Article written with a swapped lam-ligature: «احلوثي» → «الحوثي», «امل…» → «الم…». */
+const ARTICLE_SWAP = /^(و|ف|ب|ك)?ا([جحخمه])ل(?=[\u0621-\u064A]{2})/;
 
 /**
  * Best correction for one word: { word, keys } or null to keep it.
@@ -112,7 +125,11 @@ const COMMON_SWAPS = {
 export function repairWord(dict, word, confirmed = null, { reconsiderKnown = false } = {}) {
     if (word.length < 2 || word.length > 16) return null;
     const original = wordRank(dict, word);
-    const known = original !== Infinity;
+    // Very rare entries are often the corrupted form itself (copied from PDFs into
+    // the source corpora, e.g. «هيكيل»): treat them as unknown, but only replace
+    // them with a much more frequent word.
+    const rare = original !== Infinity && original > RARE_RANK;
+    const known = original !== Infinity && !rare;
     if (known && !reconsiderKnown) return null;
 
     const bases = [{ word, keys: [] }];
@@ -123,7 +140,8 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
     let bestScore = Infinity;
     for (const base of bases) {
         const variants = base.keys.length ? [base] : [];
-        for (const v of swapVariants(base.word)) variants.push({ word: v.word, keys: [...base.keys, ...v.keys] });
+        const allowed = (k) => LIKELY.has(k) || (confirmed?.get(k) ?? 0) >= 2;
+        for (const v of swapVariants(base.word, allowed)) variants.push({ word: v.word, keys: [...base.keys, ...v.keys] });
         for (const v of variants) {
             if (v.word === word) continue;
             const count = (k) => confirmed?.get(k) ?? 0;
@@ -142,6 +160,16 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
             }
         }
     }
+    // Unknown word (often a name) with no dictionary match: apply swaps that
+    // cannot occur in correct text: the swapped article and a medial «ى».
+    if (!best && !known && confirmed) {
+        let w = word.replace(ARTICLE_SWAP, (_, p = '', c) => p + 'ال' + c);
+        w = w.replace(/ى(?=[\u0621-\u064A])(.)/g, (_, c) => c + 'ى');
+        if (w !== word) return { word: w, keys: [] };
+    }
+
+    if (best && rare && (wordRank(dict, best.word) + 1) * 10 > original) return null;
+
     // A known word is replaced only by a more frequent one, and only through pairs
     // this text is already known to swap (checked above).
     if (best && known && wordRank(dict, best.word) >= original) return null;
@@ -171,13 +199,13 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
     }
     // Pass 2: redo unknown words preferring the pairs this text tends to swap.
     for (const w of words) {
-        if (cache.get(w)) cache.set(w, repairWord(dict, w, confirmed));
+        if (cache.get(w) || isRareOrUnknown(dict, w)) cache.set(w, repairWord(dict, w, confirmed));
     }
     // Pass 3: known words, only when the text clearly has the problem.
     if (aggressive) {
         for (const w of words) {
             if (cache.get(w) || wordRank(dict, w) === Infinity) continue;
-            if (COMMON_SWAPS[w]) cache.set(w, { word: COMMON_SWAPS[w], keys: [] });
+            if (COMMON_SWAPS[w]) cache.set(w, { word: COMMON_SWAPS[w], keys: [], common: true });
             else cache.set(w, repairWord(dict, w, confirmed, { reconsiderKnown: true }));
         }
     }
@@ -187,7 +215,13 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
     let fixed = 0;
     let last = 0;
     for (const m of text.matchAll(TOKEN)) {
-        const r = cache.get(bare(m[0]));
+        let r = cache.get(bare(m[0]));
+        // «الـ» (article with tatweel) is not the word «ال».
+        if (r?.common && text[m.index + m[0].length] === '\u0640') r = null;
+        // «هل» opens questions; elsewhere in corrupted text it is «له».
+        if (aggressive && bare(m[0]) === 'هل' && !/(^|[.!?؟:\n«"(]\s*)$/.test(text.slice(Math.max(0, m.index - 3), m.index))) {
+            r = { word: 'له', keys: [] };
+        }
         if (!r || r.word === bare(m[0])) continue;
         if (m.index > last) parts.push({ text: text.slice(last, m.index) });
         parts.push({ text: r.word, from: m[0] });

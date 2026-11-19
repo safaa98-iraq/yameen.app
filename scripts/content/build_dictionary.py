@@ -11,7 +11,7 @@ Sources (merged; each word takes its better rank of the two):
   Arabic Wikipedia text (CC BY-SA). Formal and technical language.
 The generated list is a derivative and is distributed under CC BY-SA 4.0.
 
-Usage: python3 scripts/content/build_dictionary.py ar_full.txt arwiki-2022-08-29.txt
+Usage: python3 scripts/content/build_dictionary.py ar_full.txt:4 arwiki-2022-08-29.txt
 """
 import re
 import sys
@@ -38,11 +38,17 @@ def ranked(path):
             out.append(w)
     return out
 
+# PDFs are formal documents, so Wikipedia ranks count fully and subtitle ranks
+# (everyday speech, more misspellings) are weighted down. Pass files as
+# path or path:weight (rank is multiplied by the weight).
 best = {}
-for path in sys.argv[1:]:
+for arg in sys.argv[1:]:
+    path, _, weight = arg.partition(":")
+    weight = float(weight or 1)
     for rank, w in enumerate(ranked(path)):
-        if rank < best.get(w, float("inf")):
-            best[w] = rank
+        r = rank * weight
+        if r < best.get(w, float("inf")):
+            best[w] = r
 words = sorted(best, key=lambda w: (best[w], w))[:LIMIT]
 
 # Drop article forms («الفردي») of listed words: the JS strips the article itself.
