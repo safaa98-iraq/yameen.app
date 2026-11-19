@@ -76,3 +76,11 @@ php artisan fonts:sync --skip-build
 
 Files are served from `/font-files/...` (not `/fonts/...`, which are page routes).
 Configure Cloudflare/your web server to cache that path with a long `Cache-Control`.
+
+## Preview on GitHub Pages
+
+`.github/workflows/pages.yml` runs the tests, builds the fonts, exports every page with
+`php artisan site:export` and pushes the result to the `gh-pages` branch on each push.
+Preview: https://safaa98-iraq.github.io/yameen.app/
+
+Only browser-side tools work there; accounts, credits and payments need the PHP server.

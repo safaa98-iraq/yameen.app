@@ -1,4 +1,5 @@
-# Static preview on GitHub Pages: tests, font build, static export, deploy.
+# Static preview on GitHub Pages: tests, font build, static export, publish to gh-pages.
+# Live at https://<owner>.github.io/<repo>/
 # Only browser-side features work on Pages (fixer, PDF fix, cleaner, fonts).
 # Accounts, credits and payments need the real PHP server.
 name: Preview (GitHub Pages)
@@ -9,9 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write # pushes the built site to the gh-pages branch
 
 concurrency:
   group: pages
@@ -85,17 +84,13 @@ jobs:
           ASSET_URL="$BASE_URL" npm run build
           ASSET_URL="$BASE_URL" php artisan site:export _site --base-url="$BASE_URL"
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  # Requires Pages to be enabled once: Settings > Pages > Source: GitHub Actions.
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      # GitHub Pages serves the gh-pages branch (Settings > Pages > Deploy from a branch).
+      - name: Publish to gh-pages
+        run: |
+          cd _site
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "Preview build for ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
