@@ -1,0 +1,4264 @@
+{
+ "source_commit": "cc5661d43cd4f9aad5567033a8e15ca28dc35c86",
+ "fonts": [
+  {
+   "slug": "alan-sans",
+   "name": "Alan Sans",
+   "kind": "arabic",
+   "folder": "alansans",
+   "designer": "Raphaël Ronot, Samar Zureik",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2025-09-05",
+   "weights": [
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "300": {
+     "ttf": "alan-sans-300.daccd8be03.ttf",
+     "woff2": "alan-sans-300.f96f09584b.woff2",
+     "preview": "alan-sans-300-arabic.9f266f7be8.woff2"
+    },
+    "400": {
+     "ttf": "alan-sans-400.04690b61b9.ttf",
+     "woff2": "alan-sans-400.9f38ef74a5.woff2",
+     "preview": "alan-sans-400-arabic.77fb1477ba.woff2"
+    },
+    "500": {
+     "ttf": "alan-sans-500.874507b32e.ttf",
+     "woff2": "alan-sans-500.7aeb530ed2.woff2",
+     "preview": "alan-sans-500-arabic.fa7bc4f062.woff2"
+    },
+    "600": {
+     "ttf": "alan-sans-600.c20a8ca353.ttf",
+     "woff2": "alan-sans-600.f88abc12c1.woff2",
+     "preview": "alan-sans-600-arabic.96593ef4c2.woff2"
+    },
+    "700": {
+     "ttf": "alan-sans-700.78538b8cb3.ttf",
+     "woff2": "alan-sans-700.48285cf7a6.woff2",
+     "preview": "alan-sans-700-arabic.d288607110.woff2"
+    },
+    "800": {
+     "ttf": "alan-sans-800.256a7aa92d.ttf",
+     "woff2": "alan-sans-800.482f38caa2.woff2",
+     "preview": "alan-sans-800-arabic.3311d8c858.woff2"
+    },
+    "900": {
+     "ttf": "alan-sans-900.4adff926bf.ttf",
+     "woff2": "alan-sans-900.6813bc3899.woff2",
+     "preview": "alan-sans-900-arabic.b116e66b28.woff2"
+    }
+   },
+   "preview_bytes": {
+    "300": 19800,
+    "400": 20880,
+    "500": 20904,
+    "600": 21024,
+    "700": 20976,
+    "800": 20916,
+    "900": 20188
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Alan+Sans",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.a26f2ba4bc.png",
+   "og_version": 1
+  },
+  {
+   "slug": "alexandria",
+   "name": "Alexandria",
+   "kind": "arabic",
+   "folder": "alexandria",
+   "designer": "Mohamed Gaber, Julieta Ulanovsky",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2022-11-04",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "alexandria-100.bd4f28f0e5.ttf",
+     "woff2": "alexandria-100.09aae8ba8a.woff2",
+     "preview": "alexandria-100-arabic.b75cb1df1d.woff2"
+    },
+    "200": {
+     "ttf": "alexandria-200.af43d20b49.ttf",
+     "woff2": "alexandria-200.431bdeae5c.woff2",
+     "preview": "alexandria-200-arabic.2a80851410.woff2"
+    },
+    "300": {
+     "ttf": "alexandria-300.f3faa9e073.ttf",
+     "woff2": "alexandria-300.2185f1060d.woff2",
+     "preview": "alexandria-300-arabic.720920fb0e.woff2"
+    },
+    "400": {
+     "ttf": "alexandria-400.300ff3862a.ttf",
+     "woff2": "alexandria-400.50f185f711.woff2",
+     "preview": "alexandria-400-arabic.77b85dde9a.woff2"
+    },
+    "500": {
+     "ttf": "alexandria-500.fbff1eccd6.ttf",
+     "woff2": "alexandria-500.c6f7997f6e.woff2",
+     "preview": "alexandria-500-arabic.e9c044a05a.woff2"
+    },
+    "600": {
+     "ttf": "alexandria-600.10b3acd2b9.ttf",
+     "woff2": "alexandria-600.f004b59457.woff2",
+     "preview": "alexandria-600-arabic.7227fb88ea.woff2"
+    },
+    "700": {
+     "ttf": "alexandria-700.3663f357bc.ttf",
+     "woff2": "alexandria-700.6eb4166e56.woff2",
+     "preview": "alexandria-700-arabic.28c6f0ce02.woff2"
+    },
+    "800": {
+     "ttf": "alexandria-800.bcfc58d2ca.ttf",
+     "woff2": "alexandria-800.825672cbca.woff2",
+     "preview": "alexandria-800-arabic.df2fcb83cf.woff2"
+    },
+    "900": {
+     "ttf": "alexandria-900.b5c575e8d6.ttf",
+     "woff2": "alexandria-900.8ef0b40135.woff2",
+     "preview": "alexandria-900-arabic.4862d6bf3a.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 16160,
+    "200": 17192,
+    "300": 17356,
+    "400": 16368,
+    "500": 17332,
+    "600": 17572,
+    "700": 17576,
+    "800": 17532,
+    "900": 16724
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Alexandria",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.2f576fabfd.png",
+   "og_version": 1
+  },
+  {
+   "slug": "alkalami",
+   "name": "Alkalami",
+   "kind": "arabic",
+   "folder": "alkalami",
+   "designer": "SIL International",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2022-06-10",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "alkalami-400.db52fe0530.ttf",
+     "woff2": "alkalami-400.eafc28bdcb.woff2",
+     "preview": "alkalami-400-arabic.697fdf6b64.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 37216
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Alkalami",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.e971d7e37c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "almarai",
+   "name": "Almarai",
+   "kind": "arabic",
+   "folder": "almarai",
+   "designer": "Boutros Fonts, Mourad Boutros",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2019-06-04",
+   "weights": [
+    300,
+    400,
+    700,
+    800
+   ],
+   "variable": false,
+   "files": {
+    "300": {
+     "ttf": "almarai-300.b60fb1ac65.ttf",
+     "woff2": "almarai-300.f469cc7bb6.woff2",
+     "preview": "almarai-300-arabic.a62002448d.woff2"
+    },
+    "400": {
+     "ttf": "almarai-400.906b363cd4.ttf",
+     "woff2": "almarai-400.745a037e18.woff2",
+     "preview": "almarai-400-arabic.a3e4ccde4f.woff2"
+    },
+    "700": {
+     "ttf": "almarai-700.4d346e829e.ttf",
+     "woff2": "almarai-700.858d10bf4d.woff2",
+     "preview": "almarai-700-arabic.ab1552e399.woff2"
+    },
+    "800": {
+     "ttf": "almarai-800.b6612d6dd9.ttf",
+     "woff2": "almarai-800.7123ed8dc7.woff2",
+     "preview": "almarai-800-arabic.5473cc4830.woff2"
+    }
+   },
+   "preview_bytes": {
+    "300": 20428,
+    "400": 21492,
+    "700": 22388,
+    "800": 22720
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Almarai",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.8d2afbf411.png",
+   "og_version": 1
+  },
+  {
+   "slug": "alyamama",
+   "name": "Alyamama",
+   "kind": "arabic",
+   "folder": "alyamama",
+   "designer": "Yazeed Omar",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2026-01-09",
+   "weights": [
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "300": {
+     "ttf": "alyamama-300.4e5468a690.ttf",
+     "woff2": "alyamama-300.68a77e5f2a.woff2",
+     "preview": "alyamama-300-arabic.fbfe1c044e.woff2"
+    },
+    "400": {
+     "ttf": "alyamama-400.36f37812a2.ttf",
+     "woff2": "alyamama-400.1d9c866dc7.woff2",
+     "preview": "alyamama-400-arabic.37aa3a9a68.woff2"
+    },
+    "500": {
+     "ttf": "alyamama-500.b3eec891ec.ttf",
+     "woff2": "alyamama-500.af43552f7b.woff2",
+     "preview": "alyamama-500-arabic.61cfb87df2.woff2"
+    },
+    "600": {
+     "ttf": "alyamama-600.b8e1be01cd.ttf",
+     "woff2": "alyamama-600.592a7ac0d0.woff2",
+     "preview": "alyamama-600-arabic.5fb282484e.woff2"
+    },
+    "700": {
+     "ttf": "alyamama-700.9ddf67c2af.ttf",
+     "woff2": "alyamama-700.6c21b0611a.woff2",
+     "preview": "alyamama-700-arabic.8e53adbb6a.woff2"
+    },
+    "800": {
+     "ttf": "alyamama-800.38bd2eb4df.ttf",
+     "woff2": "alyamama-800.bfdb359f6f.woff2",
+     "preview": "alyamama-800-arabic.6b2aa0d5ec.woff2"
+    },
+    "900": {
+     "ttf": "alyamama-900.5e6eed7237.ttf",
+     "woff2": "alyamama-900.aacd599888.woff2",
+     "preview": "alyamama-900-arabic.c896c09056.woff2"
+    }
+   },
+   "preview_bytes": {
+    "300": 20504,
+    "400": 21680,
+    "500": 21728,
+    "600": 21776,
+    "700": 21864,
+    "800": 21960,
+    "900": 21048
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Alyamama",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.85ebfb9d38.png",
+   "og_version": 1
+  },
+  {
+   "slug": "amiri",
+   "name": "Amiri",
+   "kind": "arabic",
+   "folder": "amiri",
+   "designer": "Khaled Hosny, Sebastian Kosch",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2012-07-30",
+   "weights": [
+    400,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "amiri-400.4ac85c77f2.ttf",
+     "woff2": "amiri-400.f20a16daa0.woff2",
+     "preview": "amiri-400-arabic.cb76ff3c2e.woff2"
+    },
+    "700": {
+     "ttf": "amiri-700.3d0076a303.ttf",
+     "woff2": "amiri-700.36b3290296.woff2",
+     "preview": "amiri-700-arabic.f932b3b8a6.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 115436,
+    "700": 115892
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Amiri",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.25a26a5d1c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "amiri-quran",
+   "name": "Amiri Quran",
+   "kind": "arabic",
+   "folder": "amiriquran",
+   "designer": "Khaled Hosny, Sebastian Kosch",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2022-08-10",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "amiri-quran-400.e02113933c.ttf",
+     "woff2": "amiri-quran-400.a64841e221.woff2",
+     "preview": "amiri-quran-400-arabic.065eda1428.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 52760
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Amiri+Quran",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.63c2e7ad4d.png",
+   "og_version": 1
+  },
+  {
+   "slug": "aref-ruqaa",
+   "name": "Aref Ruqaa",
+   "kind": "arabic",
+   "folder": "arefruqaa",
+   "designer": "Abdullah Aref, Khaled Hosny, Hermann Zapf",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2016-06-20",
+   "weights": [
+    400,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "aref-ruqaa-400.044f137422.ttf",
+     "woff2": "aref-ruqaa-400.f900a761e6.woff2",
+     "preview": "aref-ruqaa-400-arabic.a442d491f2.woff2"
+    },
+    "700": {
+     "ttf": "aref-ruqaa-700.4c6c37e273.ttf",
+     "woff2": "aref-ruqaa-700.dd77882e17.woff2",
+     "preview": "aref-ruqaa-700-arabic.e2c20d2a13.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 43480,
+    "700": 51332
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Aref+Ruqaa",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.09ab1c6a64.png",
+   "og_version": 1
+  },
+  {
+   "slug": "aref-ruqaa-ink",
+   "name": "Aref Ruqaa Ink",
+   "kind": "arabic",
+   "folder": "arefruqaaink",
+   "designer": "Abdullah Aref, Khaled Hosny, Hermann Zapf",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2022-02-26",
+   "weights": [
+    400,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "aref-ruqaa-ink-400.48bc412890.ttf",
+     "woff2": "aref-ruqaa-ink-400.b782a261b6.woff2",
+     "preview": "aref-ruqaa-ink-400-arabic.7e52a1b04d.woff2"
+    },
+    "700": {
+     "ttf": "aref-ruqaa-ink-700.d2d709af60.ttf",
+     "woff2": "aref-ruqaa-ink-700.39c8b853d2.woff2",
+     "preview": "aref-ruqaa-ink-700-arabic.b28216472c.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 144916,
+    "700": 166216
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Aref+Ruqaa+Ink",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.856332401c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "badeen-display",
+   "name": "Badeen Display",
+   "kind": "arabic",
+   "folder": "badeendisplay",
+   "designer": "Hani Alasadi",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2024-11-20",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "badeen-display-400.3a22f49a21.ttf",
+     "woff2": "badeen-display-400.90a4cf9e6d.woff2",
+     "preview": "badeen-display-400-arabic.646a963be9.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 7884
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Badeen+Display",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.200874b6c0.png",
+   "og_version": 1
+  },
+  {
+   "slug": "baloo-bhaijaan-2",
+   "name": "Baloo Bhaijaan 2",
+   "kind": "arabic",
+   "folder": "baloobhaijaan2",
+   "designer": "Ek Type",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2021-10-29",
+   "weights": [
+    400,
+    500,
+    600,
+    700,
+    800
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "baloo-bhaijaan-2-400.a9f2f07e14.ttf",
+     "woff2": "baloo-bhaijaan-2-400.0b033bae8e.woff2",
+     "preview": "baloo-bhaijaan-2-400-arabic.8a75c1abfd.woff2"
+    },
+    "500": {
+     "ttf": "baloo-bhaijaan-2-500.d35a5bcc77.ttf",
+     "woff2": "baloo-bhaijaan-2-500.2ad79cbb2e.woff2",
+     "preview": "baloo-bhaijaan-2-500-arabic.cf3718b46d.woff2"
+    },
+    "600": {
+     "ttf": "baloo-bhaijaan-2-600.fe6f1a0259.ttf",
+     "woff2": "baloo-bhaijaan-2-600.64ceb8906b.woff2",
+     "preview": "baloo-bhaijaan-2-600-arabic.ccb3591257.woff2"
+    },
+    "700": {
+     "ttf": "baloo-bhaijaan-2-700.3206713997.ttf",
+     "woff2": "baloo-bhaijaan-2-700.7fce62b917.woff2",
+     "preview": "baloo-bhaijaan-2-700-arabic.3848a6903c.woff2"
+    },
+    "800": {
+     "ttf": "baloo-bhaijaan-2-800.3f6908fe5e.ttf",
+     "woff2": "baloo-bhaijaan-2-800.1331d1c0b4.woff2",
+     "preview": "baloo-bhaijaan-2-800-arabic.088c889280.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 25544,
+    "500": 26828,
+    "600": 26964,
+    "700": 26892,
+    "800": 25564
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Baloo+Bhaijaan+2",
+   "presentation_forms": 0.101,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.61dafec1c5.png",
+   "og_version": 1
+  },
+  {
+   "slug": "beiruti",
+   "name": "Beiruti",
+   "kind": "arabic",
+   "folder": "beiruti",
+   "designer": "Boutros Fonts, Arlette Boutros, Volker Schnebel",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2024-06-07",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "beiruti-200.d0fd1dc891.ttf",
+     "woff2": "beiruti-200.50e0176764.woff2",
+     "preview": "beiruti-200-arabic.bce00e3230.woff2"
+    },
+    "300": {
+     "ttf": "beiruti-300.e7d0e888fd.ttf",
+     "woff2": "beiruti-300.e7beb33758.woff2",
+     "preview": "beiruti-300-arabic.fe44600c11.woff2"
+    },
+    "400": {
+     "ttf": "beiruti-400.35899bc5cb.ttf",
+     "woff2": "beiruti-400.0f48a9dcfe.woff2",
+     "preview": "beiruti-400-arabic.ce3cf76ca1.woff2"
+    },
+    "500": {
+     "ttf": "beiruti-500.9a5d25150b.ttf",
+     "woff2": "beiruti-500.6863b1b5b0.woff2",
+     "preview": "beiruti-500-arabic.836451680a.woff2"
+    },
+    "600": {
+     "ttf": "beiruti-600.12cf7007ea.ttf",
+     "woff2": "beiruti-600.fff0746072.woff2",
+     "preview": "beiruti-600-arabic.b6a507fe50.woff2"
+    },
+    "700": {
+     "ttf": "beiruti-700.7678d33b57.ttf",
+     "woff2": "beiruti-700.4e567cad30.woff2",
+     "preview": "beiruti-700-arabic.7e77d6b7d6.woff2"
+    },
+    "800": {
+     "ttf": "beiruti-800.a6482abb8a.ttf",
+     "woff2": "beiruti-800.e10e525a62.woff2",
+     "preview": "beiruti-800-arabic.06e335fe45.woff2"
+    },
+    "900": {
+     "ttf": "beiruti-900.fe3c5eeb8c.ttf",
+     "woff2": "beiruti-900.3882c0a976.woff2",
+     "preview": "beiruti-900-arabic.01bd1702aa.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 24676,
+    "300": 28072,
+    "400": 27388,
+    "500": 28680,
+    "600": 28512,
+    "700": 28564,
+    "800": 27760,
+    "900": 25036
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Beiruti",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.7197f5491a.png",
+   "og_version": 1
+  },
+  {
+   "slug": "blaka",
+   "name": "Blaka",
+   "kind": "arabic",
+   "folder": "blaka",
+   "designer": "Mohamed Gaber",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2022-04-26",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "blaka-400.fe7aa50a02.ttf",
+     "woff2": "blaka-400.1ed306ba7e.woff2",
+     "preview": "blaka-400-arabic.324b8bca19.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 8204
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Blaka",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.2491e00b8b.png",
+   "og_version": 1
+  },
+  {
+   "slug": "blaka-hollow",
+   "name": "Blaka Hollow",
+   "kind": "arabic",
+   "folder": "blakahollow",
+   "designer": "Mohamed Gaber",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2022-04-26",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "blaka-hollow-400.e3595707f3.ttf",
+     "woff2": "blaka-hollow-400.b266644220.woff2",
+     "preview": "blaka-hollow-400-arabic.cbc79a36e7.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 10580
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Blaka+Hollow",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.94c3a41bdd.png",
+   "og_version": 1
+  },
+  {
+   "slug": "blaka-ink",
+   "name": "Blaka Ink",
+   "kind": "arabic",
+   "folder": "blakaink",
+   "designer": "Mohamed Gaber",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2022-02-26",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "blaka-ink-400.48de2417d0.ttf",
+     "woff2": "blaka-ink-400.a7a822155a.woff2",
+     "preview": "blaka-ink-400-arabic.ad307033a9.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 35208
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Blaka+Ink",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.1b253aab9f.png",
+   "og_version": 1
+  },
+  {
+   "slug": "cairo",
+   "name": "Cairo",
+   "kind": "arabic",
+   "folder": "cairo",
+   "designer": "Mohamed Gaber, Accademia di Belle Arti di Urbino",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2019-03-21",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "cairo-200.027fc7b6b1.ttf",
+     "woff2": "cairo-200.2383c6ab01.woff2",
+     "preview": "cairo-200-arabic.f00643e6c9.woff2"
+    },
+    "300": {
+     "ttf": "cairo-300.3b794790a5.ttf",
+     "woff2": "cairo-300.465f0c6d0d.woff2",
+     "preview": "cairo-300-arabic.c34a0cd540.woff2"
+    },
+    "400": {
+     "ttf": "cairo-400.eba0d9338b.ttf",
+     "woff2": "cairo-400.9e1cce4790.woff2",
+     "preview": "cairo-400-arabic.938c6548da.woff2"
+    },
+    "500": {
+     "ttf": "cairo-500.9f7549a71e.ttf",
+     "woff2": "cairo-500.ce4d8b6b0b.woff2",
+     "preview": "cairo-500-arabic.c6d9e71165.woff2"
+    },
+    "600": {
+     "ttf": "cairo-600.1e440a698a.ttf",
+     "woff2": "cairo-600.87a0bf8085.woff2",
+     "preview": "cairo-600-arabic.1c9d408427.woff2"
+    },
+    "700": {
+     "ttf": "cairo-700.fc31db5b8d.ttf",
+     "woff2": "cairo-700.cdd31af11a.woff2",
+     "preview": "cairo-700-arabic.78a23b85a7.woff2"
+    },
+    "800": {
+     "ttf": "cairo-800.6df3ca5a72.ttf",
+     "woff2": "cairo-800.b329068a46.woff2",
+     "preview": "cairo-800-arabic.0c2b4db3cd.woff2"
+    },
+    "900": {
+     "ttf": "cairo-900.333e9ec187.ttf",
+     "woff2": "cairo-900.9f4378bd4c.woff2",
+     "preview": "cairo-900-arabic.5e5455b968.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 15628,
+    "300": 16156,
+    "400": 15996,
+    "500": 16668,
+    "600": 16752,
+    "700": 16852,
+    "800": 16872,
+    "900": 16872
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Cairo",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.cbe45cf6a7.png",
+   "og_version": 1
+  },
+  {
+   "slug": "cairo-play",
+   "name": "Cairo Play",
+   "kind": "arabic",
+   "folder": "cairoplay",
+   "designer": "Mohamed Gaber, Accademia di Belle Arti di Urbino",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2022-08-05",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "cairo-play-200.2e4c11c62d.ttf",
+     "woff2": "cairo-play-200.db1e95008d.woff2",
+     "preview": "cairo-play-200-arabic.bb29b71a08.woff2"
+    },
+    "300": {
+     "ttf": "cairo-play-300.bb50ba911f.ttf",
+     "woff2": "cairo-play-300.01608cb9a3.woff2",
+     "preview": "cairo-play-300-arabic.0193d578fa.woff2"
+    },
+    "400": {
+     "ttf": "cairo-play-400.ecb000904b.ttf",
+     "woff2": "cairo-play-400.1685973e99.woff2",
+     "preview": "cairo-play-400-arabic.83ccb4290f.woff2"
+    },
+    "500": {
+     "ttf": "cairo-play-500.e50d4c3545.ttf",
+     "woff2": "cairo-play-500.87c8933f82.woff2",
+     "preview": "cairo-play-500-arabic.45ffe09a15.woff2"
+    },
+    "600": {
+     "ttf": "cairo-play-600.86a37bd83b.ttf",
+     "woff2": "cairo-play-600.f31da0ade7.woff2",
+     "preview": "cairo-play-600-arabic.e5a7ef7c20.woff2"
+    },
+    "700": {
+     "ttf": "cairo-play-700.64b314ed5e.ttf",
+     "woff2": "cairo-play-700.9bc07fd16f.woff2",
+     "preview": "cairo-play-700-arabic.4a9aa3013f.woff2"
+    },
+    "800": {
+     "ttf": "cairo-play-800.3e3bc3f4e6.ttf",
+     "woff2": "cairo-play-800.3369185ab3.woff2",
+     "preview": "cairo-play-800-arabic.71ed95f265.woff2"
+    },
+    "900": {
+     "ttf": "cairo-play-900.6916e38113.ttf",
+     "woff2": "cairo-play-900.8a24fe4399.woff2",
+     "preview": "cairo-play-900-arabic.d0ab16fc62.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 21560,
+    "300": 22260,
+    "400": 22128,
+    "500": 22988,
+    "600": 23040,
+    "700": 23064,
+    "800": 23068,
+    "900": 23136
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Cairo+Play",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.051ddee1de.png",
+   "og_version": 1
+  },
+  {
+   "slug": "cascadia-code",
+   "name": "Cascadia Code",
+   "kind": "arabic",
+   "folder": "cascadiacode",
+   "designer": "Aaron Bell, Mohamad Dakak, Viktoriya Grabowska, Liron Lavi Turkenich",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2025-03-18",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "cascadia-code-200.9a995c5dfc.ttf",
+     "woff2": "cascadia-code-200.307e61de03.woff2",
+     "preview": "cascadia-code-200-arabic.a4fafd922b.woff2"
+    },
+    "300": {
+     "ttf": "cascadia-code-300.cd7c63b3ff.ttf",
+     "woff2": "cascadia-code-300.90620936cc.woff2",
+     "preview": "cascadia-code-300-arabic.c40e929c04.woff2"
+    },
+    "400": {
+     "ttf": "cascadia-code-400.9e9a3d99f5.ttf",
+     "woff2": "cascadia-code-400.ca615fb65e.woff2",
+     "preview": "cascadia-code-400-arabic.3b3f9aaab5.woff2"
+    },
+    "500": {
+     "ttf": "cascadia-code-500.3c0972f5d2.ttf",
+     "woff2": "cascadia-code-500.4d1590baf5.woff2",
+     "preview": "cascadia-code-500-arabic.1e7e82daed.woff2"
+    },
+    "600": {
+     "ttf": "cascadia-code-600.5cfdfc8175.ttf",
+     "woff2": "cascadia-code-600.200bfbc1cf.woff2",
+     "preview": "cascadia-code-600-arabic.d104823764.woff2"
+    },
+    "700": {
+     "ttf": "cascadia-code-700.c71118c8b1.ttf",
+     "woff2": "cascadia-code-700.384b62a4dd.woff2",
+     "preview": "cascadia-code-700-arabic.aa738fb56c.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 46812,
+    "300": 48332,
+    "400": 46956,
+    "500": 47992,
+    "600": 48340,
+    "700": 47532
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Cascadia+Code",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.3618c37ca2.png",
+   "og_version": 1
+  },
+  {
+   "slug": "cascadia-mono",
+   "name": "Cascadia Mono",
+   "kind": "arabic",
+   "folder": "cascadiamono",
+   "designer": "Aaron Bell, Mohamad Dakak, Viktoriya Grabowska, Liron Lavi Turkenich",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2025-03-18",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "cascadia-mono-200.b6dd2659b6.ttf",
+     "woff2": "cascadia-mono-200.e78507752c.woff2",
+     "preview": "cascadia-mono-200-arabic.c3d73060b8.woff2"
+    },
+    "300": {
+     "ttf": "cascadia-mono-300.f9a6cde085.ttf",
+     "woff2": "cascadia-mono-300.3db21415ac.woff2",
+     "preview": "cascadia-mono-300-arabic.cbe6aeaf0e.woff2"
+    },
+    "400": {
+     "ttf": "cascadia-mono-400.47f3c78b35.ttf",
+     "woff2": "cascadia-mono-400.f22c9540f8.woff2",
+     "preview": "cascadia-mono-400-arabic.37a84f0e29.woff2"
+    },
+    "500": {
+     "ttf": "cascadia-mono-500.f5286c26f4.ttf",
+     "woff2": "cascadia-mono-500.3201bb4ba4.woff2",
+     "preview": "cascadia-mono-500-arabic.9d75ae857b.woff2"
+    },
+    "600": {
+     "ttf": "cascadia-mono-600.0b7d355696.ttf",
+     "woff2": "cascadia-mono-600.7405aacd51.woff2",
+     "preview": "cascadia-mono-600-arabic.f3fcd76efb.woff2"
+    },
+    "700": {
+     "ttf": "cascadia-mono-700.45494dcd0f.ttf",
+     "woff2": "cascadia-mono-700.23b52de533.woff2",
+     "preview": "cascadia-mono-700-arabic.17ec724829.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 31892,
+    "300": 32832,
+    "400": 32052,
+    "500": 32936,
+    "600": 32960,
+    "700": 32360
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Cascadia+Mono",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.49731035ef.png",
+   "og_version": 1
+  },
+  {
+   "slug": "changa",
+   "name": "Changa",
+   "kind": "arabic",
+   "folder": "changa",
+   "designer": "Eduardo Tunni",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2012-10-31",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "changa-200.a0476d0f82.ttf",
+     "woff2": "changa-200.630e3b6d9c.woff2",
+     "preview": "changa-200-arabic.7d7e6a51eb.woff2"
+    },
+    "300": {
+     "ttf": "changa-300.3e80fec3cf.ttf",
+     "woff2": "changa-300.af6908aa81.woff2",
+     "preview": "changa-300-arabic.4cae0e5f8a.woff2"
+    },
+    "400": {
+     "ttf": "changa-400.b47326cc4f.ttf",
+     "woff2": "changa-400.4c7702b9f9.woff2",
+     "preview": "changa-400-arabic.8c19594ede.woff2"
+    },
+    "500": {
+     "ttf": "changa-500.09247daa50.ttf",
+     "woff2": "changa-500.a5a09c933c.woff2",
+     "preview": "changa-500-arabic.c33e2129d4.woff2"
+    },
+    "600": {
+     "ttf": "changa-600.da2adb7726.ttf",
+     "woff2": "changa-600.8ec09c3919.woff2",
+     "preview": "changa-600-arabic.3f68a72500.woff2"
+    },
+    "700": {
+     "ttf": "changa-700.1f4d74a40f.ttf",
+     "woff2": "changa-700.e65d80475c.woff2",
+     "preview": "changa-700-arabic.c4e0801c0c.woff2"
+    },
+    "800": {
+     "ttf": "changa-800.1173c26150.ttf",
+     "woff2": "changa-800.650d73f91d.woff2",
+     "preview": "changa-800-arabic.2360c9f245.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 14204,
+    "300": 14152,
+    "400": 13784,
+    "500": 14248,
+    "600": 14264,
+    "700": 14220,
+    "800": 13896
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Changa",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.252164a63c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "el-messiri",
+   "name": "El Messiri",
+   "kind": "arabic",
+   "folder": "elmessiri",
+   "designer": "Mohamed Gaber, Jovanny Lemonad",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2016-06-20",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "el-messiri-400.ac522d0146.ttf",
+     "woff2": "el-messiri-400.bdedfed4ab.woff2",
+     "preview": "el-messiri-400-arabic.761f186b58.woff2"
+    },
+    "500": {
+     "ttf": "el-messiri-500.517171b7d0.ttf",
+     "woff2": "el-messiri-500.4e03d474c7.woff2",
+     "preview": "el-messiri-500-arabic.ee9d1064fc.woff2"
+    },
+    "600": {
+     "ttf": "el-messiri-600.2b76b2f2fe.ttf",
+     "woff2": "el-messiri-600.ab3a4000e5.woff2",
+     "preview": "el-messiri-600-arabic.35f30eb3e1.woff2"
+    },
+    "700": {
+     "ttf": "el-messiri-700.9ea74a1f42.ttf",
+     "woff2": "el-messiri-700.d3ca532f32.woff2",
+     "preview": "el-messiri-700-arabic.67eec87eb8.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 14544,
+    "500": 15512,
+    "600": 15540,
+    "700": 14792
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/El+Messiri",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.607e629a2a.png",
+   "og_version": 1
+  },
+  {
+   "slug": "estedad",
+   "name": "Estedad",
+   "kind": "arabic",
+   "folder": "estedad",
+   "designer": "Amin Abedi, Fontamin",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2026-04-01",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "estedad-100.36e1db2f63.ttf",
+     "woff2": "estedad-100.34cc471706.woff2",
+     "preview": "estedad-100-arabic.7110ad9237.woff2"
+    },
+    "200": {
+     "ttf": "estedad-200.d8f9340c54.ttf",
+     "woff2": "estedad-200.79b4b36635.woff2",
+     "preview": "estedad-200-arabic.51d1b1674e.woff2"
+    },
+    "300": {
+     "ttf": "estedad-300.9c34fdc46d.ttf",
+     "woff2": "estedad-300.ab6aa31fd5.woff2",
+     "preview": "estedad-300-arabic.2beb0208d6.woff2"
+    },
+    "400": {
+     "ttf": "estedad-400.3b215a282b.ttf",
+     "woff2": "estedad-400.1faadf57a3.woff2",
+     "preview": "estedad-400-arabic.f266432399.woff2"
+    },
+    "500": {
+     "ttf": "estedad-500.e04059e1cd.ttf",
+     "woff2": "estedad-500.f4fc35cdd5.woff2",
+     "preview": "estedad-500-arabic.e01b0d3c45.woff2"
+    },
+    "600": {
+     "ttf": "estedad-600.c523e9af0c.ttf",
+     "woff2": "estedad-600.be1f91ba45.woff2",
+     "preview": "estedad-600-arabic.17d0fb1aee.woff2"
+    },
+    "700": {
+     "ttf": "estedad-700.8760f39f70.ttf",
+     "woff2": "estedad-700.a979472aba.woff2",
+     "preview": "estedad-700-arabic.d86c2401cc.woff2"
+    },
+    "800": {
+     "ttf": "estedad-800.db9dadbd17.ttf",
+     "woff2": "estedad-800.ac747d4c1d.woff2",
+     "preview": "estedad-800-arabic.f3782b1664.woff2"
+    },
+    "900": {
+     "ttf": "estedad-900.cf08675744.ttf",
+     "woff2": "estedad-900.1d173b0e1f.woff2",
+     "preview": "estedad-900-arabic.926c1e297d.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 31316,
+    "200": 32420,
+    "300": 32584,
+    "400": 32208,
+    "500": 32620,
+    "600": 32796,
+    "700": 32740,
+    "800": 32584,
+    "900": 31892
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Estedad",
+   "presentation_forms": 0.989,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.d31e8bd3e9.png",
+   "og_version": 1
+  },
+  {
+   "slug": "firjar",
+   "name": "Firjar",
+   "kind": "arabic",
+   "folder": "firjar",
+   "designer": "Yazeed Omar",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2026-10-15",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "firjar-100.6a5878ca37.ttf",
+     "woff2": "firjar-100.5cf3c39839.woff2",
+     "preview": "firjar-100-arabic.cdd3747c37.woff2"
+    },
+    "200": {
+     "ttf": "firjar-200.4e2e06a9da.ttf",
+     "woff2": "firjar-200.39e8423645.woff2",
+     "preview": "firjar-200-arabic.b132c548b0.woff2"
+    },
+    "300": {
+     "ttf": "firjar-300.41b9faf024.ttf",
+     "woff2": "firjar-300.5253ae8173.woff2",
+     "preview": "firjar-300-arabic.ef445a7c44.woff2"
+    },
+    "400": {
+     "ttf": "firjar-400.c613fd406e.ttf",
+     "woff2": "firjar-400.85ad452538.woff2",
+     "preview": "firjar-400-arabic.2ca1e33f30.woff2"
+    },
+    "500": {
+     "ttf": "firjar-500.c5b46f6b4b.ttf",
+     "woff2": "firjar-500.78b06d9a7e.woff2",
+     "preview": "firjar-500-arabic.989a4e587b.woff2"
+    },
+    "600": {
+     "ttf": "firjar-600.f5655164a4.ttf",
+     "woff2": "firjar-600.6202ce4d1c.woff2",
+     "preview": "firjar-600-arabic.3ff5dd6173.woff2"
+    },
+    "700": {
+     "ttf": "firjar-700.57e313bef9.ttf",
+     "woff2": "firjar-700.dbad6db082.woff2",
+     "preview": "firjar-700-arabic.de01a8a5de.woff2"
+    },
+    "800": {
+     "ttf": "firjar-800.e1ea408df9.ttf",
+     "woff2": "firjar-800.08da8b7db7.woff2",
+     "preview": "firjar-800-arabic.6d468b7e99.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 11140,
+    "200": 11764,
+    "300": 11700,
+    "400": 11724,
+    "500": 11792,
+    "600": 11760,
+    "700": 11840,
+    "800": 11280
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Firjar",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.bfd9330181.png",
+   "og_version": 1
+  },
+  {
+   "slug": "fustat",
+   "name": "Fustat",
+   "kind": "arabic",
+   "folder": "fustat",
+   "designer": "Mohamed Gaber, Laura Garcia Mut, Khaled Hosny",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2024-06-05",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "fustat-200.1171c94761.ttf",
+     "woff2": "fustat-200.9c74ff0a3e.woff2",
+     "preview": "fustat-200-arabic.24ddf512a9.woff2"
+    },
+    "300": {
+     "ttf": "fustat-300.b4f7b33dff.ttf",
+     "woff2": "fustat-300.0c52c90648.woff2",
+     "preview": "fustat-300-arabic.013f4af5f5.woff2"
+    },
+    "400": {
+     "ttf": "fustat-400.33591076cf.ttf",
+     "woff2": "fustat-400.7c9a3bd40c.woff2",
+     "preview": "fustat-400-arabic.cb186154bd.woff2"
+    },
+    "500": {
+     "ttf": "fustat-500.21f0263e00.ttf",
+     "woff2": "fustat-500.2b67dc779f.woff2",
+     "preview": "fustat-500-arabic.43abdaae5b.woff2"
+    },
+    "600": {
+     "ttf": "fustat-600.b91591e41a.ttf",
+     "woff2": "fustat-600.81ef02737d.woff2",
+     "preview": "fustat-600-arabic.73f82acda6.woff2"
+    },
+    "700": {
+     "ttf": "fustat-700.9661557062.ttf",
+     "woff2": "fustat-700.a5435f5284.woff2",
+     "preview": "fustat-700-arabic.a1aa334be2.woff2"
+    },
+    "800": {
+     "ttf": "fustat-800.95c491f2e5.ttf",
+     "woff2": "fustat-800.d6a4efc837.woff2",
+     "preview": "fustat-800-arabic.be99fec851.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 19248,
+    "300": 19880,
+    "400": 19348,
+    "500": 19912,
+    "600": 19956,
+    "700": 19912,
+    "800": 19496
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Fustat",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.4bbf4b79c3.png",
+   "og_version": 1
+  },
+  {
+   "slug": "google-sans",
+   "name": "Google Sans",
+   "kind": "arabic",
+   "folder": "googlesans",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2017-06-05",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "google-sans-400.af0b3fd6e2.ttf",
+     "woff2": "google-sans-400.62bc66d60f.woff2",
+     "preview": "google-sans-400-arabic.53016c85d4.woff2"
+    },
+    "500": {
+     "ttf": "google-sans-500.d3b029c9c8.ttf",
+     "woff2": "google-sans-500.8a9694a781.woff2",
+     "preview": "google-sans-500-arabic.ebc8df392a.woff2"
+    },
+    "600": {
+     "ttf": "google-sans-600.f8a0fd156d.ttf",
+     "woff2": "google-sans-600.b9e9e63d60.woff2",
+     "preview": "google-sans-600-arabic.9756f44a3d.woff2"
+    },
+    "700": {
+     "ttf": "google-sans-700.de715116dc.ttf",
+     "woff2": "google-sans-700.5175db5bf4.woff2",
+     "preview": "google-sans-700-arabic.72cb97dd00.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 51380,
+    "500": 54644,
+    "600": 55116,
+    "700": 52836
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Google+Sans",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.cb6975ec76.png",
+   "og_version": 1
+  },
+  {
+   "slug": "gulzar",
+   "name": "Gulzar",
+   "kind": "arabic",
+   "folder": "gulzar",
+   "designer": "Borna Izadpanah, Fiona Ross, Alice Savoie, Simon Cozens",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2022-05-14",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "gulzar-400.f2d8138e95.ttf",
+     "woff2": "gulzar-400.af88769f0a.woff2",
+     "preview": "gulzar-400-arabic.9a86b2fc10.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 172932
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Gulzar",
+   "presentation_forms": 0.045,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.7d6f8f14c5.png",
+   "og_version": 1
+  },
+  {
+   "slug": "handjet",
+   "name": "Handjet",
+   "kind": "arabic",
+   "folder": "handjet",
+   "designer": "Rosetta, David Březina",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2020-09-11",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "handjet-100.ff6d76cce4.ttf",
+     "woff2": "handjet-100.42f7c07ba0.woff2",
+     "preview": "handjet-100-arabic.ae991d93fe.woff2"
+    },
+    "200": {
+     "ttf": "handjet-200.94bf2085c1.ttf",
+     "woff2": "handjet-200.2af1ad6b82.woff2",
+     "preview": "handjet-200-arabic.42b6c1550f.woff2"
+    },
+    "300": {
+     "ttf": "handjet-300.29ad07348c.ttf",
+     "woff2": "handjet-300.b6dcaa151e.woff2",
+     "preview": "handjet-300-arabic.12f7cea2a8.woff2"
+    },
+    "400": {
+     "ttf": "handjet-400.375e512b64.ttf",
+     "woff2": "handjet-400.8da85f4048.woff2",
+     "preview": "handjet-400-arabic.1bb53cf987.woff2"
+    },
+    "500": {
+     "ttf": "handjet-500.b861d2adaf.ttf",
+     "woff2": "handjet-500.7133b59db0.woff2",
+     "preview": "handjet-500-arabic.0c17c8a02d.woff2"
+    },
+    "600": {
+     "ttf": "handjet-600.d6fd7a8f28.ttf",
+     "woff2": "handjet-600.e04650fd1f.woff2",
+     "preview": "handjet-600-arabic.e6a929c0fa.woff2"
+    },
+    "700": {
+     "ttf": "handjet-700.3407cc6952.ttf",
+     "woff2": "handjet-700.bd88c779e8.woff2",
+     "preview": "handjet-700-arabic.1656c40ffe.woff2"
+    },
+    "800": {
+     "ttf": "handjet-800.f823959871.ttf",
+     "woff2": "handjet-800.fe6f9e2274.woff2",
+     "preview": "handjet-800-arabic.a745e34315.woff2"
+    },
+    "900": {
+     "ttf": "handjet-900.a9ee247b0d.ttf",
+     "woff2": "handjet-900.c21af23ac4.woff2",
+     "preview": "handjet-900-arabic.0b22d6ff55.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 10380,
+    "200": 10356,
+    "300": 10396,
+    "400": 10288,
+    "500": 10424,
+    "600": 10428,
+    "700": 10408,
+    "800": 10412,
+    "900": 10380
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Handjet",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": false,
+   "og": "og.5f31966ded.png",
+   "og_version": 1
+  },
+  {
+   "slug": "ibm-plex-sans-arabic",
+   "name": "IBM Plex Sans Arabic",
+   "kind": "arabic",
+   "folder": "ibmplexsansarabic",
+   "designer": "Mike Abbink, Bold Monday, Khajag Apelian, Wael Morcos",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2021-06-17",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "100": {
+     "ttf": "ibm-plex-sans-arabic-100.19beb9d1ac.ttf",
+     "woff2": "ibm-plex-sans-arabic-100.c7c2798035.woff2",
+     "preview": "ibm-plex-sans-arabic-100-arabic.fffe791a71.woff2"
+    },
+    "200": {
+     "ttf": "ibm-plex-sans-arabic-200.c4a01bfba5.ttf",
+     "woff2": "ibm-plex-sans-arabic-200.a8c04a963b.woff2",
+     "preview": "ibm-plex-sans-arabic-200-arabic.3a974d6cc6.woff2"
+    },
+    "300": {
+     "ttf": "ibm-plex-sans-arabic-300.f5563ded66.ttf",
+     "woff2": "ibm-plex-sans-arabic-300.397679b5b3.woff2",
+     "preview": "ibm-plex-sans-arabic-300-arabic.e93e1929a2.woff2"
+    },
+    "400": {
+     "ttf": "ibm-plex-sans-arabic-400.6e4641c165.ttf",
+     "woff2": "ibm-plex-sans-arabic-400.369b8a7dbb.woff2",
+     "preview": "ibm-plex-sans-arabic-400-arabic.261076498c.woff2"
+    },
+    "500": {
+     "ttf": "ibm-plex-sans-arabic-500.4229947d47.ttf",
+     "woff2": "ibm-plex-sans-arabic-500.49412a8800.woff2",
+     "preview": "ibm-plex-sans-arabic-500-arabic.7cde8dd929.woff2"
+    },
+    "600": {
+     "ttf": "ibm-plex-sans-arabic-600.361ef91550.ttf",
+     "woff2": "ibm-plex-sans-arabic-600.d4a380798d.woff2",
+     "preview": "ibm-plex-sans-arabic-600-arabic.93abf96be2.woff2"
+    },
+    "700": {
+     "ttf": "ibm-plex-sans-arabic-700.327eb3eab0.ttf",
+     "woff2": "ibm-plex-sans-arabic-700.d094ffca41.woff2",
+     "preview": "ibm-plex-sans-arabic-700-arabic.6931e7816b.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 33840,
+    "200": 36016,
+    "300": 36268,
+    "400": 34092,
+    "500": 36684,
+    "600": 36860,
+    "700": 34496
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.cb4b41c1fc.png",
+   "og_version": 1
+  },
+  {
+   "slug": "jomhuria",
+   "name": "Jomhuria",
+   "kind": "arabic",
+   "folder": "jomhuria",
+   "designer": "KB Studio",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2016-06-20",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "jomhuria-400.92cb8ea816.ttf",
+     "woff2": "jomhuria-400.1c36fc81dd.woff2",
+     "preview": "jomhuria-400-arabic.1fcac84e7b.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 40092
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Jomhuria",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.0fad199b9a.png",
+   "og_version": 1
+  },
+  {
+   "slug": "katibeh",
+   "name": "Katibeh",
+   "kind": "arabic",
+   "folder": "katibeh",
+   "designer": "KB Studio",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2016-06-20",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "katibeh-400.f94a8cb761.ttf",
+     "woff2": "katibeh-400.697c6e0904.woff2",
+     "preview": "katibeh-400-arabic.2193c44013.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 43520
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Katibeh",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.2c6ea0b320.png",
+   "og_version": 1
+  },
+  {
+   "slug": "kufam",
+   "name": "Kufam",
+   "kind": "arabic",
+   "folder": "kufam",
+   "designer": "Original Type, Wael Morcos, Artur Schmal",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2020-07-14",
+   "weights": [
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "kufam-400.ee55a91101.ttf",
+     "woff2": "kufam-400.3bb098d9f7.woff2",
+     "preview": "kufam-400-arabic.3cd0515a65.woff2"
+    },
+    "500": {
+     "ttf": "kufam-500.ae0c79559b.ttf",
+     "woff2": "kufam-500.c752531334.woff2",
+     "preview": "kufam-500-arabic.f0734f7c8c.woff2"
+    },
+    "600": {
+     "ttf": "kufam-600.d7cc6c9f1a.ttf",
+     "woff2": "kufam-600.ce6f08b9a1.woff2",
+     "preview": "kufam-600-arabic.13e08742ce.woff2"
+    },
+    "700": {
+     "ttf": "kufam-700.ed86019964.ttf",
+     "woff2": "kufam-700.188c8d84c7.woff2",
+     "preview": "kufam-700-arabic.26751fcc4c.woff2"
+    },
+    "800": {
+     "ttf": "kufam-800.1544d7b0ab.ttf",
+     "woff2": "kufam-800.76b8b2d4e8.woff2",
+     "preview": "kufam-800-arabic.8e3cfc7b9f.woff2"
+    },
+    "900": {
+     "ttf": "kufam-900.79b5a7119b.ttf",
+     "woff2": "kufam-900.093c1606e0.woff2",
+     "preview": "kufam-900-arabic.4cc1f02d30.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 30108,
+    "500": 32252,
+    "600": 32324,
+    "700": 32572,
+    "800": 32440,
+    "900": 30636
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Kufam",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.547b1f9f62.png",
+   "og_version": 1
+  },
+  {
+   "slug": "lalezar",
+   "name": "Lalezar",
+   "kind": "arabic",
+   "folder": "lalezar",
+   "designer": "Borna Izadpanah",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2017-02-28",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "lalezar-400.e98f197357.ttf",
+     "woff2": "lalezar-400.371eb2e048.woff2",
+     "preview": "lalezar-400-arabic.d2977abadf.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 31236
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Lalezar",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.19a0bc802a.png",
+   "og_version": 1
+  },
+  {
+   "slug": "lateef",
+   "name": "Lateef",
+   "kind": "arabic",
+   "folder": "lateef",
+   "designer": "SIL International",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2012-01-18",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800
+   ],
+   "variable": false,
+   "files": {
+    "200": {
+     "ttf": "lateef-200.c5a06ee259.ttf",
+     "woff2": "lateef-200.2ba1c4ed0b.woff2",
+     "preview": "lateef-200-arabic.3fcccd69e3.woff2"
+    },
+    "300": {
+     "ttf": "lateef-300.61297d55da.ttf",
+     "woff2": "lateef-300.a883f1ca87.woff2",
+     "preview": "lateef-300-arabic.464f444c0c.woff2"
+    },
+    "400": {
+     "ttf": "lateef-400.182da248a4.ttf",
+     "woff2": "lateef-400.16c0d1466b.woff2",
+     "preview": "lateef-400-arabic.3437189460.woff2"
+    },
+    "500": {
+     "ttf": "lateef-500.96f5597bbb.ttf",
+     "woff2": "lateef-500.f4ef04ff03.woff2",
+     "preview": "lateef-500-arabic.b256e11090.woff2"
+    },
+    "600": {
+     "ttf": "lateef-600.04e808add5.ttf",
+     "woff2": "lateef-600.05750b5050.woff2",
+     "preview": "lateef-600-arabic.2af04b0364.woff2"
+    },
+    "700": {
+     "ttf": "lateef-700.3848cc3996.ttf",
+     "woff2": "lateef-700.9a790590b3.woff2",
+     "preview": "lateef-700-arabic.29fdece0b3.woff2"
+    },
+    "800": {
+     "ttf": "lateef-800.f6c243ff59.ttf",
+     "woff2": "lateef-800.f09028cbd6.woff2",
+     "preview": "lateef-800-arabic.28ce564f1d.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 65664,
+    "300": 68952,
+    "400": 66164,
+    "500": 72052,
+    "600": 70444,
+    "700": 72784,
+    "800": 67980
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Lateef",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.30a3f874a2.png",
+   "og_version": 1
+  },
+  {
+   "slug": "lemonada",
+   "name": "Lemonada",
+   "kind": "arabic",
+   "folder": "lemonada",
+   "designer": "Mohamed Gaber, Eduardo Tunni",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2016-06-20",
+   "weights": [
+    300,
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "300": {
+     "ttf": "lemonada-300.f3c8b9734a.ttf",
+     "woff2": "lemonada-300.096c9a4a29.woff2",
+     "preview": "lemonada-300-arabic.07a6cf717e.woff2"
+    },
+    "400": {
+     "ttf": "lemonada-400.cdcd628e4e.ttf",
+     "woff2": "lemonada-400.b577bdcff7.woff2",
+     "preview": "lemonada-400-arabic.ec35a09d2e.woff2"
+    },
+    "500": {
+     "ttf": "lemonada-500.5015cfcd52.ttf",
+     "woff2": "lemonada-500.2e8c2ae97c.woff2",
+     "preview": "lemonada-500-arabic.7d48962cd9.woff2"
+    },
+    "600": {
+     "ttf": "lemonada-600.9a6e6905ed.ttf",
+     "woff2": "lemonada-600.b57d677a8b.woff2",
+     "preview": "lemonada-600-arabic.c5917590c3.woff2"
+    },
+    "700": {
+     "ttf": "lemonada-700.797406d157.ttf",
+     "woff2": "lemonada-700.af24b07717.woff2",
+     "preview": "lemonada-700-arabic.999947951a.woff2"
+    }
+   },
+   "preview_bytes": {
+    "300": 16504,
+    "400": 17404,
+    "500": 18096,
+    "600": 17984,
+    "700": 16880
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Lemonada",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.f17263610a.png",
+   "og_version": 1
+  },
+  {
+   "slug": "mada",
+   "name": "Mada",
+   "kind": "arabic",
+   "folder": "mada",
+   "designer": "Khaled Hosny, Paul D. Hunt",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2017-05-08",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "mada-200.37e53d210e.ttf",
+     "woff2": "mada-200.b868534cfd.woff2",
+     "preview": "mada-200-arabic.2f2c8ab2b8.woff2"
+    },
+    "300": {
+     "ttf": "mada-300.580f11e142.ttf",
+     "woff2": "mada-300.b6df20375b.woff2",
+     "preview": "mada-300-arabic.3a8c1875f9.woff2"
+    },
+    "400": {
+     "ttf": "mada-400.3e3397d691.ttf",
+     "woff2": "mada-400.b015559a8e.woff2",
+     "preview": "mada-400-arabic.986c23771a.woff2"
+    },
+    "500": {
+     "ttf": "mada-500.9894d09ce2.ttf",
+     "woff2": "mada-500.b8598e7180.woff2",
+     "preview": "mada-500-arabic.f5cfe86049.woff2"
+    },
+    "600": {
+     "ttf": "mada-600.35cbb74d10.ttf",
+     "woff2": "mada-600.c9efa82435.woff2",
+     "preview": "mada-600-arabic.8757682839.woff2"
+    },
+    "700": {
+     "ttf": "mada-700.020cba10bb.ttf",
+     "woff2": "mada-700.18fc7eb737.woff2",
+     "preview": "mada-700-arabic.2744fa816b.woff2"
+    },
+    "800": {
+     "ttf": "mada-800.c643ae8840.ttf",
+     "woff2": "mada-800.984e1e2b41.woff2",
+     "preview": "mada-800-arabic.67f493845f.woff2"
+    },
+    "900": {
+     "ttf": "mada-900.b6e55421e6.ttf",
+     "woff2": "mada-900.58f67d92c9.woff2",
+     "preview": "mada-900-arabic.50c40bf6c8.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 14768,
+    "300": 15332,
+    "400": 14916,
+    "500": 15620,
+    "600": 15572,
+    "700": 15412,
+    "800": 15624,
+    "900": 14868
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Mada",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.3fc2674a92.png",
+   "og_version": 1
+  },
+  {
+   "slug": "marhey",
+   "name": "Marhey",
+   "kind": "arabic",
+   "folder": "marhey",
+   "designer": "Nur Syamsi, Bustanul Arifin",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2022-10-07",
+   "weights": [
+    300,
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "300": {
+     "ttf": "marhey-300.13a4903d7a.ttf",
+     "woff2": "marhey-300.406892d224.woff2",
+     "preview": "marhey-300-arabic.5804479e0e.woff2"
+    },
+    "400": {
+     "ttf": "marhey-400.3bcf7893cc.ttf",
+     "woff2": "marhey-400.e8f038fa74.woff2",
+     "preview": "marhey-400-arabic.5c6bd183f3.woff2"
+    },
+    "500": {
+     "ttf": "marhey-500.a5503becc9.ttf",
+     "woff2": "marhey-500.f103fd2985.woff2",
+     "preview": "marhey-500-arabic.e7ea475a5a.woff2"
+    },
+    "600": {
+     "ttf": "marhey-600.0d6e39d6b6.ttf",
+     "woff2": "marhey-600.96c92691d5.woff2",
+     "preview": "marhey-600-arabic.85af1e2b81.woff2"
+    },
+    "700": {
+     "ttf": "marhey-700.16c7186e91.ttf",
+     "woff2": "marhey-700.ffb6f0a763.woff2",
+     "preview": "marhey-700-arabic.2b75ec3955.woff2"
+    }
+   },
+   "preview_bytes": {
+    "300": 26152,
+    "400": 27468,
+    "500": 27072,
+    "600": 27372,
+    "700": 26120
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Marhey",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.5ff38f0fdc.png",
+   "og_version": 1
+  },
+  {
+   "slug": "markazi-text",
+   "name": "Markazi Text",
+   "kind": "arabic",
+   "folder": "markazitext",
+   "designer": "Borna Izadpanah, Florian Runge, Fiona Ross",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2018-06-06",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "markazi-text-400.8e8ad1f92f.ttf",
+     "woff2": "markazi-text-400.2af99cab2b.woff2",
+     "preview": "markazi-text-400-arabic.69226b21b0.woff2"
+    },
+    "500": {
+     "ttf": "markazi-text-500.f89c2d8219.ttf",
+     "woff2": "markazi-text-500.0b7783c1c6.woff2",
+     "preview": "markazi-text-500-arabic.49bb8290cf.woff2"
+    },
+    "600": {
+     "ttf": "markazi-text-600.b17981d21a.ttf",
+     "woff2": "markazi-text-600.959a039af7.woff2",
+     "preview": "markazi-text-600-arabic.079a191f38.woff2"
+    },
+    "700": {
+     "ttf": "markazi-text-700.8fc1a503e1.ttf",
+     "woff2": "markazi-text-700.006e4e0bdc.woff2",
+     "preview": "markazi-text-700-arabic.15be481a3b.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 27196,
+    "500": 28788,
+    "600": 28964,
+    "700": 27392
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Markazi+Text",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.0072cda4ad.png",
+   "og_version": 1
+  },
+  {
+   "slug": "mirza",
+   "name": "Mirza",
+   "kind": "arabic",
+   "folder": "mirza",
+   "designer": "KB Studio",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2016-06-20",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "mirza-400.85143d872d.ttf",
+     "woff2": "mirza-400.4ad050e4a0.woff2",
+     "preview": "mirza-400-arabic.e1b28716df.woff2"
+    },
+    "500": {
+     "ttf": "mirza-500.e030349b3a.ttf",
+     "woff2": "mirza-500.e0211425b8.woff2",
+     "preview": "mirza-500-arabic.0b9f848a08.woff2"
+    },
+    "600": {
+     "ttf": "mirza-600.62c65ed1c7.ttf",
+     "woff2": "mirza-600.d10b392511.woff2",
+     "preview": "mirza-600-arabic.f5e71bb09c.woff2"
+    },
+    "700": {
+     "ttf": "mirza-700.c9e3745915.ttf",
+     "woff2": "mirza-700.542f5afabb.woff2",
+     "preview": "mirza-700-arabic.3794321dd2.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 43140,
+    "500": 46904,
+    "600": 46888,
+    "700": 43844
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Mirza",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.d12910977d.png",
+   "og_version": 1
+  },
+  {
+   "slug": "noto-kufi-arabic",
+   "name": "Noto Kufi Arabic",
+   "kind": "arabic",
+   "folder": "notokufiarabic",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2020-11-19",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "noto-kufi-arabic-100.4da5aa9ab1.ttf",
+     "woff2": "noto-kufi-arabic-100.8ed3692971.woff2",
+     "preview": "noto-kufi-arabic-100-arabic.de32a21002.woff2"
+    },
+    "200": {
+     "ttf": "noto-kufi-arabic-200.c9d67e2d7e.ttf",
+     "woff2": "noto-kufi-arabic-200.92a3679b72.woff2",
+     "preview": "noto-kufi-arabic-200-arabic.bce36e70d0.woff2"
+    },
+    "300": {
+     "ttf": "noto-kufi-arabic-300.461153c5d8.ttf",
+     "woff2": "noto-kufi-arabic-300.c1fe179acf.woff2",
+     "preview": "noto-kufi-arabic-300-arabic.48e103e6c6.woff2"
+    },
+    "400": {
+     "ttf": "noto-kufi-arabic-400.d4432a209b.ttf",
+     "woff2": "noto-kufi-arabic-400.1a89403b4b.woff2",
+     "preview": "noto-kufi-arabic-400-arabic.0950d2d031.woff2"
+    },
+    "500": {
+     "ttf": "noto-kufi-arabic-500.5f2fee0c27.ttf",
+     "woff2": "noto-kufi-arabic-500.f00d7428e7.woff2",
+     "preview": "noto-kufi-arabic-500-arabic.e208092c61.woff2"
+    },
+    "600": {
+     "ttf": "noto-kufi-arabic-600.2eed8c14d7.ttf",
+     "woff2": "noto-kufi-arabic-600.080fcc6c0d.woff2",
+     "preview": "noto-kufi-arabic-600-arabic.84e4a96d2f.woff2"
+    },
+    "700": {
+     "ttf": "noto-kufi-arabic-700.4f27c381e4.ttf",
+     "woff2": "noto-kufi-arabic-700.4033e1da23.woff2",
+     "preview": "noto-kufi-arabic-700-arabic.c6cd0f7111.woff2"
+    },
+    "800": {
+     "ttf": "noto-kufi-arabic-800.6625eb9d1e.ttf",
+     "woff2": "noto-kufi-arabic-800.fba450607f.woff2",
+     "preview": "noto-kufi-arabic-800-arabic.d6352d1f58.woff2"
+    },
+    "900": {
+     "ttf": "noto-kufi-arabic-900.6d77330e46.ttf",
+     "woff2": "noto-kufi-arabic-900.18c561f026.woff2",
+     "preview": "noto-kufi-arabic-900-arabic.f2998a2c36.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 42492,
+    "200": 43896,
+    "300": 43800,
+    "400": 42244,
+    "500": 45764,
+    "600": 45864,
+    "700": 42304,
+    "800": 44576,
+    "900": 43660
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Kufi+Arabic",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.3a2ef5df8d.png",
+   "og_version": 1
+  },
+  {
+   "slug": "noto-naskh-arabic",
+   "name": "Noto Naskh Arabic",
+   "kind": "arabic",
+   "folder": "notonaskharabic",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2020-11-19",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "noto-naskh-arabic-400.26388edda0.ttf",
+     "woff2": "noto-naskh-arabic-400.b2ccc2e3dd.woff2",
+     "preview": "noto-naskh-arabic-400-arabic.29d67d5607.woff2"
+    },
+    "500": {
+     "ttf": "noto-naskh-arabic-500.46deb6d424.ttf",
+     "woff2": "noto-naskh-arabic-500.d76260c34a.woff2",
+     "preview": "noto-naskh-arabic-500-arabic.f35491fe51.woff2"
+    },
+    "600": {
+     "ttf": "noto-naskh-arabic-600.78fea7f02d.ttf",
+     "woff2": "noto-naskh-arabic-600.5249732bfa.woff2",
+     "preview": "noto-naskh-arabic-600-arabic.58486b55ab.woff2"
+    },
+    "700": {
+     "ttf": "noto-naskh-arabic-700.317878c458.ttf",
+     "woff2": "noto-naskh-arabic-700.4bfc157479.woff2",
+     "preview": "noto-naskh-arabic-700-arabic.cd0d359def.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 52172,
+    "500": 56044,
+    "600": 56132,
+    "700": 52844
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Naskh+Arabic",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.b414a5c2d9.png",
+   "og_version": 1
+  },
+  {
+   "slug": "noto-naskh-arabic-ui",
+   "name": "Noto Naskh Arabic UI",
+   "kind": "arabic",
+   "folder": "notonaskharabicui",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2020-11-19",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "noto-naskh-arabic-ui-400.0401012177.ttf",
+     "woff2": "noto-naskh-arabic-ui-400.cdbb55bdff.woff2",
+     "preview": "noto-naskh-arabic-ui-400-arabic.ba06d6f0a3.woff2"
+    },
+    "500": {
+     "ttf": "noto-naskh-arabic-ui-500.92c0cfe058.ttf",
+     "woff2": "noto-naskh-arabic-ui-500.d09f736b71.woff2",
+     "preview": "noto-naskh-arabic-ui-500-arabic.cf54b0c90d.woff2"
+    },
+    "600": {
+     "ttf": "noto-naskh-arabic-ui-600.2a61974e2b.ttf",
+     "woff2": "noto-naskh-arabic-ui-600.44c8df49f1.woff2",
+     "preview": "noto-naskh-arabic-ui-600-arabic.1169adee9a.woff2"
+    },
+    "700": {
+     "ttf": "noto-naskh-arabic-ui-700.0eb97c01c8.ttf",
+     "woff2": "noto-naskh-arabic-ui-700.3307520760.woff2",
+     "preview": "noto-naskh-arabic-ui-700-arabic.0fe675f980.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 45372,
+    "500": 46500,
+    "600": 46656,
+    "700": 46032
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Naskh+Arabic+UI",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.0c915a347c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "noto-nastaliq-urdu",
+   "name": "Noto Nastaliq Urdu",
+   "kind": "arabic",
+   "folder": "notonastaliqurdu",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2020-11-19",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "noto-nastaliq-urdu-400.fcb685e936.ttf",
+     "woff2": "noto-nastaliq-urdu-400.25cee991d0.woff2",
+     "preview": "noto-nastaliq-urdu-400-arabic.86a537e920.woff2"
+    },
+    "500": {
+     "ttf": "noto-nastaliq-urdu-500.4d95294bf9.ttf",
+     "woff2": "noto-nastaliq-urdu-500.4f5316fecd.woff2",
+     "preview": "noto-nastaliq-urdu-500-arabic.4e2c5a5b3a.woff2"
+    },
+    "600": {
+     "ttf": "noto-nastaliq-urdu-600.606bb14e77.ttf",
+     "woff2": "noto-nastaliq-urdu-600.f061035cea.woff2",
+     "preview": "noto-nastaliq-urdu-600-arabic.8d81452d59.woff2"
+    },
+    "700": {
+     "ttf": "noto-nastaliq-urdu-700.f104f69e56.ttf",
+     "woff2": "noto-nastaliq-urdu-700.d30c5e5c4d.woff2",
+     "preview": "noto-nastaliq-urdu-700-arabic.bae4b5b8e6.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 142212,
+    "500": 147456,
+    "600": 147592,
+    "700": 139832
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Nastaliq+Urdu",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.785fb2b1c2.png",
+   "og_version": 1
+  },
+  {
+   "slug": "noto-sans-arabic",
+   "name": "Noto Sans Arabic",
+   "kind": "arabic",
+   "folder": "notosansarabic",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2020-11-19",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "noto-sans-arabic-100.d80c3f8f25.ttf",
+     "woff2": "noto-sans-arabic-100.9adf15c7dc.woff2",
+     "preview": "noto-sans-arabic-100-arabic.8107baf02d.woff2"
+    },
+    "200": {
+     "ttf": "noto-sans-arabic-200.06e84f3ff6.ttf",
+     "woff2": "noto-sans-arabic-200.2c5bc81342.woff2",
+     "preview": "noto-sans-arabic-200-arabic.8ca05c3abb.woff2"
+    },
+    "300": {
+     "ttf": "noto-sans-arabic-300.e43465fcb5.ttf",
+     "woff2": "noto-sans-arabic-300.bf95dd118a.woff2",
+     "preview": "noto-sans-arabic-300-arabic.d2008e4fd5.woff2"
+    },
+    "400": {
+     "ttf": "noto-sans-arabic-400.1213b92dea.ttf",
+     "woff2": "noto-sans-arabic-400.6efa19085c.woff2",
+     "preview": "noto-sans-arabic-400-arabic.6f0ec61aa0.woff2"
+    },
+    "500": {
+     "ttf": "noto-sans-arabic-500.772b8e6511.ttf",
+     "woff2": "noto-sans-arabic-500.93039f6dd3.woff2",
+     "preview": "noto-sans-arabic-500-arabic.04416f732c.woff2"
+    },
+    "600": {
+     "ttf": "noto-sans-arabic-600.e24f97bffc.ttf",
+     "woff2": "noto-sans-arabic-600.667be35c6b.woff2",
+     "preview": "noto-sans-arabic-600-arabic.bb28d1f9d7.woff2"
+    },
+    "700": {
+     "ttf": "noto-sans-arabic-700.1f3535d45e.ttf",
+     "woff2": "noto-sans-arabic-700.70061d4b25.woff2",
+     "preview": "noto-sans-arabic-700-arabic.94a2d69391.woff2"
+    },
+    "800": {
+     "ttf": "noto-sans-arabic-800.ff8d61b7d1.ttf",
+     "woff2": "noto-sans-arabic-800.a09667f0d6.woff2",
+     "preview": "noto-sans-arabic-800-arabic.6c14416c3b.woff2"
+    },
+    "900": {
+     "ttf": "noto-sans-arabic-900.1096f6f6ad.ttf",
+     "woff2": "noto-sans-arabic-900.041145c8d6.woff2",
+     "preview": "noto-sans-arabic-900-arabic.72cc5e64ed.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 47432,
+    "200": 51176,
+    "300": 50328,
+    "400": 47204,
+    "500": 51432,
+    "600": 51712,
+    "700": 48324,
+    "800": 52220,
+    "900": 48940
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Sans+Arabic",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.9cc26646fe.png",
+   "og_version": 1
+  },
+  {
+   "slug": "noto-sans-arabic-ui",
+   "name": "Noto Sans Arabic UI",
+   "kind": "arabic",
+   "folder": "notosansarabicui",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2020-11-19",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "noto-sans-arabic-ui-100.ef4ff46e3a.ttf",
+     "woff2": "noto-sans-arabic-ui-100.1e2b9e6ed3.woff2",
+     "preview": "noto-sans-arabic-ui-100-arabic.91a8486fb6.woff2"
+    },
+    "200": {
+     "ttf": "noto-sans-arabic-ui-200.e37fc85992.ttf",
+     "woff2": "noto-sans-arabic-ui-200.4ad15f1be4.woff2",
+     "preview": "noto-sans-arabic-ui-200-arabic.839960c9ad.woff2"
+    },
+    "300": {
+     "ttf": "noto-sans-arabic-ui-300.cbbc4fc232.ttf",
+     "woff2": "noto-sans-arabic-ui-300.7d3cf60bf6.woff2",
+     "preview": "noto-sans-arabic-ui-300-arabic.c753e1bd3e.woff2"
+    },
+    "400": {
+     "ttf": "noto-sans-arabic-ui-400.1aee8271e2.ttf",
+     "woff2": "noto-sans-arabic-ui-400.d6f415aec1.woff2",
+     "preview": "noto-sans-arabic-ui-400-arabic.168bf93236.woff2"
+    },
+    "500": {
+     "ttf": "noto-sans-arabic-ui-500.4c5216e3c0.ttf",
+     "woff2": "noto-sans-arabic-ui-500.ed8c9f59b9.woff2",
+     "preview": "noto-sans-arabic-ui-500-arabic.0c8386220a.woff2"
+    },
+    "600": {
+     "ttf": "noto-sans-arabic-ui-600.53347fae72.ttf",
+     "woff2": "noto-sans-arabic-ui-600.5a4aeca4af.woff2",
+     "preview": "noto-sans-arabic-ui-600-arabic.ca17e21a16.woff2"
+    },
+    "700": {
+     "ttf": "noto-sans-arabic-ui-700.afa981029f.ttf",
+     "woff2": "noto-sans-arabic-ui-700.c1e96ccd0e.woff2",
+     "preview": "noto-sans-arabic-ui-700-arabic.10746ba4af.woff2"
+    },
+    "800": {
+     "ttf": "noto-sans-arabic-ui-800.3ce952c50f.ttf",
+     "woff2": "noto-sans-arabic-ui-800.a19766d244.woff2",
+     "preview": "noto-sans-arabic-ui-800-arabic.f010e11ff7.woff2"
+    },
+    "900": {
+     "ttf": "noto-sans-arabic-ui-900.0e3e278629.ttf",
+     "woff2": "noto-sans-arabic-ui-900.d2375d1b2b.woff2",
+     "preview": "noto-sans-arabic-ui-900-arabic.19b3e0b4b9.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 51712,
+    "200": 55216,
+    "300": 54324,
+    "400": 51516,
+    "500": 55828,
+    "600": 56268,
+    "700": 52904,
+    "800": 56644,
+    "900": 53608
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Sans+Arabic+UI",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.0542ead00e.png",
+   "og_version": 1
+  },
+  {
+   "slug": "oi",
+   "name": "Oi",
+   "kind": "arabic",
+   "folder": "oi",
+   "designer": "Kostas Bartsokas",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2021-02-03",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "oi-400.336b8d9ee7.ttf",
+     "woff2": "oi-400.c147f03410.woff2",
+     "preview": "oi-400-arabic.63dd84e0fa.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 26860
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Oi",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.2937735c6c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "parastoo",
+   "name": "Parastoo",
+   "kind": "arabic",
+   "folder": "parastoo",
+   "designer": "Saber Rastikerdar",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2025-05-22",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "parastoo-400.079fa011e8.ttf",
+     "woff2": "parastoo-400.7fb4e7fcd8.woff2",
+     "preview": "parastoo-400-arabic.12e4bcc143.woff2"
+    },
+    "500": {
+     "ttf": "parastoo-500.0e869a0ac8.ttf",
+     "woff2": "parastoo-500.22a532de29.woff2",
+     "preview": "parastoo-500-arabic.1af8234ea0.woff2"
+    },
+    "600": {
+     "ttf": "parastoo-600.803c069985.ttf",
+     "woff2": "parastoo-600.d9304d02bb.woff2",
+     "preview": "parastoo-600-arabic.9ecbf98e53.woff2"
+    },
+    "700": {
+     "ttf": "parastoo-700.8127ae1b36.ttf",
+     "woff2": "parastoo-700.b486941fde.woff2",
+     "preview": "parastoo-700-arabic.2c691381d0.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 18596,
+    "500": 19216,
+    "600": 19268,
+    "700": 18588
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Parastoo",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.866a47b03f.png",
+   "og_version": 1
+  },
+  {
+   "slug": "playpen-sans-arabic",
+   "name": "Playpen Sans Arabic",
+   "kind": "arabic",
+   "folder": "playpensansarabic",
+   "designer": "TypeTogether, Azza Alameddine, Laura Meseguer, Veronika Burian, José Scaglione",
+   "license": "OFL",
+   "category": "HANDWRITING",
+   "style": "handwriting",
+   "date_added": "2025-03-11",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "playpen-sans-arabic-100.d8664195b8.ttf",
+     "woff2": "playpen-sans-arabic-100.0ab0a3c222.woff2",
+     "preview": "playpen-sans-arabic-100-arabic.48dfad4def.woff2"
+    },
+    "200": {
+     "ttf": "playpen-sans-arabic-200.a11bb641c0.ttf",
+     "woff2": "playpen-sans-arabic-200.70ab946fe4.woff2",
+     "preview": "playpen-sans-arabic-200-arabic.06a7853e5b.woff2"
+    },
+    "300": {
+     "ttf": "playpen-sans-arabic-300.8a85e077a0.ttf",
+     "woff2": "playpen-sans-arabic-300.392e674dfb.woff2",
+     "preview": "playpen-sans-arabic-300-arabic.310b4d1fb9.woff2"
+    },
+    "400": {
+     "ttf": "playpen-sans-arabic-400.db1eb3c2cb.ttf",
+     "woff2": "playpen-sans-arabic-400.b4acd85561.woff2",
+     "preview": "playpen-sans-arabic-400-arabic.9fe2873459.woff2"
+    },
+    "500": {
+     "ttf": "playpen-sans-arabic-500.9975b8a1a2.ttf",
+     "woff2": "playpen-sans-arabic-500.f0bc6aa851.woff2",
+     "preview": "playpen-sans-arabic-500-arabic.755f67cd35.woff2"
+    },
+    "600": {
+     "ttf": "playpen-sans-arabic-600.d39959ff47.ttf",
+     "woff2": "playpen-sans-arabic-600.87a97a10aa.woff2",
+     "preview": "playpen-sans-arabic-600-arabic.18a8ffc0dd.woff2"
+    },
+    "700": {
+     "ttf": "playpen-sans-arabic-700.ba8b41297c.ttf",
+     "woff2": "playpen-sans-arabic-700.1a6d00fc5a.woff2",
+     "preview": "playpen-sans-arabic-700-arabic.f64405dd4b.woff2"
+    },
+    "800": {
+     "ttf": "playpen-sans-arabic-800.e94285c93f.ttf",
+     "woff2": "playpen-sans-arabic-800.1fd900b3a0.woff2",
+     "preview": "playpen-sans-arabic-800-arabic.ba78986238.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 55884,
+    "200": 59308,
+    "300": 59868,
+    "400": 59320,
+    "500": 60328,
+    "600": 60168,
+    "700": 60172,
+    "800": 57604
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Playpen+Sans+Arabic",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.9ded5f41b2.png",
+   "og_version": 1
+  },
+  {
+   "slug": "qahiri",
+   "name": "Qahiri",
+   "kind": "arabic",
+   "folder": "qahiri",
+   "designer": "Khaled Hosny",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2021-04-03",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "qahiri-400.7261099367.ttf",
+     "woff2": "qahiri-400.7addecab7d.woff2",
+     "preview": "qahiri-400-arabic.4e3376d472.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 11356
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Qahiri",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.a78dc07a59.png",
+   "og_version": 1
+  },
+  {
+   "slug": "rakkas",
+   "name": "Rakkas",
+   "kind": "arabic",
+   "folder": "rakkas",
+   "designer": "Zeynep Akay",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2016-06-20",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "rakkas-400.7c1e066af3.ttf",
+     "woff2": "rakkas-400.3cbde6fde5.woff2",
+     "preview": "rakkas-400-arabic.d3a9a37260.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 23188
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Rakkas",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.eeeaa72a77.png",
+   "og_version": 1
+  },
+  {
+   "slug": "readex-pro",
+   "name": "Readex Pro",
+   "kind": "arabic",
+   "folder": "readexpro",
+   "designer": "Thomas Jockin, Nadine Chahine, Bonnie Shaver-Troup, Santiago Orozco, Héctor Gómez",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2021-09-16",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "ttf": "readex-pro-200.5b7a567040.ttf",
+     "woff2": "readex-pro-200.761922f980.woff2",
+     "preview": "readex-pro-200-arabic.07743adb49.woff2"
+    },
+    "300": {
+     "ttf": "readex-pro-300.8d25bea6ec.ttf",
+     "woff2": "readex-pro-300.6e5015a153.woff2",
+     "preview": "readex-pro-300-arabic.0a990cf8bf.woff2"
+    },
+    "400": {
+     "ttf": "readex-pro-400.b1027852a9.ttf",
+     "woff2": "readex-pro-400.edaa2ad38c.woff2",
+     "preview": "readex-pro-400-arabic.bc4a670e1f.woff2"
+    },
+    "500": {
+     "ttf": "readex-pro-500.3f0cfee398.ttf",
+     "woff2": "readex-pro-500.55cc3bbc4e.woff2",
+     "preview": "readex-pro-500-arabic.4e4eb05dcb.woff2"
+    },
+    "600": {
+     "ttf": "readex-pro-600.e8fafdf14e.ttf",
+     "woff2": "readex-pro-600.9733bfc99e.woff2",
+     "preview": "readex-pro-600-arabic.21d6bfea74.woff2"
+    },
+    "700": {
+     "ttf": "readex-pro-700.89e5f30514.ttf",
+     "woff2": "readex-pro-700.0e3748cd8c.woff2",
+     "preview": "readex-pro-700-arabic.e0ef1cb069.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 13592,
+    "300": 13632,
+    "400": 13056,
+    "500": 13804,
+    "600": 13828,
+    "700": 13684
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Readex+Pro",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.6f2530b735.png",
+   "og_version": 1
+  },
+  {
+   "slug": "reem-kufi",
+   "name": "Reem Kufi",
+   "kind": "arabic",
+   "folder": "reemkufi",
+   "designer": "Khaled Hosny, Santiago Orozco",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2016-05-31",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "reem-kufi-400.3c0711a48f.ttf",
+     "woff2": "reem-kufi-400.bbdee3dbb0.woff2",
+     "preview": "reem-kufi-400-arabic.6657953b30.woff2"
+    },
+    "500": {
+     "ttf": "reem-kufi-500.0c0ee77b74.ttf",
+     "woff2": "reem-kufi-500.fcc35b51e4.woff2",
+     "preview": "reem-kufi-500-arabic.6a75b5ed0b.woff2"
+    },
+    "600": {
+     "ttf": "reem-kufi-600.a351ecc824.ttf",
+     "woff2": "reem-kufi-600.9fb5e2c479.woff2",
+     "preview": "reem-kufi-600-arabic.46590f4fbb.woff2"
+    },
+    "700": {
+     "ttf": "reem-kufi-700.ee9ee80357.ttf",
+     "woff2": "reem-kufi-700.5be99a675f.woff2",
+     "preview": "reem-kufi-700-arabic.11da121bdd.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 12200,
+    "500": 12600,
+    "600": 12644,
+    "700": 12264
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Reem+Kufi",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.ac4e95ded9.png",
+   "og_version": 1
+  },
+  {
+   "slug": "reem-kufi-fun",
+   "name": "Reem Kufi Fun",
+   "kind": "arabic",
+   "folder": "reemkufifun",
+   "designer": "Khaled Hosny, Santiago Orozco",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2021-11-02",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "ttf": "reem-kufi-fun-400.05caa246a8.ttf",
+     "woff2": "reem-kufi-fun-400.afb4a1d671.woff2",
+     "preview": "reem-kufi-fun-400-arabic.3c27a595fa.woff2"
+    },
+    "500": {
+     "ttf": "reem-kufi-fun-500.cf1d258b6e.ttf",
+     "woff2": "reem-kufi-fun-500.bc2154bddb.woff2",
+     "preview": "reem-kufi-fun-500-arabic.31b43f3dbc.woff2"
+    },
+    "600": {
+     "ttf": "reem-kufi-fun-600.e2a5139df9.ttf",
+     "woff2": "reem-kufi-fun-600.8ab90b348d.woff2",
+     "preview": "reem-kufi-fun-600-arabic.ae537323da.woff2"
+    },
+    "700": {
+     "ttf": "reem-kufi-fun-700.c625c22599.ttf",
+     "woff2": "reem-kufi-fun-700.c0f8f63157.woff2",
+     "preview": "reem-kufi-fun-700-arabic.c78c747705.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 12520,
+    "500": 12956,
+    "600": 12972,
+    "700": 12624
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Reem+Kufi+Fun",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.2469e3f05c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "reem-kufi-ink",
+   "name": "Reem Kufi Ink",
+   "kind": "arabic",
+   "folder": "reemkufiink",
+   "designer": "Khaled Hosny, Santiago Orozco",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2021-11-02",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "reem-kufi-ink-400.04f405d755.ttf",
+     "woff2": "reem-kufi-ink-400.98114a08cc.woff2",
+     "preview": "reem-kufi-ink-400-arabic.8a0f36c851.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 20240
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Reem+Kufi+Ink",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.5cddc9fd2c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "rubik",
+   "name": "Rubik",
+   "kind": "arabic",
+   "folder": "rubik",
+   "designer": "Hubert and Fischer, Meir Sadan, Cyreal, Daniel Grumer, Omaima Dajani",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2015-07-22",
+   "weights": [
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "300": {
+     "ttf": "rubik-300.b8f0968057.ttf",
+     "woff2": "rubik-300.a4f07d0045.woff2",
+     "preview": "rubik-300-arabic.4b5a08de6b.woff2"
+    },
+    "400": {
+     "ttf": "rubik-400.7293e4958b.ttf",
+     "woff2": "rubik-400.bfa8fabad2.woff2",
+     "preview": "rubik-400-arabic.f241c477be.woff2"
+    },
+    "500": {
+     "ttf": "rubik-500.1e0ce2b87a.ttf",
+     "woff2": "rubik-500.3fc7f055f8.woff2",
+     "preview": "rubik-500-arabic.6f8a8f0531.woff2"
+    },
+    "600": {
+     "ttf": "rubik-600.000fb3e26f.ttf",
+     "woff2": "rubik-600.d2cb6c89f2.woff2",
+     "preview": "rubik-600-arabic.546520b133.woff2"
+    },
+    "700": {
+     "ttf": "rubik-700.bec31a63ac.ttf",
+     "woff2": "rubik-700.9d43adc874.woff2",
+     "preview": "rubik-700-arabic.ce547c096d.woff2"
+    },
+    "800": {
+     "ttf": "rubik-800.12b438a092.ttf",
+     "woff2": "rubik-800.8f82ce640c.woff2",
+     "preview": "rubik-800-arabic.9703e11b2d.woff2"
+    },
+    "900": {
+     "ttf": "rubik-900.173d6d12e6.ttf",
+     "woff2": "rubik-900.6a8b01fcdd.woff2",
+     "preview": "rubik-900-arabic.7d43f0db9b.woff2"
+    }
+   },
+   "preview_bytes": {
+    "300": 22044,
+    "400": 24712,
+    "500": 24792,
+    "600": 24968,
+    "700": 25008,
+    "800": 24932,
+    "900": 22392
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Rubik",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.f88657275f.png",
+   "og_version": 1
+  },
+  {
+   "slug": "ruwudu",
+   "name": "Ruwudu",
+   "kind": "arabic",
+   "folder": "ruwudu",
+   "designer": "SIL International",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2023-07-05",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "ruwudu-400.c95a3baa0c.ttf",
+     "woff2": "ruwudu-400.fcc8a95d2c.woff2",
+     "preview": "ruwudu-400-arabic.f3b522193b.woff2"
+    },
+    "500": {
+     "ttf": "ruwudu-500.ef84462bbf.ttf",
+     "woff2": "ruwudu-500.65a8470764.woff2",
+     "preview": "ruwudu-500-arabic.aaf09e8f50.woff2"
+    },
+    "600": {
+     "ttf": "ruwudu-600.8df2861803.ttf",
+     "woff2": "ruwudu-600.286c74d98a.woff2",
+     "preview": "ruwudu-600-arabic.0e7d81ffe1.woff2"
+    },
+    "700": {
+     "ttf": "ruwudu-700.bb7c2a904d.ttf",
+     "woff2": "ruwudu-700.7bbddb5de7.woff2",
+     "preview": "ruwudu-700-arabic.cbc7061831.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 33088,
+    "500": 36004,
+    "600": 36276,
+    "700": 34772
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Ruwudu",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.d11d1e5637.png",
+   "og_version": 1
+  },
+  {
+   "slug": "scheherazade-new",
+   "name": "Scheherazade New",
+   "kind": "arabic",
+   "folder": "scheherazadenew",
+   "designer": "SIL International",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2021-05-12",
+   "weights": [
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "scheherazade-new-400.cd72082fdb.ttf",
+     "woff2": "scheherazade-new-400.fa62e775e1.woff2",
+     "preview": "scheherazade-new-400-arabic.1b379e42b3.woff2"
+    },
+    "500": {
+     "ttf": "scheherazade-new-500.66b5f7cbe4.ttf",
+     "woff2": "scheherazade-new-500.817e7a73ec.woff2",
+     "preview": "scheherazade-new-500-arabic.96b404a5e2.woff2"
+    },
+    "600": {
+     "ttf": "scheherazade-new-600.004180049e.ttf",
+     "woff2": "scheherazade-new-600.911aa5ab99.woff2",
+     "preview": "scheherazade-new-600-arabic.ecee5d8b1c.woff2"
+    },
+    "700": {
+     "ttf": "scheherazade-new-700.4d81c49ffa.ttf",
+     "woff2": "scheherazade-new-700.617f010290.woff2",
+     "preview": "scheherazade-new-700-arabic.5dfd344773.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 98900,
+    "500": 125376,
+    "600": 127388,
+    "700": 111852
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Scheherazade+New",
+   "presentation_forms": 0.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.f3ec74eb50.png",
+   "og_version": 1
+  },
+  {
+   "slug": "tajawal",
+   "name": "Tajawal",
+   "kind": "arabic",
+   "folder": "tajawal",
+   "designer": "Boutros Fonts, Mourad Boutros, Soulaf Khalifeh",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2018-04-04",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    700,
+    800,
+    900
+   ],
+   "variable": false,
+   "files": {
+    "200": {
+     "ttf": "tajawal-200.8f0ba432ad.ttf",
+     "woff2": "tajawal-200.7778776ff5.woff2",
+     "preview": "tajawal-200-arabic.a04f7f77a4.woff2"
+    },
+    "300": {
+     "ttf": "tajawal-300.cf4df2dc19.ttf",
+     "woff2": "tajawal-300.a19ad2c74e.woff2",
+     "preview": "tajawal-300-arabic.94fc509169.woff2"
+    },
+    "400": {
+     "ttf": "tajawal-400.954673110c.ttf",
+     "woff2": "tajawal-400.7cc87ff32d.woff2",
+     "preview": "tajawal-400-arabic.91e03efef1.woff2"
+    },
+    "500": {
+     "ttf": "tajawal-500.5b4164245a.ttf",
+     "woff2": "tajawal-500.f6781989b9.woff2",
+     "preview": "tajawal-500-arabic.ac0e15bc91.woff2"
+    },
+    "700": {
+     "ttf": "tajawal-700.ee4e9201df.ttf",
+     "woff2": "tajawal-700.dd8b90c4be.woff2",
+     "preview": "tajawal-700-arabic.24dfb59a1b.woff2"
+    },
+    "800": {
+     "ttf": "tajawal-800.74f2a1ea87.ttf",
+     "woff2": "tajawal-800.e8e38f1e55.woff2",
+     "preview": "tajawal-800-arabic.735ba9bfaa.woff2"
+    },
+    "900": {
+     "ttf": "tajawal-900.840fa9f15a.ttf",
+     "woff2": "tajawal-900.1ccf950b5c.woff2",
+     "preview": "tajawal-900-arabic.f2cf8f1e38.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 11808,
+    "300": 11068,
+    "400": 11540,
+    "500": 11536,
+    "700": 11924,
+    "800": 12252,
+    "900": 11320
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Tajawal",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": false,
+   "og": "og.b6e4229b50.png",
+   "og_version": 1
+  },
+  {
+   "slug": "thabit",
+   "name": "Thabit",
+   "kind": "arabic",
+   "folder": "thabit",
+   "designer": "Khaled Hosny",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2010-09-21",
+   "weights": [
+    400,
+    700
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "thabit-400.ce34c3301c.ttf",
+     "woff2": "thabit-400.de5999b53b.woff2",
+     "preview": "thabit-400-arabic.e73bc762af.woff2"
+    },
+    "700": {
+     "ttf": "thabit-700.48ff722572.ttf",
+     "woff2": "thabit-700.e0960c8efa.woff2",
+     "preview": "thabit-700-arabic.c00eb6b10e.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 21372,
+    "700": 19936
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Thabit",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.7a6f3104f4.png",
+   "og_version": 1
+  },
+  {
+   "slug": "vazirmatn",
+   "name": "Vazirmatn",
+   "kind": "arabic",
+   "folder": "vazirmatn",
+   "designer": "Saber Rastikerdar",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2022-03-16",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "ttf": "vazirmatn-100.f11561dc05.ttf",
+     "woff2": "vazirmatn-100.1ae6cc117e.woff2",
+     "preview": "vazirmatn-100-arabic.58d798c85e.woff2"
+    },
+    "200": {
+     "ttf": "vazirmatn-200.1920a1364a.ttf",
+     "woff2": "vazirmatn-200.c6f939e7e8.woff2",
+     "preview": "vazirmatn-200-arabic.2f6ca2acc3.woff2"
+    },
+    "300": {
+     "ttf": "vazirmatn-300.a1e11e9e5e.ttf",
+     "woff2": "vazirmatn-300.4fa44d36cb.woff2",
+     "preview": "vazirmatn-300-arabic.2d503ebb82.woff2"
+    },
+    "400": {
+     "ttf": "vazirmatn-400.821d96f831.ttf",
+     "woff2": "vazirmatn-400.240d2172c0.woff2",
+     "preview": "vazirmatn-400-arabic.ca9b21edf0.woff2"
+    },
+    "500": {
+     "ttf": "vazirmatn-500.20f664cf25.ttf",
+     "woff2": "vazirmatn-500.7e51bc920c.woff2",
+     "preview": "vazirmatn-500-arabic.cfed93958d.woff2"
+    },
+    "600": {
+     "ttf": "vazirmatn-600.2c598f0054.ttf",
+     "woff2": "vazirmatn-600.f5281c6bad.woff2",
+     "preview": "vazirmatn-600-arabic.032cc49b74.woff2"
+    },
+    "700": {
+     "ttf": "vazirmatn-700.7f012d4576.ttf",
+     "woff2": "vazirmatn-700.56958e1d5b.woff2",
+     "preview": "vazirmatn-700-arabic.63d8aecaf1.woff2"
+    },
+    "800": {
+     "ttf": "vazirmatn-800.f6247ec4e5.ttf",
+     "woff2": "vazirmatn-800.aeb08d6c17.woff2",
+     "preview": "vazirmatn-800-arabic.a43e0c596a.woff2"
+    },
+    "900": {
+     "ttf": "vazirmatn-900.0891e432d7.ttf",
+     "woff2": "vazirmatn-900.2c39841d64.woff2",
+     "preview": "vazirmatn-900-arabic.bfbfca1a42.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 25256,
+    "200": 25884,
+    "300": 26204,
+    "400": 25412,
+    "500": 26288,
+    "600": 26360,
+    "700": 26332,
+    "800": 26248,
+    "900": 25616
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Vazirmatn",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.27e91eec14.png",
+   "og_version": 1
+  },
+  {
+   "slug": "vibes",
+   "name": "Vibes",
+   "kind": "arabic",
+   "folder": "vibes",
+   "designer": "AbdElmomen Kadhim (blueMix)",
+   "license": "OFL",
+   "category": "DISPLAY",
+   "style": "display",
+   "date_added": "2019-04-23",
+   "weights": [
+    400
+   ],
+   "variable": false,
+   "files": {
+    "400": {
+     "ttf": "vibes-400.c8fbdda316.ttf",
+     "woff2": "vibes-400.eea372617c.woff2",
+     "preview": "vibes-400-arabic.4990fbea87.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 13132
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Vibes",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.6c940080b9.png",
+   "og_version": 1
+  },
+  {
+   "slug": "zain",
+   "name": "Zain",
+   "kind": "arabic",
+   "folder": "zain",
+   "designer": "Boutros Fonts",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2024-05-31",
+   "weights": [
+    200,
+    300,
+    400,
+    700,
+    800,
+    900
+   ],
+   "variable": false,
+   "files": {
+    "200": {
+     "ttf": "zain-200.f2e9e5d379.ttf",
+     "woff2": "zain-200.a60ea62015.woff2",
+     "preview": "zain-200-arabic.c28d5e3720.woff2"
+    },
+    "300": {
+     "ttf": "zain-300.4f3638799f.ttf",
+     "woff2": "zain-300.a20e338710.woff2",
+     "preview": "zain-300-arabic.4a332047fd.woff2"
+    },
+    "400": {
+     "ttf": "zain-400.90c90e190b.ttf",
+     "woff2": "zain-400.49e165335b.woff2",
+     "preview": "zain-400-arabic.ce1d840607.woff2"
+    },
+    "700": {
+     "ttf": "zain-700.d8d4c6d845.ttf",
+     "woff2": "zain-700.220d6b4511.woff2",
+     "preview": "zain-700-arabic.aeee52df25.woff2"
+    },
+    "800": {
+     "ttf": "zain-800.df28bd57f4.ttf",
+     "woff2": "zain-800.e9306687c5.woff2",
+     "preview": "zain-800-arabic.67d211a972.woff2"
+    },
+    "900": {
+     "ttf": "zain-900.4afd9a33b7.ttf",
+     "woff2": "zain-900.72378a1d70.woff2",
+     "preview": "zain-900-arabic.8349d2b14e.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 19308,
+    "300": 20564,
+    "400": 20764,
+    "700": 20476,
+    "800": 20352,
+    "900": 19964
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Zain",
+   "presentation_forms": 1.0,
+   "arabic_coverage": 1.0,
+   "diacritics": true,
+   "og": "og.5fe05f8c0c.png",
+   "og_version": 1
+  },
+  {
+   "slug": "dm-sans",
+   "name": "DM Sans",
+   "kind": "latin",
+   "folder": "dmsans",
+   "designer": "Colophon Foundry",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2019-06-12",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "preview": "dm-sans-100-latin.c7617eec6f.woff2"
+    },
+    "200": {
+     "preview": "dm-sans-200-latin.598cc60d2f.woff2"
+    },
+    "300": {
+     "preview": "dm-sans-300-latin.2f7ac0bada.woff2"
+    },
+    "400": {
+     "preview": "dm-sans-400-latin.eac2bc0619.woff2"
+    },
+    "500": {
+     "preview": "dm-sans-500-latin.535dcc10b1.woff2"
+    },
+    "600": {
+     "preview": "dm-sans-600-latin.106354025d.woff2"
+    },
+    "700": {
+     "preview": "dm-sans-700-latin.23df871f75.woff2"
+    },
+    "800": {
+     "preview": "dm-sans-800-latin.568a07ea58.woff2"
+    },
+    "900": {
+     "preview": "dm-sans-900-latin.0ea5f3d851.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 14872,
+    "200": 15420,
+    "300": 14716,
+    "400": 14948,
+    "500": 15188,
+    "600": 15052,
+    "700": 15208,
+    "800": 15176,
+    "900": 15164
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/DM+Sans"
+  },
+  {
+   "slug": "eb-garamond",
+   "name": "EB Garamond",
+   "kind": "latin",
+   "folder": "ebgaramond",
+   "designer": "Georg Duffner, Octavio Pardo",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2011-03-23",
+   "weights": [
+    400,
+    500,
+    600,
+    700,
+    800
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "preview": "eb-garamond-400-latin.1f8f881d84.woff2"
+    },
+    "500": {
+     "preview": "eb-garamond-500-latin.a28497f6aa.woff2"
+    },
+    "600": {
+     "preview": "eb-garamond-600-latin.50fb2f92fd.woff2"
+    },
+    "700": {
+     "preview": "eb-garamond-700-latin.680daa5606.woff2"
+    },
+    "800": {
+     "preview": "eb-garamond-800-latin.a0c8f03a13.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 58544,
+    "500": 63500,
+    "600": 63880,
+    "700": 63508,
+    "800": 59968
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/EB+Garamond"
+  },
+  {
+   "slug": "ibm-plex-sans",
+   "name": "IBM Plex Sans",
+   "kind": "latin",
+   "folder": "ibmplexsans",
+   "designer": "Mike Abbink, Bold Monday",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2018-03-12",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "preview": "ibm-plex-sans-100-latin.bb01e1bb76.woff2"
+    },
+    "200": {
+     "preview": "ibm-plex-sans-200-latin.00486f9986.woff2"
+    },
+    "300": {
+     "preview": "ibm-plex-sans-300-latin.c44eeb551f.woff2"
+    },
+    "400": {
+     "preview": "ibm-plex-sans-400-latin.5be8a660a6.woff2"
+    },
+    "500": {
+     "preview": "ibm-plex-sans-500-latin.c0d006a5f0.woff2"
+    },
+    "600": {
+     "preview": "ibm-plex-sans-600-latin.b5c0b6fc43.woff2"
+    },
+    "700": {
+     "preview": "ibm-plex-sans-700-latin.11390438a2.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 17044,
+    "200": 19008,
+    "300": 19084,
+    "400": 17300,
+    "500": 18952,
+    "600": 18992,
+    "700": 17472
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/IBM+Plex+Sans"
+  },
+  {
+   "slug": "inter",
+   "name": "Inter",
+   "kind": "latin",
+   "folder": "inter",
+   "designer": "Rasmus Andersson",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2020-01-24",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "preview": "inter-100-latin.2c99b17133.woff2"
+    },
+    "200": {
+     "preview": "inter-200-latin.327f3656bd.woff2"
+    },
+    "300": {
+     "preview": "inter-300-latin.cd79030629.woff2"
+    },
+    "400": {
+     "preview": "inter-400-latin.ebfa55b482.woff2"
+    },
+    "500": {
+     "preview": "inter-500-latin.a5003a2c6a.woff2"
+    },
+    "600": {
+     "preview": "inter-600-latin.73854c2103.woff2"
+    },
+    "700": {
+     "preview": "inter-700-latin.e6b29e13c9.woff2"
+    },
+    "800": {
+     "preview": "inter-800-latin.e13810f857.woff2"
+    },
+    "900": {
+     "preview": "inter-900-latin.962c390c4e.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 28876,
+    "200": 29768,
+    "300": 29904,
+    "400": 29416,
+    "500": 30188,
+    "600": 30304,
+    "700": 30456,
+    "800": 30340,
+    "900": 29504
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Inter"
+  },
+  {
+   "slug": "lexend",
+   "name": "Lexend",
+   "kind": "latin",
+   "folder": "lexend",
+   "designer": "Bonnie Shaver-Troup, Thomas Jockin, Santiago Orozco, Héctor Gómez, Superunion",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2021-03-09",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "preview": "lexend-100-latin.9b61efec43.woff2"
+    },
+    "200": {
+     "preview": "lexend-200-latin.432196e4dc.woff2"
+    },
+    "300": {
+     "preview": "lexend-300-latin.82907eeab6.woff2"
+    },
+    "400": {
+     "preview": "lexend-400-latin.78d761ad84.woff2"
+    },
+    "500": {
+     "preview": "lexend-500-latin.461883af16.woff2"
+    },
+    "600": {
+     "preview": "lexend-600-latin.b39862988b.woff2"
+    },
+    "700": {
+     "preview": "lexend-700-latin.a6b3e8273b.woff2"
+    },
+    "800": {
+     "preview": "lexend-800-latin.20660d61a9.woff2"
+    },
+    "900": {
+     "preview": "lexend-900-latin.cde04b9157.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 13624,
+    "200": 13672,
+    "300": 14028,
+    "400": 13800,
+    "500": 14224,
+    "600": 14116,
+    "700": 14196,
+    "800": 14248,
+    "900": 13840
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Lexend"
+  },
+  {
+   "slug": "noto-sans",
+   "name": "Noto Sans",
+   "kind": "latin",
+   "folder": "notosans",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2013-02-27",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "preview": "noto-sans-100-latin.b4950ec20c.woff2"
+    },
+    "200": {
+     "preview": "noto-sans-200-latin.98d3880abb.woff2"
+    },
+    "300": {
+     "preview": "noto-sans-300-latin.b8afdd3278.woff2"
+    },
+    "400": {
+     "preview": "noto-sans-400-latin.039531ee22.woff2"
+    },
+    "500": {
+     "preview": "noto-sans-500-latin.54bdc7fb79.woff2"
+    },
+    "600": {
+     "preview": "noto-sans-600-latin.9644a5a7da.woff2"
+    },
+    "700": {
+     "preview": "noto-sans-700-latin.8ac336a635.woff2"
+    },
+    "800": {
+     "preview": "noto-sans-800-latin.87acbc6936.woff2"
+    },
+    "900": {
+     "preview": "noto-sans-900-latin.379d0b1e99.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 18864,
+    "200": 19640,
+    "300": 19496,
+    "400": 19132,
+    "500": 19632,
+    "600": 19748,
+    "700": 19512,
+    "800": 19896,
+    "900": 19300
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Sans"
+  },
+  {
+   "slug": "noto-serif",
+   "name": "Noto Serif",
+   "kind": "latin",
+   "folder": "notoserif",
+   "designer": "Google",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2013-02-27",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "preview": "noto-serif-100-latin.e98f33ba33.woff2"
+    },
+    "200": {
+     "preview": "noto-serif-200-latin.25a7f0b146.woff2"
+    },
+    "300": {
+     "preview": "noto-serif-300-latin.e9cb84c5e0.woff2"
+    },
+    "400": {
+     "preview": "noto-serif-400-latin.427e76149e.woff2"
+    },
+    "500": {
+     "preview": "noto-serif-500-latin.e7e72ede04.woff2"
+    },
+    "600": {
+     "preview": "noto-serif-600-latin.dcc6e1531a.woff2"
+    },
+    "700": {
+     "preview": "noto-serif-700-latin.75f3462ca2.woff2"
+    },
+    "800": {
+     "preview": "noto-serif-800-latin.4fffe4b9cc.woff2"
+    },
+    "900": {
+     "preview": "noto-serif-900-latin.ceec9fbee7.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 21500,
+    "200": 21968,
+    "300": 21800,
+    "400": 20580,
+    "500": 21868,
+    "600": 21856,
+    "700": 21676,
+    "800": 22044,
+    "900": 21660
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Noto+Serif"
+  },
+  {
+   "slug": "playfair-display",
+   "name": "Playfair Display",
+   "kind": "latin",
+   "folder": "playfairdisplay",
+   "designer": "Claus Eggers Sørensen",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2011-11-16",
+   "weights": [
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "400": {
+     "preview": "playfair-display-400-latin.3d6c9c8987.woff2"
+    },
+    "500": {
+     "preview": "playfair-display-500-latin.e1dbd0b714.woff2"
+    },
+    "600": {
+     "preview": "playfair-display-600-latin.30f7986356.woff2"
+    },
+    "700": {
+     "preview": "playfair-display-700-latin.d9eeabb157.woff2"
+    },
+    "800": {
+     "preview": "playfair-display-800-latin.47b90af25b.woff2"
+    },
+    "900": {
+     "preview": "playfair-display-900-latin.0cf90328e1.woff2"
+    }
+   },
+   "preview_bytes": {
+    "400": 28836,
+    "500": 31020,
+    "600": 31160,
+    "700": 31344,
+    "800": 31204,
+    "900": 29844
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Playfair+Display"
+  },
+  {
+   "slug": "poppins",
+   "name": "Poppins",
+   "kind": "latin",
+   "folder": "poppins",
+   "designer": "Indian Type Foundry, Jonny Pinhorn, Ninad Kale",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2015-06-03",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": false,
+   "files": {
+    "100": {
+     "preview": "poppins-100-latin.07be59a3e3.woff2"
+    },
+    "200": {
+     "preview": "poppins-200-latin.e63736ed59.woff2"
+    },
+    "300": {
+     "preview": "poppins-300-latin.773c1738f2.woff2"
+    },
+    "400": {
+     "preview": "poppins-400-latin.4a94f9ee70.woff2"
+    },
+    "500": {
+     "preview": "poppins-500-latin.2847d004ef.woff2"
+    },
+    "600": {
+     "preview": "poppins-600-latin.348ea07c24.woff2"
+    },
+    "700": {
+     "preview": "poppins-700-latin.5c6019bbd2.woff2"
+    },
+    "800": {
+     "preview": "poppins-800-latin.d060b9a54f.woff2"
+    },
+    "900": {
+     "preview": "poppins-900-latin.c6f7bd8b7b.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 8580,
+    "200": 8996,
+    "300": 8980,
+    "400": 9004,
+    "500": 8892,
+    "600": 9160,
+    "700": 8924,
+    "800": 8948,
+    "900": 8760
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Poppins"
+  },
+  {
+   "slug": "source-sans-3",
+   "name": "Source Sans 3",
+   "kind": "latin",
+   "folder": "sourcesans3",
+   "designer": "Paul D. Hunt",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2021-09-17",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "preview": "source-sans-3-200-latin.db5f0c7dff.woff2"
+    },
+    "300": {
+     "preview": "source-sans-3-300-latin.055cf09c48.woff2"
+    },
+    "400": {
+     "preview": "source-sans-3-400-latin.88f29e9e35.woff2"
+    },
+    "500": {
+     "preview": "source-sans-3-500-latin.d99c977f20.woff2"
+    },
+    "600": {
+     "preview": "source-sans-3-600-latin.57b1f1c043.woff2"
+    },
+    "700": {
+     "preview": "source-sans-3-700-latin.82c1fa7d93.woff2"
+    },
+    "800": {
+     "preview": "source-sans-3-800-latin.ba88263298.woff2"
+    },
+    "900": {
+     "preview": "source-sans-3-900-latin.0f7d7300f4.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 24020,
+    "300": 25184,
+    "400": 25668,
+    "500": 25504,
+    "600": 25516,
+    "700": 25524,
+    "800": 25428,
+    "900": 24056
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Source+Sans+3"
+  },
+  {
+   "slug": "source-serif-4",
+   "name": "Source Serif 4",
+   "kind": "latin",
+   "folder": "sourceserif4",
+   "designer": "Frank Grießhammer",
+   "license": "OFL",
+   "category": "SERIF",
+   "style": "serif",
+   "date_added": "2021-11-16",
+   "weights": [
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "200": {
+     "preview": "source-serif-4-200-latin.fd531e7db5.woff2"
+    },
+    "300": {
+     "preview": "source-serif-4-300-latin.7412e3a4ce.woff2"
+    },
+    "400": {
+     "preview": "source-serif-4-400-latin.bdb95988a0.woff2"
+    },
+    "500": {
+     "preview": "source-serif-4-500-latin.2945c7997b.woff2"
+    },
+    "600": {
+     "preview": "source-serif-4-600-latin.6d667b1653.woff2"
+    },
+    "700": {
+     "preview": "source-serif-4-700-latin.802c3fb724.woff2"
+    },
+    "800": {
+     "preview": "source-serif-4-800-latin.be89c61105.woff2"
+    },
+    "900": {
+     "preview": "source-serif-4-900-latin.0bda8fe0af.woff2"
+    }
+   },
+   "preview_bytes": {
+    "200": 30248,
+    "300": 32936,
+    "400": 31364,
+    "500": 33660,
+    "600": 33312,
+    "700": 33736,
+    "800": 33892,
+    "900": 31292
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Source+Serif+4"
+  },
+  {
+   "slug": "work-sans",
+   "name": "Work Sans",
+   "kind": "latin",
+   "folder": "worksans",
+   "designer": "Wei Huang",
+   "license": "OFL",
+   "category": "SANS_SERIF",
+   "style": "sans",
+   "date_added": "2015-07-08",
+   "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ],
+   "variable": true,
+   "files": {
+    "100": {
+     "preview": "work-sans-100-latin.58456a838d.woff2"
+    },
+    "200": {
+     "preview": "work-sans-200-latin.b48cfd727c.woff2"
+    },
+    "300": {
+     "preview": "work-sans-300-latin.4d2575cab1.woff2"
+    },
+    "400": {
+     "preview": "work-sans-400-latin.6aac29dd53.woff2"
+    },
+    "500": {
+     "preview": "work-sans-500-latin.d813c0c28e.woff2"
+    },
+    "600": {
+     "preview": "work-sans-600-latin.99231af17a.woff2"
+    },
+    "700": {
+     "preview": "work-sans-700-latin.8ef0d671cf.woff2"
+    },
+    "800": {
+     "preview": "work-sans-800-latin.8349244d43.woff2"
+    },
+    "900": {
+     "preview": "work-sans-900-latin.532cc4fad3.woff2"
+    }
+   },
+   "preview_bytes": {
+    "100": 29488,
+    "200": 31160,
+    "300": 31224,
+    "400": 29868,
+    "500": 31508,
+    "600": 31920,
+    "700": 31780,
+    "800": 31936,
+    "900": 29352
+   },
+   "has_license_file": true,
+   "google_url": "https://fonts.google.com/specimen/Work+Sans"
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+  "__vite-browser-external": {
+    "file": "assets/__vite-browser-external-CB9T68pL.js",
+    "name": "__vite-browser-external",
+    "src": "__vite-browser-external",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-WkwZ5CU-.js"
+    ]
+  },
+  "_arabic-D5LJyRdq.js": {
+    "file": "assets/arabic-D5LJyRdq.js",
+    "name": "arabic"
+  },
+  "_bidi-D-O8dOie.js": {
+    "file": "assets/bidi-D-O8dOie.js",
+    "name": "bidi"
+  },
+  "_clean-defaults-CxyKHyPb.js": {
+    "file": "assets/clean-defaults-CxyKHyPb.js",
+    "name": "clean-defaults"
+  },
+  "_pdf-BrDbpMKA.js": {
+    "file": "assets/pdf-BrDbpMKA.js",
+    "name": "pdf",
+    "imports": [
+      "_arabic-D5LJyRdq.js",
+      "_bidi-D-O8dOie.js"
+    ]
+  },
+  "_pdf-words-CsM_yEOh.js": {
+    "file": "assets/pdf-words-CsM_yEOh.js",
+    "name": "pdf-words"
+  },
+  "_preload-helper-CZJmfsJQ.js": {
+    "file": "assets/preload-helper-CZJmfsJQ.js",
+    "name": "preload-helper"
+  },
+  "_rolldown-runtime-WkwZ5CU-.js": {
+    "file": "assets/rolldown-runtime-WkwZ5CU-.js",
+    "name": "rolldown-runtime"
+  },
+  "node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2": {
+    "file": "assets/ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+    "src": "node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2"
+  },
+  "node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-500-normal.woff2": {
+    "file": "assets/ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+    "src": "node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-500-normal.woff2"
+  },
+  "node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-600-normal.woff2": {
+    "file": "assets/ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+    "src": "node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-600-normal.woff2"
+  },
+  "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2": {
+    "file": "assets/ibm-plex-sans-latin-400-normal-CDDApCn2.woff2",
+    "src": "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2"
+  },
+  "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2": {
+    "file": "assets/ibm-plex-sans-latin-500-normal-6ng42L7E.woff2",
+    "src": "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2"
+  },
+  "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2": {
+    "file": "assets/ibm-plex-sans-latin-600-normal-CuJfVYMP.woff2",
+    "src": "node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2"
+  },
+  "node_modules/@fontsource/reem-kufi/files/reem-kufi-latin-500-normal.woff2": {
+    "file": "assets/reem-kufi-latin-500-normal-BQCKG746.woff2",
+    "src": "node_modules/@fontsource/reem-kufi/files/reem-kufi-latin-500-normal.woff2"
+  },
+  "node_modules/harfbuzzjs/dist/harfbuzz.wasm": {
+    "file": "assets/harfbuzz-CODTKW78.wasm",
+    "src": "node_modules/harfbuzzjs/dist/harfbuzz.wasm"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-CW4V7IjF.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "assets": [
+      "assets/ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+      "assets/ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+      "assets/ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+      "assets/ibm-plex-sans-latin-400-normal-CDDApCn2.woff2",
+      "assets/ibm-plex-sans-latin-500-normal-6ng42L7E.woff2",
+      "assets/ibm-plex-sans-latin-600-normal-CuJfVYMP.woff2",
+      "assets/reem-kufi-latin-500-normal-BQCKG746.woff2"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-D_xNEbw0.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_clean-defaults-CxyKHyPb.js",
+      "_preload-helper-CZJmfsJQ.js"
+    ],
+    "dynamicImports": [
+      "resources/js/text/fixer.js",
+      "resources/js/text/pdf.js",
+      "resources/js/text/pdf-words.js",
+      "resources/js/data/ar-words.txt?url",
+      "resources/js/text/garbled.js",
+      "resources/js/text/cleaner.js",
+      "resources/js/export/layout.js"
+    ]
+  },
+  "resources/js/data/ar-words.txt": {
+    "file": "assets/ar-words-DHnQA_lP.txt",
+    "src": "resources/js/data/ar-words.txt"
+  },
+  "resources/js/data/ar-words.txt?url": {
+    "file": "assets/ar-words-BvPgR3CX.js",
+    "name": "ar-words",
+    "src": "resources/js/data/ar-words.txt?url",
+    "isDynamicEntry": true,
+    "assets": [
+      "assets/ar-words-DHnQA_lP.txt"
+    ]
+  },
+  "resources/js/export/layout.js": {
+    "file": "assets/layout-bJSAB5W6.js",
+    "name": "layout",
+    "src": "resources/js/export/layout.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-WkwZ5CU-.js",
+      "_preload-helper-CZJmfsJQ.js",
+      "_bidi-D-O8dOie.js"
+    ],
+    "dynamicImports": [
+      "__vite-browser-external"
+    ],
+    "assets": [
+      "assets/harfbuzz-CODTKW78.wasm"
+    ]
+  },
+  "resources/js/text/cleaner.js": {
+    "file": "assets/cleaner-lc3wOB-R.js",
+    "name": "cleaner",
+    "src": "resources/js/text/cleaner.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_arabic-D5LJyRdq.js",
+      "_clean-defaults-CxyKHyPb.js"
+    ]
+  },
+  "resources/js/text/fixer.js": {
+    "file": "assets/fixer-BpofPLBo.js",
+    "name": "fixer",
+    "src": "resources/js/text/fixer.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_arabic-D5LJyRdq.js",
+      "_pdf-BrDbpMKA.js"
+    ]
+  },
+  "resources/js/text/garbled.js": {
+    "file": "assets/garbled-B6fLtY4y.js",
+    "name": "garbled",
+    "src": "resources/js/text/garbled.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_pdf-BrDbpMKA.js",
+      "_pdf-words-CsM_yEOh.js"
+    ]
+  },
+  "resources/js/text/pdf-words.js": {
+    "file": "assets/pdf-words-Bu5K5mzj.js",
+    "name": "pdf-words",
+    "src": "resources/js/text/pdf-words.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_pdf-words-CsM_yEOh.js"
+    ]
+  },
+  "resources/js/text/pdf.js": {
+    "file": "assets/pdf-DjuOfJBX.js",
+    "name": "pdf",
+    "src": "resources/js/text/pdf.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_pdf-BrDbpMKA.js"
+    ]
+  }
+}

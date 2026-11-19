@@ -1,0 +1,1 @@
+var e=Object.freeze({tashkeel:!0,tatweel:!0,alef:!1,yaMaqsura:!1,digits:`none`,spaces:!0,trimLines:!0});export{e as t};

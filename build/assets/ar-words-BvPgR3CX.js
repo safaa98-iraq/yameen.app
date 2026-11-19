@@ -1,0 +1,1 @@
+var e=`https://safaa98-iraq.github.io/yameen.app/build/assets/ar-words-DHnQA_lP.txt`;export{e as default};
