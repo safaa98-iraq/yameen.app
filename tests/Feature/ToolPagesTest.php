@@ -4,7 +4,7 @@ it('renders the fixer page with content and FAQ', function () {
     $this->get('/fix')
         ->assertOk()
         ->assertSee('مصحح النص العربي')
-        ->assertSee('x-data="fixer(', false)
+        ->assertSee('appPicker(', false)
         ->assertSee('أسئلة شائعة');
 });
 

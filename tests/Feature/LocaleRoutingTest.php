@@ -4,14 +4,14 @@ it('serves Arabic at the root with rtl direction', function () {
     $this->get('/')
         ->assertOk()
         ->assertSee('<html lang="ar" dir="rtl">', false)
-        ->assertSee('صحّح وانسخ');
+        ->assertSee('اضغط على البرنامج الذي ستلصق فيه النص');
 });
 
 it('serves English under /en with ltr direction', function () {
     $this->get('/en')
         ->assertOk()
         ->assertSee('<html lang="en" dir="ltr">', false)
-        ->assertSee('Fix and copy');
+        ->assertSee('Click the app you will paste it into');
 });
 
 it('mirrors every public route in both locales', function (string $path) {

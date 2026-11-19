@@ -53,17 +53,37 @@ export function registerTools(Alpine) {
         },
     }));
 
-    // Home hero: fix and copy in one click.
-    Alpine.data('quickFix', () => ({
-        ...copyable(),
-        async run() {
+    // App picker: type, then click your app. The click copies the fixed text
+    // and shows how to paste it into that app.
+    Alpine.data('appPicker', (apps = []) => ({
+        apps,
+        picked: null,
+        copiedText: '',
+        empty: false,
+        init() {
+            this.$watch('$store.text.value', () => {
+                this.picked = null;
+                this.empty = false;
+            });
+        },
+        get app() {
+            return this.apps.find((a) => a.slug === this.picked) ?? null;
+        },
+        async pick(slug) {
             const text = this.$store.text.value.trim();
             if (!text) {
+                this.empty = true;
                 this.$refs.input?.focus();
                 return;
             }
             const { fixText } = await import('./text/fixer');
-            this.copy(fixText(text));
+            const fixed = fixText(this.$store.text.value);
+            if (await copyText(fixed)) {
+                this.copiedText = fixed;
+                this.picked = slug;
+                this.empty = false;
+                this.$nextTick(() => this.$refs.done?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+            }
         },
     }));
 

@@ -78,7 +78,7 @@ it('returns 404 for unknown or Latin-only fonts', function () {
 it('offers only app-ready fonts in the fixer and honours ?font=', function () {
     importFixture();
 
-    $html = $this->get('/fix?font=cairo')->assertOk()->getContent();
+    $html = $this->get('/fix/photoshop?font=cairo')->assertOk()->getContent();
     expect($html)->toContain('<option value="cairo" selected>')
         ->and($html)->not->toContain('<option value="reem-kufi"');
 });
@@ -104,10 +104,10 @@ it('shows app-ready fonts with a copy button on the home page', function () {
 
     $this->get('/')
         ->assertOk()
-        ->assertSee('x-data="quickFix"', false)
+        ->assertSee('data-app="photoshop"', false)
         ->assertSee('Cairo')
         ->assertDontSee('id="font-reem-kufi"', false) // not usable in apps
-        ->assertSee('copyForApp()', false);
+        ->assertSee('appPicker(', false);
 });
 
 it('does not link to pages that are not built yet', function () {

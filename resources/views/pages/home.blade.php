@@ -17,7 +17,7 @@
                 <h2 id="pick-font" class="text-h3 font-semibold">{{ __('ui.home.pick_font') }}</h2>
                 <p class="mt-1 text-small text-muted">{{ __('ui.home.pick_font_hint') }}</p>
             </div>
-            <a href="{{ lroute('fonts') }}" class="text-small font-medium">{{ __('ui.home.all_fonts') }}</a>
+            <a href="{{ lroute('fonts') }}" class="text-small font-medium">{{ __('ui.home.all_fonts') }} ←</a>
         </div>
 
         <div class="mt-5 flex flex-wrap gap-2" role="group" aria-label="{{ __('ui.fonts.filters') }}">

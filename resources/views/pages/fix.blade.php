@@ -5,7 +5,11 @@
 
     <div class="max-w-3xl mx-auto pt-8">
 
-    <x-tool.fixer />
+    @if ($software)
+        <x-tool.fixer />
+    @else
+        <x-app-picker />
+    @endif
 
     @if ($software && $page->meta('paste_steps'))
         <aside class="mt-4 rounded-panel border border-line bg-surface p-4 md:p-6" aria-labelledby="paste-title">

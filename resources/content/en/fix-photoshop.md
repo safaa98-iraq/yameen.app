@@ -6,7 +6,7 @@ intro: Type your text here, then copy the result and paste it into Photoshop. Le
 paste_steps:
 - Pick the Type tool (T) and click on the canvas.
 - Paste with Ctrl + V (Cmd + V on Mac).
-- Choose the same font you previewed here.
+- Choose one of the Arabic fonts listed on Yameen.
 - Set paragraph alignment to right in the Paragraph panel.
 paste_note: 'If you enabled the Middle Eastern text engine in the Type preferences, paste the original text instead. TODO(verify): option name and location in the current version.'
 faq:

@@ -46,22 +46,22 @@ return [
     'home' => [
         'title' => 'Yameen: fix Arabic text for Photoshop and any app',
         'description' => 'Type Arabic, pick one of dozens of free fonts, and copy it ready to paste into Photoshop, After Effects, Unity and more.',
-        'h1' => 'Fix Arabic text for any app',
-        'lead' => 'Type your text, pick a font, and copy it ready to paste. Letters show connected and in the right direction.',
+        'h1' => 'Correct Arabic text in design apps',
+        'lead' => 'Some apps, like Photoshop, show Arabic letters disconnected and reversed. Type your text here, then click your app and we copy it ready to paste.',
         'input_label' => 'Type your Arabic text',
         'placeholder' => 'Type your Arabic text here…',
         'copy' => 'Fix and copy',
         'copied' => 'Copied',
         'try_in' => 'Works in:',
-        'pick_font' => 'Pick a font',
-        'pick_font_hint' => 'Press “Copy” on the font you like, then paste the text into your app.',
+        'pick_font' => 'Arabic fonts that work in these apps',
+        'pick_font_hint' => 'Choose one of these fonts in your app so the letters show correctly. Click a font to download it for free.',
         'all_fonts' => 'All fonts',
         'sample_text' => 'الخط العربي فن يبدأ من اليمين',
         'how_title' => 'How it works',
         'steps' => [
             ['Type your text', 'Type or paste Arabic text in the box at the top.'],
-            ['Pick a font', 'See your text in every font and press “Copy” on the one you like.'],
-            ['Paste it into your app', 'Paste the text and choose the same font in your app. It shows correctly.'],
+            ['Click your app', 'We copy the text in the form your app understands.'],
+            ['Paste it into the app', 'Paste the text and choose one of the Arabic fonts shown here. It shows correctly.'],
         ],
         'tools_title' => 'More tools',
         'tools' => [
@@ -186,6 +186,19 @@ return [
         'serif' => 'Serif',
         'display' => 'Display',
         'handwriting' => 'Handwriting',
+    ],
+
+    'picker' => [
+        'step1' => '1. Type your text',
+        'step2' => '2. Click the app you will paste it into',
+        'step2_hint' => 'We copy the text ready to paste.',
+        'other' => 'Another app',
+        'empty' => 'Type your text first.',
+        'done' => 'Text copied. Now paste it into :app:',
+        'done_other' => 'Text copied. Now paste it into your app:',
+        'preview' => 'How it will look in the app:',
+        'other_steps' => ['Paste with Ctrl + V (Cmd + V on Mac).', 'Choose one of the Arabic fonts shown below in your app.', 'Set the text alignment to right.'],
+        'warning' => 'Don’t paste this text into WhatsApp, Word or a browser: it will look reversed. It is made for apps that show Arabic disconnected.',
     ],
 
     'placeholder' => [
