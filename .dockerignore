@@ -1,0 +1,14 @@
+.git
+node_modules
+vendor
+public/build
+public/font-files
+storage/app/fonts
+storage/app/pro
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+database/database.sqlite
+.env
+_site
