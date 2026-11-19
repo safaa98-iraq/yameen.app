@@ -5,7 +5,11 @@
     $clientFonts = $fonts->map(fn ($f) => ['slug' => $f->slug, 'name' => $f->name, 'style' => $f->style, 'apps' => $f->presentation_forms, 'diacritics' => $f->diacritics])->values();
 @endphp
 <x-layouts.app :title="$title" :description="__('ui.fonts.description', ['count' => $fonts->count()])">
-    <x-page-intro :h1="$h1" :intro="__('ui.fonts.intro')" />
+    <x-slot:hero>
+        <x-page-hero :h1="$h1" :intro="__('ui.fonts.intro')" />
+    </x-slot:hero>
+
+    <div class="pt-8"></div>
 
     <div x-data="fontGrid({ style: @js($activeStyle ?? ''), sample: @js(config('yameen.fonts.default_sample.'.app()->getLocale())), fonts: @js($clientFonts) })">
         <section class="rounded-panel bg-lav-50 border border-line p-4 md:p-6 grid gap-4 md:grid-cols-[2fr_1fr_1fr]" aria-label="{{ __('ui.fonts.filters') }}">

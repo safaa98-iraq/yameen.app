@@ -27,8 +27,11 @@
 
     <x-site-header />
 
-    <main id="main" class="flex-1 w-full max-w-content mx-auto px-4 md:px-6">
-        {{ $slot }}
+    <main id="main" class="flex-1 w-full">
+        {{ $hero ?? '' }}
+        <div class="max-w-content mx-auto px-4 md:px-6">
+            {{ $slot }}
+        </div>
     </main>
 
     <x-site-footer />

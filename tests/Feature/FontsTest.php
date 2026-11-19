@@ -98,3 +98,22 @@ it('generates a CSS snippet per weight', function () {
         ->toContain('font-weight: 700;')
         ->not->toContain('cairo-400');
 });
+
+it('shows app-ready fonts with a copy button on the home page', function () {
+    importFixture();
+
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('x-data="quickFix"', false)
+        ->assertSee('Cairo')
+        ->assertDontSee('id="font-reem-kufi"', false) // not usable in apps
+        ->assertSee('copyForApp()', false);
+});
+
+it('does not link to pages that are not built yet', function () {
+    $html = $this->get('/')->getContent();
+
+    foreach (['/export', '/login', '/pricing', '/privacy'] as $path) {
+        expect($html)->not->toContain('href="'.url($path).'"');
+    }
+});

@@ -51,6 +51,15 @@ export function registerFonts(Alpine) {
         get usedWeight() {
             return nearestWeight(font.weights, this.weight);
         },
+        appCopied: false,
+        // Copy the current text, fixed for apps without Arabic support.
+        async copyForApp() {
+            const { fixText } = await import('./text/fixer');
+            if (await copyText(fixText(this.text))) {
+                this.appCopied = true;
+                setTimeout(() => (this.appCopied = false), 1500);
+            }
+        },
         async copyCss(css) {
             if (await copyText(css)) {
                 this.copied = true;

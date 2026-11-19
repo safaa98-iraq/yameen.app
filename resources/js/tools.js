@@ -53,6 +53,20 @@ export function registerTools(Alpine) {
         },
     }));
 
+    // Home hero: fix and copy in one click.
+    Alpine.data('quickFix', () => ({
+        ...copyable(),
+        async run() {
+            const text = this.$store.text.value.trim();
+            if (!text) {
+                this.$refs.input?.focus();
+                return;
+            }
+            const { fixText } = await import('./text/fixer');
+            this.copy(fixText(text));
+        },
+    }));
+
     Alpine.data('pdfFixer', () => ({
         ...copyable(),
         lib: null,

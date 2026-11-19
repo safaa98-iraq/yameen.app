@@ -1,6 +1,10 @@
 @php $sample = config('yameen.fonts.default_sample.'.app()->getLocale()); @endphp
 <x-layouts.app :title="__('ui.fonts.compare_title')" :description="__('ui.fonts.compare_description')">
-    <x-page-intro :h1="__('ui.fonts.compare_h1')" />
+    <x-slot:hero>
+        <x-page-hero :h1="__('ui.fonts.compare_h1')" />
+    </x-slot:hero>
+
+    <div class="pt-8"></div>
 
     @if ($a && $b)
     <div x-data="fontCompare(@js($fonts->map->toClient()->values()), @js($a->slug), @js($b->slug), @js($sample))">

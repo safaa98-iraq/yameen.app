@@ -1,19 +1,18 @@
 @props(['id' => 'pdf'])
-<div class="grid gap-4 lg:grid-cols-2" x-data="pdfFixer">
-    <section class="rounded-panel bg-lav-50 border border-line p-4 md:p-6 flex flex-col gap-4" aria-label="{{ __('ui.pdf.input_label') }}">
+<div class="rounded-panel border border-line bg-surface overflow-hidden" x-data="pdfFixer">
+    <div class="p-4 md:p-6">
         <x-tool.input :id="$id.'-input'" :label="__('ui.pdf.input_label')" :placeholder="__('ui.pdf.placeholder')" />
-    </section>
+    </div>
 
-    <section class="rounded-panel bg-surface border border-line p-4 md:p-6 flex flex-col gap-6" aria-labelledby="{{ $id }}-result-label">
-        <h2 id="{{ $id }}-result-label" class="label">{{ __('ui.tool.result_label') }}</h2>
-
-        <div class="flex-1 min-h-36" aria-live="polite">
+    <section class="border-t border-line bg-lav-50 p-4 md:p-6" aria-labelledby="{{ $id }}-result-label">
+        <h2 id="{{ $id }}-result-label" class="text-small font-semibold">{{ __('ui.tool.result_label') }}</h2>
+        <div class="mt-4 min-h-24 rounded-control bg-surface border border-line px-4 py-4" aria-live="polite">
             <p x-show="result.text" x-cloak x-text="result.text" dir="auto" data-result
                class="text-lead leading-relaxed whitespace-pre-wrap break-words"></p>
             <p x-show="!result.text" class="text-small text-muted">{{ __('ui.tool.empty') }}</p>
         </div>
 
-        <p class="text-small" x-show="status !== 'empty'" x-cloak data-pdf-status
+        <p class="mt-3 text-small" x-show="status !== 'empty'" x-cloak data-pdf-status
            :class="status === 'unsure' ? 'text-warn' : 'text-muted'">
             <span x-show="status === 'auto-reversed'">{{ __('ui.pdf.status_auto') }}</span>
             <span x-show="status === 'unsure'">{{ __('ui.pdf.status_unsure') }}</span>
@@ -22,7 +21,7 @@
             <span x-show="status === 'manual-kept'">{{ __('ui.pdf.status_kept') }}</span>
         </p>
 
-        <div class="flex flex-wrap items-center gap-3">
+        <div class="mt-4 flex flex-wrap items-center gap-3">
             <button type="button" class="btn btn-primary btn-primary-lg min-w-48" data-primary-action
                     @click="copy(result.text)" :disabled="!result.text">
                 <span x-show="!copied">{{ __('ui.pdf.copy') }}</span>

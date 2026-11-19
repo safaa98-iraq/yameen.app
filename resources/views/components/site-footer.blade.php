@@ -1,12 +1,12 @@
 @php
+    // Static pages (about, privacy, terms, contact) are linked once they exist (phase 3).
     $groups = [
-        'tools' => ['fix', 'pdf-fix', 'clean', 'export'],
+        'tools' => ['fix', 'pdf-fix', 'clean'],
         'fonts' => ['fonts', 'fonts-compare' => 'fonts.compare', 'fonts-pairing' => 'fonts.pairing'],
-        'site' => ['about', 'pricing', 'privacy', 'terms', 'contact'],
     ];
 @endphp
 <footer class="mt-18 border-t border-line">
-    <div class="max-w-content mx-auto px-4 md:px-6 py-12 grid gap-8 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+    <div class="max-w-content mx-auto px-4 md:px-6 py-12 grid gap-8 md:grid-cols-[2fr_1fr_1fr]">
         <div>
             <x-brand class="h-7 w-auto" />
             <p class="mt-3 text-small text-muted max-w-xs">{{ __('ui.tagline') }}</p>

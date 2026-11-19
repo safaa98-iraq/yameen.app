@@ -1,5 +1,9 @@
 <x-layouts.app :title="__('ui.fonts.pairing_title')" :description="__('ui.fonts.pairing_description')">
-    <x-page-intro :h1="__('ui.fonts.pairing_h1')" :intro="__('ui.fonts.pairing_intro')" />
+    <x-slot:hero>
+        <x-page-hero :h1="__('ui.fonts.pairing_h1')" :intro="__('ui.fonts.pairing_intro')" />
+    </x-slot:hero>
+
+    <div class="pt-8"></div>
 
     @forelse ($pairs as $i => $pair)
         @php

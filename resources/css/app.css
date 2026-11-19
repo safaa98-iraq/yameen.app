@@ -54,6 +54,14 @@
 
     --shadow-popover: 0 1px 2px rgb(30 26 43 / 0.08);
 
+    --container-xs: 20rem;
+    --container-sm: 24rem;
+    --container-md: 28rem;
+    --container-lg: 32rem;
+    --container-xl: 36rem;
+    --container-2xl: 42rem;
+    --container-3xl: 48rem;
+    --container-4xl: 56rem;
     --container-content: 75rem; /* 1200px */
     --container-prose: 42rem;
 
