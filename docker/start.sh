@@ -10,7 +10,7 @@ DB="${DB_DATABASE:-/var/www/html/database/database.sqlite}"
 chown www-data:www-data "$DB"
 
 php artisan migrate --force
-php artisan fonts:sync --skip-build
+php artisan fonts:sync --skip-build || echo 'Font manifest missing: the site runs without the font catalogue.'
 php artisan demo:accounts
 if [ -n "$ADMIN_EMAIL" ]; then php artisan admin:make "$ADMIN_EMAIL"; fi
 php artisan config:cache

@@ -1,15 +1,17 @@
 # Demo image (Render and similar): Apache + PHP 8.3 with SQLite.
 # For the live site follow the README deployment steps with MySQL instead.
 
-# 1. Arabic font files from google/fonts (subset to Arabic + basic Latin).
-FROM python:3.12-slim AS fonts
-RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
-WORKDIR /app
-COPY scripts/fonts ./scripts/fonts
-COPY resources/fonts ./resources/fonts
-RUN pip install --no-cache-dir -r scripts/fonts/requirements.txt \
- && python scripts/fonts/build.py --out /fonts --pairings resources/fonts/pairings.json \
- && rm -rf /root/.cache
+# 1. Arabic font files: the exact build published by CI on the gh-pages branch
+#    (building them here takes too long). For a server without this, run
+#    `php artisan fonts:sync` instead.
+FROM alpine:3.20 AS fonts
+ARG FONTS_TARBALL=https://codeload.github.com/safaa98-iraq/yameen.app/tar.gz/refs/heads/gh-pages
+RUN apk add --no-cache curl tar \
+ && mkdir -p /fonts /tmp/site \
+ && curl -fsSL "$FONTS_TARBALL" | tar -xz -C /tmp/site --strip-components=1 \
+ && mv /tmp/site/font-files /fonts/files \
+ && mv /fonts/files/fonts.json /fonts/fonts.json \
+ && rm -rf /tmp/site
 
 # 2. PHP dependencies.
 FROM composer:2 AS vendor

@@ -95,15 +95,14 @@ class ExportStatic extends Command
         if (! is_dir($src)) {
             return;
         }
+        // All built font files plus the manifest, so a server deployment (the
+        // demo Docker image) can import this exact build instead of rebuilding.
         foreach (File::allFiles($src) as $file) {
-            $name = $file->getFilename();
-            // Previews, share images, licences, and the TTFs the image exporter needs.
-            if (preg_match('/-(arabic|latin)\.[0-9a-f]+\.woff2$|^[a-z0-9-]+-\d+\.[0-9a-f]+\.ttf$|^og\.[0-9a-f]+\.png$/', $name) || $name === 'OFL.txt') {
-                $dest = $out.'/font-files/'.$file->getRelativePath().'/'.$name;
-                File::ensureDirectoryExists(dirname($dest));
-                File::copy($file->getPathname(), $dest);
-            }
+            $dest = $out.'/font-files/'.$file->getRelativePath().'/'.$file->getFilename();
+            File::ensureDirectoryExists(dirname($dest));
+            File::copy($file->getPathname(), $dest);
         }
+        File::copy(config('yameen.fonts.path').'/fonts.json', $out.'/font-files/fonts.json');
         File::put($out.'/.nojekyll', '');
     }
 }
