@@ -60,5 +60,6 @@
                 <p class="mt-3 text-meta text-muted">{{ __('ui.fixer.font_note') }} {{ __('ui.fixer.reversed_note') }}</p>
             </fieldset>
         </details>
+        <x-limit-panel class="mt-4" />
     </section>
 </div>

@@ -31,6 +31,8 @@
         @endforeach
     </div>
 
+    <x-limit-panel class="mt-5" />
+
     {{-- After a click: confirmation + how to paste into the chosen app. --}}
     <div x-show="picked" x-cloak x-ref="done" role="status" class="mt-5 rounded-panel bg-lav-100 border border-lav-200 p-4 md:p-5">
         <p class="font-semibold text-lav-800">

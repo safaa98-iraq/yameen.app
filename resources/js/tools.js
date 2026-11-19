@@ -9,8 +9,10 @@ const COPIED_MS = 1500;
 function copyable() {
     return {
         copied: false,
-        async copy(text) {
+        // Copy `text` after charging one credit for the source text (deduplicated per text per day).
+        async copy(text, action = 'fix') {
             if (!text) return;
+            if (action && !(await this.$store.credits.consume(action, this.$store.text.value))) return;
             if (await copyText(text)) {
                 this.copied = true;
                 clearTimeout(this._copiedTimer);
@@ -76,6 +78,7 @@ export function registerTools(Alpine) {
                 this.$refs.input?.focus();
                 return;
             }
+            if (!(await this.$store.credits.consume('fix', text))) return;
             const { fixText } = await import('./text/fixer');
             const fixed = fixText(this.$store.text.value);
             if (await copyText(fixed)) {

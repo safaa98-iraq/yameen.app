@@ -18,8 +18,29 @@ export function registerFonts(Alpine) {
         size: 40,
         weight: 400,
         sample: config.sample ?? '',
+        // Custom preview text costs one credit per distinct text per day (on the
+        // font browser only), charged 1.5 s after typing stops.
+        charge: Boolean(config.charge),
+        approved: '',
+        _timer: null,
+        init() {
+            if (!this.charge) return;
+            const check = () => {
+                clearTimeout(this._timer);
+                this._timer = setTimeout(async () => {
+                    const t = this.$store.text.value.trim();
+                    if (!t || t === this.sample || t === this.approved) return;
+                    if (await this.$store.credits.consume('preview', t)) this.approved = t;
+                }, 1500);
+            };
+            this.$watch('$store.text.value', check);
+            if (this.$store.text.value.trim()) check();
+        },
         get text() {
-            return this.$store.text.value.trim() || this.sample;
+            const t = this.$store.text.value.trim();
+            if (!t) return this.sample;
+            // Without an approved preview, keep showing the sample text.
+            return !this.charge || t === this.approved || !this.$store.credits.blocked ? t : this.sample;
         },
         matches(font) {
             if (this.style && font.style !== this.style) return false;

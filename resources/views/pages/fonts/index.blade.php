@@ -22,7 +22,7 @@
 
     <div class="pt-8"></div>
 
-    <div x-data="fontGrid({ style: @js($activeStyle ?? ''), sample: @js(config('yameen.fonts.default_sample.'.app()->getLocale())), fonts: @js($clientFonts) })">
+    <div x-data="fontGrid({ charge: true, style: @js($activeStyle ?? ''), sample: @js(config('yameen.fonts.default_sample.'.app()->getLocale())), fonts: @js($clientFonts) })">
         <section class="rounded-panel bg-lav-50 border border-line p-4 md:p-6 grid gap-4 md:grid-cols-[2fr_1fr_1fr]" aria-label="{{ __('ui.fonts.filters') }}">
             <x-tool.input id="fonts-text" :label="__('ui.fonts.specimen_label')" />
             <div>
@@ -57,6 +57,8 @@
                 </div>
             </div>
         </section>
+
+        <x-limit-panel class="mt-4" />
 
         <p class="mt-6 text-meta text-muted tabular-nums" aria-live="polite">
             <span x-text="@js(__('ui.fonts.count', ['count' => '__N__'])).replace('__N__', visibleCount)">{{ __('ui.fonts.count', ['count' => $fonts->count()]) }}</span>

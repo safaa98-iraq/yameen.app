@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            // No passwords: sign-in is by emailed one-time code or Google.
+            $table->string('google_id')->nullable()->unique();
+            $table->timestamp('pro_until')->nullable()->index();
+            $table->timestamp('pro_reminder_sent_for')->nullable(); // pro_until the 3-day reminder was sent for
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

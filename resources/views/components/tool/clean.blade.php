@@ -37,5 +37,6 @@
             <span x-show="!copied">{{ __('ui.cleaner.copy') }}</span>
             <span x-show="copied" x-cloak>{{ __('ui.tool.copied') }}</span>
         </button>
+        <x-limit-panel class="mt-4" />
     </section>
 </div>

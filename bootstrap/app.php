@@ -12,7 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Behind Cloudflare: take the client IP from X-Forwarded-For.
+        $middleware->trustProxies(at: '*');
+        $middleware->redirectGuestsTo(fn () => lroute('login'));
+        $middleware->validateCsrfTokens(except: ['api/credits/consume', 'webhooks/*']);
+        $middleware->alias(['admin' => \App\Http\Middleware\EnsureAdmin::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

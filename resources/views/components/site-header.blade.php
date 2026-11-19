@@ -33,9 +33,15 @@
         </nav>
 
         <div class="ms-auto flex items-center gap-2">
+            <x-credits-counter class="hidden lg:block" />
             <a href="{{ Locales::switchUrl($other, true) }}" hreflang="{{ $other }}" lang="{{ $other }}"
                class="inline-flex items-center min-h-11 px-3 rounded-control text-small text-muted hover:text-ink hover:bg-lav-50 no-underline"
                title="{{ __('ui.lang_switch_label') }}">{{ __('ui.lang_switch') }}</a>
+            @auth
+                <a href="{{ lroute('account') }}" class="btn btn-secondary hidden sm:inline-flex">{{ __('ui.account.nav') }}</a>
+            @else
+                <a href="{{ lroute('login') }}" class="btn btn-secondary hidden sm:inline-flex">{{ __('ui.nav.login') }}</a>
+            @endauth
             <button type="button" class="md:hidden btn btn-secondary px-3"
                     @click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-nav">
                 <span x-text="open ? @js(__('ui.nav.close')) : @js(__('ui.nav.menu'))">{{ __('ui.nav.menu') }}</span>
@@ -50,7 +56,10 @@
                     <li><a href="{{ lroute($route) }}" class="flex items-center min-h-12 text-ink font-medium no-underline border-b border-line last:border-0"
                            @if (route_is($pattern)) aria-current="page" @endif>{{ __('ui.'.$label) }}</a></li>
                 @endforeach
+                <li><a href="{{ auth()->check() ? lroute('account') : lroute('login') }}" class="flex items-center min-h-12 text-ink font-medium no-underline">{{ auth()->check() ? __('ui.account.nav') : __('ui.nav.login') }}</a></li>
+                <li><a href="{{ lroute('pricing') }}" class="flex items-center min-h-12 text-ink font-medium no-underline">{{ __('ui.nav.pricing') }}</a></li>
             </ul>
+            <x-credits-counter class="py-3 border-t border-line" />
         </nav>
     </div>
 </header>

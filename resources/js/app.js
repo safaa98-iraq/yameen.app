@@ -2,6 +2,7 @@ import Alpine from 'alpinejs';
 import { readSharedText, writeSharedText } from './lib/shared-text';
 import { registerTools } from './tools';
 import { registerFonts } from './fonts';
+import { createCreditsStore } from './lib/credits';
 
 // Shared text across tools, persisted per browser session.
 Alpine.store('text', {
@@ -11,6 +12,9 @@ Alpine.store('text', {
         writeSharedText(value);
     },
 });
+
+Alpine.store('credits', createCreditsStore());
+document.addEventListener('alpine:initialized', () => Alpine.store('credits').refresh());
 
 // Auto-growing textarea: <textarea x-data x-autogrow>
 Alpine.directive('autogrow', (el) => {

@@ -28,6 +28,23 @@ return [
         'noindex' => (bool) env('SEO_NOINDEX', false),
     ],
 
+    // Defaults for admin-editable settings (App\Models\Setting overrides them).
+    'settings' => [
+        'credits_visitor' => 8,
+        'credits_free' => 15,
+        'cost_fix' => 1,
+        'cost_preview' => 1,
+        'cost_png' => 2,
+        'usd_to_iqd_rate' => 1310,
+        'ads_enabled' => false,
+        'adsense_client' => '',
+    ],
+
+    'plans' => [
+        'monthly' => ['price_usd' => 5, 'days' => 30],
+        'yearly' => ['price_usd' => 40, 'days' => 365],
+    ],
+
     'contact_email' => env('CONTACT_EMAIL', 'contact@yameen.app'),
 
     'font_styles' => ['kufi', 'naskh', 'sans', 'serif', 'display', 'handwriting'],

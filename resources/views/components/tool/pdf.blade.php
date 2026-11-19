@@ -41,5 +41,6 @@
                     @click="repairWords = !repairWords"
                     x-text="repairWords ? @js(__('ui.pdf.words_undo')) : @js(__('ui.pdf.words_redo'))"></button>
         </div>
+        <x-limit-panel class="mt-4" />
     </section>
 </div>

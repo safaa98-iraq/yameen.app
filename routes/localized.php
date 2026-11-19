@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FontController;
 use App\Http\Controllers\PageController;
@@ -32,7 +34,14 @@ Route::get('/export', [PageController::class, 'placeholder'])->name('export')->d
 
 // Account and plans (phases 4 and 6)
 Route::get('/pricing', [PageController::class, 'placeholder'])->name('pricing')->defaults('page', 'pricing');
-Route::get('/login', [PageController::class, 'placeholder'])->name('login')->defaults('page', 'login');
+Route::get('/login', [AuthController::class, 'show'])->name('login');
+Route::post('/login/code', [AuthController::class, 'sendCode'])->name('login.send')->middleware('throttle:10,1');
+Route::post('/login/verify', [AuthController::class, 'verify'])->name('login.verify')->middleware('throttle:20,1');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [AccountController::class, 'show'])->name('account');
+    Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
+});
 
 // Static pages and blog
 foreach (['about', 'privacy', 'terms', 'contact'] as $page) {
