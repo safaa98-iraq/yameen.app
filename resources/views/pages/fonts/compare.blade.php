@@ -1,5 +1,6 @@
 @php $sample = config('yameen.fonts.default_sample.'.app()->getLocale()); @endphp
-<x-layouts.app :title="__('ui.fonts.compare_title')" :description="__('ui.fonts.compare_description')">
+<x-layouts.app :title="__('ui.fonts.compare_title')" :description="__('ui.fonts.compare_description')"
+               :breadcrumbs="[[__('ui.pages.fonts'), lroute('fonts')], [__('ui.pages.fonts-compare'), lroute('fonts.compare')]]">
     <x-slot:hero>
         <x-page-hero :h1="__('ui.fonts.compare_h1')" />
     </x-slot:hero>

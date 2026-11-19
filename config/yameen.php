@@ -23,6 +23,13 @@ return [
         'cinema-4d' => 'Cinema 4D',
     ],
 
+    'seo' => [
+        // Set on preview deployments so search engines do not index them.
+        'noindex' => (bool) env('SEO_NOINDEX', false),
+    ],
+
+    'contact_email' => env('CONTACT_EMAIL', 'contact@yameen.app'),
+
     'font_styles' => ['kufi', 'naskh', 'sans', 'serif', 'display', 'handwriting'],
 
     'fonts' => [

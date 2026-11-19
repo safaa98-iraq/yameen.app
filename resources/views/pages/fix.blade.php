@@ -1,4 +1,10 @@
-<x-layouts.app :title="$page->title" :description="$page->description">
+@php
+    $crumbs = [[__('ui.pages.fix'), lroute('fix')]];
+    if ($software) {
+        $crumbs[] = [$softwareName, lroute('fix.software', ['software' => $software])];
+    }
+@endphp
+<x-layouts.app :title="$page->title" :description="$page->description" :app="true" :breadcrumbs="$crumbs">
     <x-slot:hero>
         <x-page-hero :h1="$page->h1" :intro="$page->intro" />
     </x-slot:hero>

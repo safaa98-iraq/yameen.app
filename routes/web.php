@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\SeoController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
 
 /*
 | Every public page exists once per locale: Arabic at the root, English

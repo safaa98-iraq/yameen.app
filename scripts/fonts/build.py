@@ -38,6 +38,7 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib import instancer
 
 REPO_URL = "https://github.com/google/fonts.git"
+OG_VERSION = 1  # bump to regenerate share images only
 BUILD_VERSION = 4  # bump to force a full rebuild when output format changes
 
 # Characters kept in the Arabic preview subset: Arabic blocks, presentation
@@ -231,6 +232,49 @@ def coverage(font: TTFont, codepoints: list[int]) -> float:
     return sum(1 for cp in codepoints if cp in cmap) / len(codepoints)
 
 
+# ---------------------------------------------------------------------- og images
+
+OG_SAMPLE = "الخط العربي فن يبدأ من اليمين"
+
+
+def make_og(out: Path, entry: dict, fallback_ttf: Path | None) -> str | None:
+    """1200x630 share image: Arabic sample and the family name, both in the font."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        log("Pillow not installed: skipping OG images")
+        return None
+
+    weights = entry["weights"]
+    weight = min(weights, key=lambda w: (abs(w - 400), w))
+    ttf = out / "files" / entry["slug"] / entry["files"][str(weight)]["ttf"]
+    cmap = TTFont(ttf).getBestCmap() or {}
+    name_font_path = ttf if all(ord(c) in cmap for c in entry["name"] if c != " ") else (fallback_ttf or ttf)
+
+    W, H, pad = 1200, 630, 80
+    img = Image.new("RGB", (W, H), "#F4F1FB")
+    draw = ImageDraw.Draw(img)
+    draw.rectangle([0, H - 12, W, H], fill="#5B4A9E")
+
+    size = 120
+    while size > 40:
+        sample_font = ImageFont.truetype(str(ttf), size, layout_engine=ImageFont.Layout.RAQM)
+        if draw.textlength(OG_SAMPLE, font=sample_font, direction="rtl", language="ar") <= W - 2 * pad:
+            break
+        size -= 4
+    draw.text((W - pad, 300), OG_SAMPLE, font=sample_font, fill="#1E1A2B", anchor="rm", direction="rtl", language="ar")
+
+    name_font = ImageFont.truetype(str(name_font_path), 60, layout_engine=ImageFont.Layout.RAQM)
+    draw.text((W - pad, 500), entry["name"], font=name_font, fill="#5B4A9E", anchor="rs", direction="ltr")
+    if fallback_ttf:
+        small = ImageFont.truetype(str(fallback_ttf), 30, layout_engine=ImageFont.Layout.RAQM)
+        draw.text((pad, 500), "yameen.app", font=small, fill="#6B6680", anchor="ls")
+
+    buf = io.BytesIO()
+    img.save(buf, "PNG", optimize=True)
+    return write_hashed(out / "files" / entry["slug"], "og", "png", buf.getvalue())
+
+
 # ------------------------------------------------------------------------- build
 
 def build_family(repo: Path, folder: str, meta: dict, out: Path, kind: str) -> dict:
@@ -365,6 +409,25 @@ def main() -> int:
             cache[folder] = {"key": key, "entry": entry}
             results.append(entry)
             cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=1))
+
+    # Share images for Arabic families (kept outside the per-family cache key, so
+    # adding or changing them does not rebuild fonts).
+    plex = next((r for r in results if r["slug"] == "ibm-plex-sans-arabic"), None)
+    fallback = out / "files" / plex["slug"] / plex["files"]["400"]["ttf"] if plex else None
+    for entry in results:
+        if entry["kind"] != "arabic":
+            continue
+        current = entry.get("og")
+        if current and (out / "files" / entry["slug"] / current).exists() and entry.get("og_version") == OG_VERSION:
+            continue
+        for old_og in (out / "files" / entry["slug"]).glob("og.*.png"):
+            old_og.unlink()
+        try:
+            entry["og"] = make_og(out, entry, fallback)
+            entry["og_version"] = OG_VERSION
+        except Exception as exc:
+            log(f"OG image failed for {entry['slug']}: {exc}")
+    cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=1))
 
     # Remove output folders for families that no longer exist.
     keep = {r["slug"] for r in results} | ({v["entry"]["slug"] for v in cache.values()} if only else set())

@@ -94,7 +94,7 @@ class FontsSync extends Command
                     'designer' => $f['designer'] ?: null,
                     'license' => $f['license'] ?? 'OFL',
                     'weights' => $f['weights'],
-                    'files' => $f['files'],
+                    'files' => isset($f['og']) ? $f['files'] + ['og' => $f['og']] : $f['files'],
                     'presentation_forms' => $presentation,
                     'diacritics' => (bool) ($f['diacritics'] ?? false),
                     'variable' => (bool) ($f['variable'] ?? false),

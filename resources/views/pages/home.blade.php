@@ -4,7 +4,7 @@
     $styles = $fonts->pluck('style')->unique()->sortBy(fn ($s) => array_search($s, config('yameen.font_styles')))->values();
     $sample = config('yameen.fonts.default_sample.'.app()->getLocale());
 @endphp
-<x-layouts.app>
+<x-layouts.app :app="true">
     <x-slot:hero>
         <x-hero-input :h1="__('ui.home.h1')" :lead="__('ui.home.lead')" />
     </x-slot:hero>

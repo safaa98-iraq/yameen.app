@@ -1,5 +1,5 @@
 @php $title = __('ui.pages.'.$page); @endphp
-<x-layouts.app :title="$title.' | '.__('ui.brand')">
+<x-layouts.app :title="$title.' | '.__('ui.brand')" :noindex="true">
     <div class="py-18 max-w-prose">
         <h1 class="text-h2 font-semibold leading-tight">{{ $title }}</h1>
         <p class="mt-4 text-muted">{{ __('ui.placeholder.body') }}</p>

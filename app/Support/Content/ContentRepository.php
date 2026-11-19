@@ -38,6 +38,27 @@ class ContentRepository
         return $this->find($slug, $locale) ?? abort(404);
     }
 
+    /**
+     * Slugs of the pages in a content folder, e.g. slugs('blog') → ['photoshop-arabic', ...].
+     * Uses the default locale; drafts (front matter "draft: true") are skipped.
+     */
+    public function slugs(string $folder, ?string $locale = null): array
+    {
+        $locale ??= config('yameen.default_locale');
+        $dir = ($this->basePath ?? resource_path('content')).'/'.$locale.'/'.$folder;
+        $slugs = [];
+        foreach (glob($dir.'/*.md') ?: [] as $file) {
+            $slug = $folder.'/'.basename($file, '.md');
+            $page = $this->find($slug, $locale);
+            if ($page && ! $page->meta('draft')) {
+                $slugs[] = basename($file, '.md');
+            }
+        }
+        sort($slugs);
+
+        return $slugs;
+    }
+
     public function path(string $slug, string $locale): string
     {
         return ($this->basePath ?? resource_path('content')).'/'.$locale.'/'.$slug.'.md';

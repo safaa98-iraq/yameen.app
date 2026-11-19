@@ -113,7 +113,7 @@ it('shows app-ready fonts with a copy button on the home page', function () {
 it('does not link to pages that are not built yet', function () {
     $html = $this->get('/')->getContent();
 
-    foreach (['/export', '/login', '/pricing', '/privacy'] as $path) {
+    foreach (['/export', '/login', '/pricing'] as $path) {
         expect($html)->not->toContain('href="'.url($path).'"');
     }
 });

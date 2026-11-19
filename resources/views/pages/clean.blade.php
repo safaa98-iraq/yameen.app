@@ -1,4 +1,5 @@
-<x-layouts.app :title="$page->title" :description="$page->description">
+<x-layouts.app :title="$page->title" :description="$page->description" :app="true"
+               :breadcrumbs="[[__('ui.pages.clean'), lroute('clean')]]">
     <x-slot:hero>
         <x-page-hero :h1="$page->h1" :intro="$page->intro" />
     </x-slot:hero>

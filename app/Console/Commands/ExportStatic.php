@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Support\FontCatalog;
+use App\Support\PublicPages;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class ExportStatic extends Command
 
     protected $description = 'Export public pages as static HTML for a preview deployment';
 
-    public function handle(Kernel $kernel, FontCatalog $fonts): int
+    public function handle(Kernel $kernel): int
     {
         $out = rtrim($this->argument('out'), '/');
         $base = rtrim($this->option('base-url') ?: config('app.url'), '/');
@@ -37,7 +37,7 @@ class ExportStatic extends Command
         File::deleteDirectory($out);
         File::ensureDirectoryExists($out);
 
-        $paths = $this->paths($fonts);
+        $paths = $this->paths();
         $failed = 0;
         foreach ($paths as $path) {
             $response = $kernel->handle(Request::create($path, 'GET'));
@@ -52,6 +52,11 @@ class ExportStatic extends Command
             File::put($file, $response->getContent());
         }
 
+        // Plain files served at the root.
+        foreach (['/sitemap.xml', '/robots.txt'] as $path) {
+            File::put($out.$path, $kernel->handle(Request::create($path, 'GET'))->getContent());
+        }
+
         // 404 page for static hosts: reuse the home page shell.
         if (is_file($out.'/index.html')) {
             File::copy($out.'/index.html', $out.'/404.html');
@@ -64,25 +69,12 @@ class ExportStatic extends Command
     }
 
     /** @return list<string> */
-    private function paths(FontCatalog $fonts): array
+    private function paths(): array
     {
-        $pages = ['/', '/fix', '/pdf-fix', '/clean', '/fonts', '/fonts/compare', '/fonts/pairing',
-            '/export', '/pricing', '/login', '/about', '/privacy', '/terms', '/contact'];
-        foreach (array_keys(config('yameen.software')) as $software) {
-            $pages[] = '/fix/'.$software;
-        }
-        foreach (config('yameen.font_styles') as $style) {
-            $pages[] = '/fonts/style/'.$style;
-        }
-        foreach ($fonts->arabic() as $font) {
-            $pages[] = '/fonts/'.$font->slug;
-        }
-
         $paths = [];
-        foreach (config('yameen.locales') as $meta) {
-            $prefix = $meta['prefix'] ? '/'.$meta['prefix'] : '';
-            foreach ($pages as $page) {
-                $paths[] = $page === '/' ? ($prefix ?: '/') : $prefix.$page;
+        foreach (array_keys(config('yameen.locales')) as $locale) {
+            foreach (app(PublicPages::class)->paths() as $path) {
+                $paths[] = PublicPages::localize($path, $locale);
             }
         }
 
@@ -92,7 +84,7 @@ class ExportStatic extends Command
     private function copyAssets(string $out): void
     {
         File::copyDirectory(public_path('build'), $out.'/build');
-        foreach (['favicon.svg', 'robots.txt'] as $file) {
+        foreach (['favicon.svg', 'og-default.png'] as $file) {
             if (is_file(public_path($file))) {
                 File::copy(public_path($file), $out.'/'.$file);
             }
@@ -105,7 +97,7 @@ class ExportStatic extends Command
         }
         foreach (File::allFiles($src) as $file) {
             $name = $file->getFilename();
-            if (preg_match('/-(arabic|latin)\.[0-9a-f]+\.woff2$/', $name) || $name === 'OFL.txt') {
+            if (preg_match('/-(arabic|latin)\.[0-9a-f]+\.woff2$|^og\.[0-9a-f]+\.png$/', $name) || $name === 'OFL.txt') {
                 $dest = $out.'/font-files/'.$file->getRelativePath().'/'.$name;
                 File::ensureDirectoryExists(dirname($dest));
                 File::copy($file->getPathname(), $dest);

@@ -3,7 +3,9 @@
     $letters = ['ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي','ء','آ','أ','إ','ؤ','ئ','ة','ى','لا'];
     $digits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
 @endphp
-<x-layouts.app :title="__('ui.fonts.font_title', ['font' => $font->name])" :description="__('ui.fonts.font_description', ['font' => $font->name])">
+<x-layouts.app :title="__('ui.fonts.font_title', ['font' => $font->name])" :description="__('ui.fonts.font_description', ['font' => $font->name])"
+               :image="$font->ogUrl()"
+               :breadcrumbs="[[__('ui.pages.fonts'), lroute('fonts')], [$font->name, lroute('fonts.show', ['font' => $font->slug])]]">
     <div x-data="fontSpecimen(@js($font->toClient()), @js($sample))">
         <div class="pt-8 md:pt-12 pb-6 flex flex-wrap items-baseline justify-between gap-4">
             <h1 class="text-h3 md:text-h2 font-semibold leading-tight" dir="ltr">{{ $font->name }}</h1>

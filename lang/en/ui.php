@@ -3,6 +3,7 @@
 return [
     'brand' => 'Yameen',
     'tagline' => 'Type Arabic, pick a font, paste it anywhere.',
+    'breadcrumb_home' => 'Home',
     'skip_to_content' => 'Skip to content',
 
     'nav' => [
@@ -132,6 +133,7 @@ return [
         'intro' => 'Free fonts under the OFL. Type your text to see it in every font.',
         'style_title' => 'Free :style Arabic fonts | Yameen',
         'style_h1' => ':style fonts',
+        'style_description' => 'Free :style Arabic fonts: preview :count fonts with your text, see which work in design apps, and download them from official sources.',
         'specimen_label' => 'Preview text',
         'search' => 'Search by font name',
         'size' => 'Size',
@@ -201,6 +203,22 @@ return [
         'warning' => 'Don’t paste this text into WhatsApp, Word or a browser: it will look reversed. It is made for apps that show Arabic disconnected.',
     ],
 
+    'static' => [
+        'email_label' => 'Email',
+        'updated' => 'Last updated: :date',
+    ],
+
+    'blog' => [
+        'title' => 'Yameen guides: Arabic in design apps | Yameen',
+        'description' => 'Short guides on typing Arabic in design, video and game tools, and choosing Arabic fonts.',
+        'h1' => 'Guides',
+        'intro' => 'Short guides on Arabic in design apps and fonts.',
+        'empty' => 'No guides yet.',
+        'cta_title' => 'Try Yameen now',
+        'cta_body' => 'Type your text and click your app; we copy it ready to paste.',
+        'cta_button' => 'Open the tool',
+    ],
+
     'placeholder' => [
         'title' => 'This page is being prepared',
         'body' => 'This tool is coming soon. You can use the fixer on the home page.',
@@ -221,6 +239,7 @@ return [
         'privacy' => 'Privacy policy',
         'terms' => 'Terms of use',
         'contact' => 'Contact',
+        'blog' => 'Guides',
     ],
 
     'footer' => [

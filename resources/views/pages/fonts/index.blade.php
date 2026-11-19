@@ -4,7 +4,18 @@
     $h1 = $activeStyle ? __('ui.fonts.style_h1', ['style' => $styleName]) : __('ui.fonts.h1');
     $clientFonts = $fonts->map(fn ($f) => ['slug' => $f->slug, 'name' => $f->name, 'style' => $f->style, 'apps' => $f->presentation_forms, 'diacritics' => $f->diacritics])->values();
 @endphp
-<x-layouts.app :title="$title" :description="__('ui.fonts.description', ['count' => $fonts->count()])">
+@php
+    $crumbs = [[__('ui.pages.fonts'), lroute('fonts')]];
+    if ($activeStyle) {
+        $crumbs[] = [$h1, lroute('fonts.style', ['style' => $activeStyle])];
+    }
+@endphp
+@php
+    $description = $activeStyle
+        ? __('ui.fonts.style_description', ['style' => $styleName, 'count' => $fonts->where('style', $activeStyle)->count()])
+        : __('ui.fonts.description', ['count' => $fonts->count()]);
+@endphp
+<x-layouts.app :title="$title" :description="$description" :breadcrumbs="$crumbs">
     <x-slot:hero>
         <x-page-hero :h1="$h1" :intro="__('ui.fonts.intro')" />
     </x-slot:hero>

@@ -1,4 +1,5 @@
-<x-layouts.app :title="__('ui.fonts.pairing_title')" :description="__('ui.fonts.pairing_description')">
+<x-layouts.app :title="__('ui.fonts.pairing_title')" :description="__('ui.fonts.pairing_description')"
+               :breadcrumbs="[[__('ui.pages.fonts'), lroute('fonts')], [__('ui.pages.fonts-pairing'), lroute('fonts.pairing')]]">
     <x-slot:hero>
         <x-page-hero :h1="__('ui.fonts.pairing_h1')" :intro="__('ui.fonts.pairing_intro')" />
     </x-slot:hero>
