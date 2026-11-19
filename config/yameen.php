@@ -23,6 +23,9 @@ return [
         'cinema-4d' => 'Cinema 4D',
     ],
 
+    // Demo accounts with one-click sign-in (/demo). Never enable on a live site.
+    'demo' => (bool) env('DEMO_MODE', false),
+
     'seo' => [
         // Set on preview deployments so search engines do not index them.
         'noindex' => (bool) env('SEO_NOINDEX', false),

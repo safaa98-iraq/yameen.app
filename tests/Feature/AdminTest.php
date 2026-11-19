@@ -88,3 +88,9 @@ it('records every change in the log, visible to admins only', function () {
 
     $this->actingAs(User::factory()->create())->get('/admin/log')->assertNotFound();
 });
+
+it('promotes a user to admin from the command line', function () {
+    $this->artisan('admin:make', ['email' => 'Owner@Example.com'])->assertSuccessful();
+    expect(User::where('email', 'owner@example.com')->first()->is_admin)->toBeTrue();
+    $this->artisan('admin:make', ['email' => 'nope'])->assertFailed();
+});

@@ -202,7 +202,17 @@ class AdminController extends Controller
     {
         $values = collect(self::SETTINGS)->keys()->mapWithKeys(fn ($k) => [$k => Setting::get($k)]);
 
-        return view('admin.settings', ['values' => $values]);
+        // Today's usage per user or visitor, for the credit calculator.
+        $rows = DB::table('credit_usages')->where('day', \App\Services\Credits::today())
+            ->selectRaw('user_id, cookie_key, SUM(cost) as total')->groupBy('user_id', 'cookie_key')->get();
+        $hit = $rows->filter(fn ($r) => $r->total >= (int) Setting::get($r->user_id ? 'credits_free' : 'credits_visitor'))->count();
+
+        return view('admin.settings', ['values' => $values, 'usage' => [
+            'total' => (int) $rows->sum('total'),
+            'users' => $rows->count(),
+            'avg' => $rows->count() ? round($rows->avg('total'), 1) : 0,
+            'hit' => $hit,
+        ]]);
     }
 
     public function saveSettings(Request $request): RedirectResponse

@@ -45,5 +45,8 @@
             @endif
         </div>
         <p class="mt-4 text-meta text-muted text-center">{{ __('ui.auth.no_password') }}</p>
+        @if (config('yameen.demo'))
+            <p class="mt-2 text-small text-center"><a href="{{ route('demo') }}">{{ __('ui.demo.link') }}</a></p>
+        @endif
     </div>
 </x-layouts.app>

@@ -45,6 +45,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', SetLocale::
     Route::post('/settings', [AdminController::class, 'saveSettings'])->name('settings.save');
 });
 
+// Demo accounts (404 unless DEMO_MODE=true).
+Route::middleware(SetLocale::class.':ar')->group(function () {
+    Route::get('/demo', [\App\Http\Controllers\DemoController::class, 'show'])->name('demo');
+    Route::post('/demo/{role}', [\App\Http\Controllers\DemoController::class, 'login'])->name('demo.login')->middleware('throttle:20,1');
+});
+
 // Pro-only JavaScript modules (SVG export, batch), served to Pro subscribers only.
 Route::get('/pro/{name}.js', ProAssetController::class)->name('pro.asset')->where('name', '[a-z]+');
 

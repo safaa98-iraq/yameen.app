@@ -124,7 +124,11 @@ php artisan config:cache && php artisan route:cache && php artisan view:cache
 Cron (every minute): `php /path/artisan schedule:run` — runs `wayl:reconcile` hourly and
 `pro:remind` daily. Queue worker for webhook processing: `php artisan queue:work --tries=5`
 (Supervisor), or on shared hosting add a cron: `php artisan queue:work --stop-when-empty`.
-Make yourself admin: `php artisan tinker --execute="App\Models\User::where('email','you@…')->update(['is_admin'=>true]);"`
+Make yourself admin: `php artisan admin:make you@example.com`, then sign in with that email and open `/admin`.
+
+Demo accounts (admin, free, Pro monthly, Pro lifetime): `php artisan demo:accounts`. With
+`DEMO_MODE=true` in `.env`, `/demo` signs in as any of them with one click (and the login page
+links to it). Keep `DEMO_MODE=false` on the live site: the routes then answer 404.
 
 ### Caching
 
