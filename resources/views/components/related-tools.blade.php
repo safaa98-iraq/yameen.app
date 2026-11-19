@@ -1,6 +1,6 @@
 @props(['except' => null, 'software' => null])
 @php
-    $tools = collect(['fix', 'pdf-fix', 'garbled', 'clean', 'fonts'])->reject(fn ($t) => $t === $except);
+    $tools = collect(['fix', 'pdf-fix', 'garbled', 'clean', 'export', 'fonts'])->reject(fn ($t) => $t === $except);
     $apps = collect(config('yameen.software'))->reject(fn ($name, $slug) => $slug === $software);
 @endphp
 <section class="border-t border-line py-12 grid gap-8 md:grid-cols-2">

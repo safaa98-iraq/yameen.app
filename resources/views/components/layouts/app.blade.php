@@ -50,6 +50,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#FAF9FC">
     <meta name="yameen-api" content="{{ url('/api') }}">
+    <meta name="yameen-pro" content="{{ url('/pro') }}">
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
     @foreach (Locales::all() as $code => $meta)
         <link rel="alternate" hreflang="{{ $code }}" href="{{ Locales::switchUrl($code) }}">

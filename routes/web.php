@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CreditsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProAssetController;
 use App\Http\Controllers\SeoController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,9 @@ Route::prefix('api')->middleware('throttle:60,1')->group(function () {
     Route::get('/credits', [CreditsController::class, 'show'])->name('api.credits');
     Route::post('/credits/consume', [CreditsController::class, 'consume'])->name('api.credits.consume');
 });
+
+// Pro-only JavaScript modules (SVG export, batch), served to Pro subscribers only.
+Route::get('/pro/{name}.js', ProAssetController::class)->name('pro.asset')->where('name', '[a-z]+');
 
 // Google sign-in (one fixed callback URL; the locale travels in the session).
 Route::get('/auth/google', [AuthController::class, 'googleRedirect'])->name('auth.google');

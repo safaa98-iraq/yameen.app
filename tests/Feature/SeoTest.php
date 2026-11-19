@@ -77,8 +77,9 @@ it('serves a sitemap with both locales and hreflang alternates', function () {
         ->toContain('<loc>'.url('/fonts/cairo').'</loc>')
         ->toContain('<loc>'.url('/blog/choosing-an-arabic-font').'</loc>')
         ->toContain('hreflang="x-default" href="'.url('/fonts/cairo').'"')
+        ->toContain('<loc>'.url('/export').'</loc>')
         ->not->toContain('/login')
-        ->not->toContain('/export');
+        ->not->toContain('/account');
     expect(simplexml_load_string($xml))->not->toBeFalse();
 });
 

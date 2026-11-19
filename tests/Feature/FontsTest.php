@@ -110,10 +110,3 @@ it('shows app-ready fonts with a copy button on the home page', function () {
         ->assertSee('appPicker(', false);
 });
 
-it('does not link to pages that are not built yet', function () {
-    $html = $this->get('/')->getContent();
-
-    foreach (['/batch'] as $path) {
-        expect($html)->not->toContain('href="'.url($path).'"');
-    }
-});

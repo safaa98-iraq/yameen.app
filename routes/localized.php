@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FontController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ToolController;
@@ -29,8 +30,9 @@ Route::get('/fonts/pairing', [FontController::class, 'pairing'])->name('fonts.pa
 Route::get('/fonts/style/{style}', [FontController::class, 'index'])->name('fonts.style')->where('style', $styles);
 Route::get('/fonts/{font}', [FontController::class, 'show'])->name('fonts.show')->where('font', '[a-z0-9-]+');
 
-// Export (phase 5)
-Route::get('/export', [PageController::class, 'placeholder'])->name('export')->defaults('page', 'export');
+// Export and batch
+Route::get('/export', [ExportController::class, 'export'])->name('export');
+Route::get('/batch', [ExportController::class, 'batch'])->name('batch');
 
 // Account and plans (phases 4 and 6)
 Route::get('/pricing', [PageController::class, 'placeholder'])->name('pricing')->defaults('page', 'pricing');
