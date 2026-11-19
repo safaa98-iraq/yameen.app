@@ -64,6 +64,18 @@ describe('swapped letter pairs from PDFs', () => {
         expect(fixMirroredBrackets(')معامل p <\n0.0001(. أداء )RMSE\n0.980(')).toBe('(معامل p <\n0.0001). أداء (RMSE\n0.980)');
     });
 
+    it('uses phrases and context where frequency cannot decide', () => {
+        expect(repair('احلمد هلل رب العاملني، وعىل آله')).toBe('الحمد لله رب العالمين، وعلى آله');
+        expect(repair('يف اجلزء الثالث من املجلد')).toBe('في الجزء الثالث من المجلد');
+    });
+
+    it('fixes corrupted forms that also appear in the word list', () => {
+        expect(repair('خالل املؤمتر الدويل عىل املستوى')).toBe('خلال المؤتمر الدولي على المستوى');
+        expect(repair('ظاهرة كربى يف املجلة لريكز عىل')).toBe('ظاهرة كبرى في المجلة ليركز على');
+        // words that are correct as written stay
+        expect(repair('فاكتب يف املجلة عن تفعيل احللول')).toBe('فاكتب في المجلة عن تفعيل الحلول');
+    });
+
     it('restores words stored fully reversed', () => {
         expect(repair('يخطر أصحاب الابحاث المقبولة رشنلل موافقة هيأة التحرير عىل نشرها')).toBe('يخطر أصحاب الابحاث المقبولة للنشر موافقة هيأة التحرير على نشرها');
         expect(repair('قرأت بتكلا عن ةلودلا')).toBe('قرأت الكتب عن الدولة');

@@ -24,20 +24,31 @@ export function buildDictionary(text) {
 }
 
 /** Rank of a word, allowing common one-letter and article prefixes. Lower is more frequent. */
-function wordRank(dict, word) {
-    if (dict.has(word)) return dict.get(word);
-    let best = Infinity;
+function wordRank(dict, word, { oneLetter = true } = {}) {
+    // A word may be listed itself as a rare corrupted entry («ليركز») and still
+    // be a common word with a prefix («ل» + «يركز»): take the best reading.
+    let best = dict.get(word) ?? hamzaRank(dict, word);
     for (const p of PREFIXES) {
+        if (!oneLetter && p.length === 1) continue;
         if (word.length >= p.length + 3 && word.startsWith(p)) {
             const rest = word.slice(p.length);
-            const r = dict.get(rest) ?? dict.get('ال' + rest);
+            let r = dict.get(rest) ?? dict.get('ال' + rest) ?? hamzaRank(dict, rest);
             if (r === undefined) continue;
+            // «لابحاث»: «ل» before a bare alef is almost never right.
+            if (p === 'ل' && rest[0] === 'ا' && !rest.startsWith('ال')) r = r * 20 + 500;
             // The list omits prefixed forms, so the article costs almost nothing;
             // one-letter prefixes are less certain («لأربعين» vs «الأربعين»).
-            best = Math.min(best, p === 'ال' ? r + 1 : r * 2 + 50);
+            best = Math.min(best ?? Infinity, p === 'ال' ? r + 1 : r * 2 + 50);
         }
     }
-    return best;
+    return best ?? Infinity;
+}
+
+/** «اخلاقية» written without its hamza: rank of «أخلاقية», slightly penalised. */
+function hamzaRank(dict, word) {
+    if (word[0] !== 'ا' || word[1] === 'ل') return undefined;
+    const r = dict.get('أ' + word.slice(1)) ?? dict.get('إ' + word.slice(1));
+    return r === undefined ? undefined : r * 3 + 100;
 }
 
 /** Signs that a text has swapped letter pairs (none of these occur in correct Arabic). */
@@ -84,6 +95,7 @@ function* swapVariants(word, allowed = (key) => LIKELY.has(key)) {
 // corrupted ligature, so fewer swaps is more likely right («الطبيني» → «الطبيين»,
 // not «الطيبين»). Swaps of pairs already seen swapped in the same text are cheap.
 const SWAP_COST = 10;
+const SEEDED = 0.5; // a pair assumed swapped without being seen in the text
 const LIKELY_SWAP_COST = 3;
 const CONFIRMED_SWAP_COST = 2;
 
@@ -115,7 +127,7 @@ for (const [firsts, seconds] of LIGATURES) {
 // Only applied when the text clearly has the problem.
 const COMMON_SWAPS = {
     يف: 'في', هلا: 'لها', هبا: 'بها', هلم: 'لهم', هبم: 'بهم', هلن: 'لهن',
-    هلذا: 'لهذا', هبذا: 'بهذا', هلذه: 'لهذه', هبذه: 'بهذه', فيام: 'فيما', بيام: 'بيما', كام: 'كما',
+    هلذا: 'لهذا', هبذا: 'بهذا', هلذه: 'لهذه', هلل: 'لله', وهلل: 'ولله', هبذه: 'بهذه', فيام: 'فيما', بيام: 'بيما', كام: 'كما',
     // «ال» is never a word on its own; «ام»/«هب» without hamza are not used in formal text.
     ال: 'لا', ام: 'ما', هب: 'به', حتت: 'تحت', غري: 'غير', بني: 'بين', ىلع: 'على', ىلإ: 'إلى',
 };
@@ -135,7 +147,12 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
     // Very rare entries are often the corrupted form itself (copied from PDFs into
     // the source corpora, e.g. «هيكيل»): treat them as unknown, but only replace
     // them with a much more frequent word.
-    const rare = original !== Infinity && original > RARE_RANK;
+    // Words known only through a one-letter prefix («كربى» = «ك» + «ربى») are
+    // weak evidence: treat them like rare words.
+    // «فاكتب» (ف + imperative) is a normal form, so a bare alef after the prefix is not weak.
+    const weak = original !== Infinity && !dict.has(word) && word[1] !== 'ا'
+        && wordRank(dict, word, { oneLetter: false }) === Infinity;
+    const rare = original !== Infinity && (original > RARE_RANK || weak);
     const known = original !== Infinity && !rare;
     // Known only through a prefix («بتكلا» = «ب» + a rare word) but shaped like a
     // reversed word: take the reversal when it is far more frequent.
@@ -164,11 +181,13 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
             const count = (k) => confirmed?.get(k) ?? 0;
             const seen = (k) => count(k) >= 2;
             // Known words: every swap must be confirmed in this text (once is enough for ligature pairs).
-            if (known && !v.keys.every((k) => seen(k) || (LIKELY.has(k) && count(k) >= 1))) continue;
+            if (known && !v.keys.every((k) => seen(k) || (LIKELY.has(k) && count(k) > 0))) continue;
             // A correct word starting with the article keeps it («الفردي» never becomes «لافردي»).
             if (known && word.startsWith('ال') && !v.word.startsWith('ال')) continue;
             const r = wordRank(dict, v.word);
             if (r === Infinity) continue;
+            // Turning a leading article into «لا» needs a common word («العب» → «لاعب», not «لابحاث»).
+            if (word.startsWith('ال') && v.word.startsWith('لا') && r > 20000) continue;
             const cost = (k) => k === 'rev'
                 ? (seen(k) || REVERSED_SHAPE.test(word) ? REVERSE_SIGNED_COST : REVERSE_COST)
                 : seen(k) ? CONFIRMED_SWAP_COST : LIKELY.has(k) ? LIKELY_SWAP_COST : SWAP_COST;
@@ -191,7 +210,11 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
 
     // A known word is replaced only by a more frequent one, and only through pairs
     // this text is already known to swap (checked above).
-    if (best && known && wordRank(dict, best.word) >= original) return null;
+    // Pairs only assumed swapped need a much more frequent word («تفعيل» stays).
+    if (best && known) {
+        const factor = best.keys.some((k) => (confirmed?.get(k) ?? 0) < 1) ? 3 : 1;
+        if (wordRank(dict, best.word) * factor >= original) return null;
+    }
     return best;
 }
 
@@ -222,10 +245,16 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
     }
     // Pass 3: known words, only when the text clearly has the problem.
     if (aggressive) {
+        // Lam ligatures are always stored swapped by these producers.
+        // Not «ال»/«أل»: alef-lam also occurs inside correct words («ثالث», «سأل»).
+        for (const k of LIKELY) {
+            if (k[1] === 'ل' && !'اأإآ'.includes(k[0]) && !confirmed.get(k)) confirmed.set(k, SEEDED);
+        }
         for (const w of words) {
             if (cache.get(w) || wordRank(dict, w) === Infinity) continue;
             if (COMMON_SWAPS[w]) cache.set(w, { word: COMMON_SWAPS[w], keys: [], common: true });
-            else cache.set(w, repairWord(dict, w, confirmed, { reconsiderKnown: true }));
+            // Other two-letter words are too ambiguous to swap («رب» / «بر»).
+            else if (w.length > 2) cache.set(w, repairWord(dict, w, confirmed, { reconsiderKnown: true }));
         }
     }
 
@@ -246,6 +275,7 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
     const parts = [];
     let fixed = 0;
     let last = 0;
+    let prevOut = '';
     for (const m of text.matchAll(TOKEN)) {
         let r = cache.get(bare(m[0]));
         // «الـ» (article with tatweel) is not the word «ال».
@@ -254,6 +284,8 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
         if (aggressive && bare(m[0]) === 'هل' && !/(^|[.!?؟:\n«"(]\s*)$/.test(text.slice(Math.max(0, m.index - 3), m.index))) {
             r = { word: 'له', keys: [] };
         }
+        if (r && aggressive) r = inContext(prevOut, m, r);
+        prevOut = r?.word ?? bare(m[0]);
         if (!r || r.word === bare(m[0])) continue;
         if (m.index > last) parts.push({ text: text.slice(last, m.index) });
         parts.push({ text: r.word, from: m[0] });
@@ -262,6 +294,15 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
     }
     if (last < text.length) parts.push({ text: text.slice(last) });
     return { text: parts.map((p) => p.text).join(''), fixed, parts };
+}
+
+/** Fixed phrases and grammar that settle a choice frequency cannot. */
+function inContext(prev, m, r) {
+    // «رب العاملني» is «رب العالمين», not «العاملين».
+    if (/^(رب|ربّ)$/.test(prev) && r.word === 'العاملين') return { ...r, word: 'العالمين' };
+    // «الجزء الثالث»: an ordinal after a definite singular noun stays as written.
+    if (/^(و|ف|ب|ك|ل)?(ال)?ثالث(ة)?$/.test(m[0]) && /^ال/.test(prev) && !/(ات|ين|ون)$/.test(prev)) return null;
+    return r;
 }
 
 /**
