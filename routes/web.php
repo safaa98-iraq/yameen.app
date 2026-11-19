@@ -26,13 +26,20 @@ Route::post('/webhooks/wayl', WaylWebhookController::class)->name('webhooks.wayl
 
 // Admin
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', SetLocale::class.':ar'])->group(function () {
-    Route::redirect('/', '/admin/orders');
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
     Route::post('/orders/{order}/refund', [AdminController::class, 'refund'])->name('orders.refund');
+    Route::post('/orders/{order}/paid', [AdminController::class, 'markPaid'])->name('orders.paid');
+    Route::post('/orders/{order}/failed', [AdminController::class, 'markFailed'])->name('orders.failed');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/users/{user}', [AdminController::class, 'user'])->name('users.show');
     Route::post('/users/{user}/pro', [AdminController::class, 'grantPro'])->name('users.pro');
+    Route::post('/users/{user}/pro-until', [AdminController::class, 'setProUntil'])->name('users.pro_until');
     Route::post('/users/{user}/revoke', [AdminController::class, 'revokePro'])->name('users.revoke');
     Route::post('/users/{user}/admin', [AdminController::class, 'toggleAdmin'])->name('users.admin');
+    Route::post('/users/{user}/credits', [AdminController::class, 'resetCredits'])->name('users.credits');
+    Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.delete');
+    Route::get('/log', [AdminController::class, 'log'])->name('log');
     Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
     Route::post('/settings', [AdminController::class, 'saveSettings'])->name('settings.save');
 });

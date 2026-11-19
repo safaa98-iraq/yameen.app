@@ -42,12 +42,13 @@ return [
         'ad_slot_tool' => '',
         'ad_slot_grid' => '',
         'ad_slot_sidebar' => '',
+        // Plans (one-time payments that extend Pro).
+        'plan_monthly_price' => 5,
+        'plan_monthly_days' => 30,
+        'plan_yearly_price' => 40,
+        'plan_yearly_days' => 365,
     ],
 
-    'plans' => [
-        'monthly' => ['price_usd' => 5, 'days' => 30],
-        'yearly' => ['price_usd' => 40, 'days' => 365],
-    ],
 
     'contact_email' => env('CONTACT_EMAIL', 'contact@yameen.app'),
 

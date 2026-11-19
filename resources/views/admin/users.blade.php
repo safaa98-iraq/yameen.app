@@ -4,6 +4,11 @@
         <input id="q" name="q" value="{{ $q }}" placeholder="{{ __('ui.auth.email_label') }}" class="field h-11 px-3 max-w-sm" dir="ltr">
         <button class="btn btn-secondary">{{ __('ui.admin.search') }}</button>
     </form>
+    <div class="flex flex-wrap gap-2 mb-4">
+        @foreach (['' => __('ui.fonts.all_styles'), 'pro' => 'Pro', 'admins' => 'Admin'] as $value => $label)
+            <a href="{{ route('admin.users', array_filter(['q' => $q, 'filter' => $value])) }}" @class(['chip no-underline', 'bg-lav-100 border-lav-200' => ($filter ?? '') === $value])>{{ $label }}</a>
+        @endforeach
+    </div>
     <div class="overflow-x-auto rounded-panel border border-line bg-surface">
         <table class="w-full text-small">
             <thead class="text-muted"><tr class="border-b border-line">
@@ -12,7 +17,7 @@
             <tbody>
             @foreach ($users as $user)
                 <tr class="border-b border-line align-top">
-                    <td class="p-3" dir="ltr">{{ $user->email }}</td>
+                    <td class="p-3" dir="ltr"><a href="{{ route('admin.users.show', $user) }}">{{ $user->email }}</a></td>
                     <td class="p-3 tabular-nums">{{ $user->isPro() ? $user->pro_until->format('Y-m-d') : '—' }}</td>
                     <td class="p-3">{{ $user->is_admin ? '✓' : '' }}</td>
                     <td class="p-3 tabular-nums">{{ $user->created_at->format('Y-m-d') }}</td>

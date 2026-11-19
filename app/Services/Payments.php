@@ -20,11 +20,29 @@ class Payments
         return (int) (ceil(round($priceUsd * $rate, 6) / 250) * 250);
     }
 
+    public const PLANS = ['monthly', 'yearly'];
+
+    /** Plan price and duration come from admin settings. */
     public static function plan(string $plan): array
     {
-        $p = config('yameen.plans.'.$plan) ?? throw new InvalidArgumentException('Unknown plan');
+        if (! in_array($plan, self::PLANS, true)) {
+            throw new InvalidArgumentException('Unknown plan');
+        }
+        $price = (float) Setting::get('plan_'.$plan.'_price');
 
-        return $p + ['amount_iqd' => self::amountIqd($p['price_usd'], (float) Setting::get('usd_to_iqd_rate'))];
+        return [
+            'price_usd' => $price,
+            'days' => (int) Setting::get('plan_'.$plan.'_days'),
+            'amount_iqd' => self::amountIqd($price, (float) Setting::get('usd_to_iqd_rate')),
+        ];
+    }
+
+    /** "Same as N months" for the yearly plan, from the two prices. */
+    public static function yearlyEquivalentMonths(): int
+    {
+        $monthly = (float) Setting::get('plan_monthly_price');
+
+        return $monthly > 0 ? (int) round((float) Setting::get('plan_yearly_price') / $monthly) : 0;
     }
 
     /** Create a pending order and its Wayl payment link. */

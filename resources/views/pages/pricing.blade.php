@@ -41,11 +41,13 @@
                             <span class="rounded-full bg-lav-100 px-3 py-1 text-meta text-lav-800">{{ __('ui.pricing.recommended') }}</span>
                         @endif
                     </div>
-                    <p class="mt-3"><span class="text-h2 font-semibold tabular-nums" dir="ltr">${{ $plan['price_usd'] }}</span>
-                        <span class="text-small text-muted">/ {{ __('ui.pricing.per_'.$key) }}</span></p>
+                    <p class="mt-3"><span class="text-h2 font-semibold tabular-nums" dir="ltr">${{ rtrim(rtrim(number_format($plan['price_usd'], 2), '0'), '.') }}</span>
+                        <span class="text-small text-muted">/ {{ trans_choice('ui.pricing.per_days', $plan['days'], ['days' => $plan['days']]) }}</span></p>
                     <p class="text-small text-muted tabular-nums">{{ __('ui.pricing.charged', ['amount' => number_format($plan['amount_iqd'])]) }}</p>
                     @if ($key === 'yearly')
-                        <p class="mt-1 text-small font-medium text-lav-700">{{ __('ui.pricing.yearly_value') }}</p>
+                        @if (($months = \App\Services\Payments::yearlyEquivalentMonths()) > 0 && $months < 12)
+                            <p class="mt-1 text-small font-medium text-lav-700">{{ __('ui.pricing.yearly_value', ['n' => $months]) }}</p>
+                        @endif
                     @endif
                     <ul class="mt-5 space-y-2 text-small flex-1">
                         @foreach ($features as $f)
