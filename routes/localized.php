@@ -3,6 +3,8 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FontController;
 use App\Http\Controllers\PageController;
@@ -35,12 +37,17 @@ Route::get('/export', [ExportController::class, 'export'])->name('export');
 Route::get('/batch', [ExportController::class, 'batch'])->name('batch');
 
 // Account and plans (phases 4 and 6)
-Route::get('/pricing', [PageController::class, 'placeholder'])->name('pricing')->defaults('page', 'pricing');
+Route::get('/pricing', [CheckoutController::class, 'pricing'])->name('pricing');
 Route::get('/login', [AuthController::class, 'show'])->name('login');
 Route::post('/login/code', [AuthController::class, 'sendCode'])->name('login.send')->middleware('throttle:10,1');
 Route::post('/login/verify', [AuthController::class, 'verify'])->name('login.verify')->middleware('throttle:20,1');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::middleware('auth')->group(function () {
+    Route::post('/checkout', [CheckoutController::class, 'start'])->name('checkout')->middleware('throttle:10,1');
+    Route::get('/checkout/return/{order}', [CheckoutController::class, 'returned'])->name('checkout.return');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites');
+    Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
+    Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/account', [AccountController::class, 'show'])->name('account');
     Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 });

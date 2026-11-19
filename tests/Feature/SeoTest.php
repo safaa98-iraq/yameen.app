@@ -91,8 +91,9 @@ it('serves robots.txt with the sitemap, or blocks everything on previews', funct
     $this->get('/')->assertSee('<meta name="robots" content="noindex, nofollow">', false);
 });
 
-it('does not index placeholder pages', function () {
-    $this->get('/pricing')->assertSee('<meta name="robots" content="noindex, nofollow">', false);
+it('does not index sign-in and account pages', function () {
+    $this->get('/login')->assertSee('<meta name="robots" content="noindex, nofollow">', false);
+    $this->get('/pricing')->assertDontSee('noindex');
     $this->get('/about')->assertDontSee('noindex');
 });
 

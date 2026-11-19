@@ -13,7 +13,10 @@
             @if ($user->isPro())
                 <p class="mt-2 text-h3 font-semibold text-lav-700">Pro</p>
                 <p class="mt-1 text-small text-muted">{{ __('ui.account.pro_until', ['date' => $user->pro_until->timezone(config('yameen.credits_timezone'))->format('Y-m-d')]) }}</p>
-                <a href="{{ lroute('pricing') }}" class="btn btn-secondary mt-4">{{ __('ui.account.extend') }}</a>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <a href="{{ lroute('pricing') }}" class="btn btn-secondary">{{ __('ui.account.extend') }}</a>
+                    <a href="{{ lroute('favorites') }}" class="btn btn-secondary">{{ __('ui.favorites.nav') }}</a>
+                </div>
             @else
                 <p class="mt-2 text-h3 font-semibold">{{ __('ui.account.free') }}</p>
                 <p class="mt-1 text-small text-muted">{{ __('ui.account.free_note', ['count' => \App\Models\Setting::get('credits_free')]) }}</p>

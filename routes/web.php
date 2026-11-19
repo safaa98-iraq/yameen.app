@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Api\CreditsController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\WaylWebhookController;
 use App\Http\Controllers\ProAssetController;
 use App\Http\Controllers\SeoController;
 use App\Http\Middleware\SetLocale;
@@ -14,6 +17,23 @@ Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
 Route::prefix('api')->middleware('throttle:60,1')->group(function () {
     Route::get('/credits', [CreditsController::class, 'show'])->name('api.credits');
     Route::post('/credits/consume', [CreditsController::class, 'consume'])->name('api.credits.consume');
+    Route::get('/orders/{order}/status', [CheckoutController::class, 'status'])->name('api.orders.status')->middleware('auth');
+});
+
+// Wayl payment webhook (signature-verified, CSRF-exempt).
+Route::post('/webhooks/wayl', WaylWebhookController::class)->name('webhooks.wayl')->middleware('throttle:120,1');
+
+// Admin
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', SetLocale::class.':ar'])->group(function () {
+    Route::redirect('/', '/admin/orders');
+    Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
+    Route::post('/orders/{order}/refund', [AdminController::class, 'refund'])->name('orders.refund');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::post('/users/{user}/pro', [AdminController::class, 'grantPro'])->name('users.pro');
+    Route::post('/users/{user}/revoke', [AdminController::class, 'revokePro'])->name('users.revoke');
+    Route::post('/users/{user}/admin', [AdminController::class, 'toggleAdmin'])->name('users.admin');
+    Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
+    Route::post('/settings', [AdminController::class, 'saveSettings'])->name('settings.save');
 });
 
 // Pro-only JavaScript modules (SVG export, batch), served to Pro subscribers only.

@@ -21,9 +21,4 @@ class PageController extends Controller
         return view('pages.static', ['page' => $content->get($slug), 'slug' => $slug]);
     }
 
-    /** Temporary page for routes whose tools arrive in later phases. Not indexed. */
-    public function placeholder(Request $request): View
-    {
-        return view('pages.placeholder', ['page' => $request->route('page')]);
-    }
 }

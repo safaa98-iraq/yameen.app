@@ -37,7 +37,11 @@
             <a href="{{ Locales::switchUrl($other, true) }}" hreflang="{{ $other }}" lang="{{ $other }}"
                class="inline-flex items-center min-h-11 px-3 rounded-control text-small text-muted hover:text-ink hover:bg-lav-50 no-underline"
                title="{{ __('ui.lang_switch_label') }}">{{ __('ui.lang_switch') }}</a>
+            <a href="{{ lroute('pricing') }}" class="hidden lg:inline-flex items-center min-h-11 px-3 rounded-control text-small text-ink hover:bg-lav-50 no-underline">{{ __('ui.nav.pricing') }}</a>
             @auth
+                @if (auth()->user()->is_admin)
+                    <a href="{{ route('admin.orders') }}" class="hidden lg:inline-flex items-center min-h-11 px-3 text-small text-muted no-underline">{{ __('ui.admin.nav') }}</a>
+                @endif
                 <a href="{{ lroute('account') }}" class="btn btn-secondary hidden sm:inline-flex">{{ __('ui.account.nav') }}</a>
             @else
                 <a href="{{ lroute('login') }}" class="btn btn-secondary hidden sm:inline-flex">{{ __('ui.nav.login') }}</a>

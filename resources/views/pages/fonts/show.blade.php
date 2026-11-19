@@ -48,9 +48,18 @@
                     @if ($font->licenseUrl()) · <a href="{{ $font->licenseUrl() }}">{{ __('ui.fonts.license_file') }}</a> @endif
                 </dd>
             </dl>
-            @if ($font->google_url)
-                <a href="{{ $font->google_url }}" class="btn btn-secondary mt-6" rel="noopener" target="_blank">{{ __('ui.fonts.source') }}</a>
-            @endif
+            <div class="mt-6 flex flex-wrap gap-2">
+                @if ($font->google_url)
+                    <a href="{{ $font->google_url }}" class="btn btn-secondary" rel="noopener" target="_blank">{{ __('ui.fonts.source') }}</a>
+                @endif
+                @if (auth()->user()?->isPro())
+                    <form method="POST" action="{{ lroute('favorites.store') }}">
+                        @csrf
+                        <input type="hidden" name="type" value="font"><input type="hidden" name="value" value="{{ $font->slug }}">
+                        <button class="btn btn-secondary">{{ __('ui.fonts.favorite') }}</button>
+                    </form>
+                @endif
+            </div>
         </x-section>
 
         <x-section num="04" :title="__('ui.fonts.css')">
