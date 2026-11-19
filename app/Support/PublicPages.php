@@ -17,7 +17,7 @@ class PublicPages
     /** Locale-neutral paths, e.g. "/", "/fix/unity", "/fonts/cairo". */
     public function paths(): array
     {
-        $paths = ['/', '/fix', '/pdf-fix', '/clean', '/fonts', '/fonts/compare', '/fonts/pairing', '/blog'];
+        $paths = ['/', '/fix', '/pdf-fix', '/garbled-text', '/clean', '/fonts', '/fonts/compare', '/fonts/pairing', '/blog'];
         foreach (array_keys(config('yameen.software')) as $software) {
             $paths[] = '/fix/'.$software;
         }

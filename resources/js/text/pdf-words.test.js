@@ -25,6 +25,17 @@ describe('swapped letter pairs from PDFs', () => {
         expect(repair(input)).toBe('عدد المراجعين الطبيين بين عامي 2017 و2024 من بيانات طولية على مدى ثماني سنوات');
     });
 
+    it('keeps the article on correct words', () => {
+        expect(repair('حقق االنحدار اخلطي أفضل أداء يف حتليل االستبعاد الفردي')).toBe('حقق الانحدار الخطي أفضل أداء في تحليل الاستبعاد الفردي');
+    });
+
+    it('reports only words that actually changed', () => {
+        const r = repairSwappedWords('مما يوفر معامل حتويل يف النص عىل الأقل', dict, { aggressive: true });
+        expect(r.text).toBe('مما يوفر معامل تحويل في النص على الأقل');
+        expect(r.parts.filter((p) => p.from).map((p) => p.from)).toEqual(['حتويل', 'يف', 'عىل']);
+        expect(r.fixed).toBe(3);
+    });
+
     it('leaves correct text untouched', () => {
         const ok = 'استخدمت بيانات طولية من النشرات الإحصائية الرسمية لمحافظة كربلاء بين عامي 2017 و2024';
         expect(repair(ok)).toBe(ok);
@@ -33,6 +44,8 @@ describe('swapped letter pairs from PDFs', () => {
     it('fixes mirrored brackets', () => {
         expect(fixMirroredBrackets(')2017-2024(، شملت )الإجمالي: 22 مليون(')).toBe('(2017-2024)، شملت (الإجمالي: 22 مليون)');
         expect(fixMirroredBrackets('(نص سليم)')).toBe('(نص سليم)');
+        // pairs spanning lines
+        expect(fixMirroredBrackets(')معامل p <\n0.0001(. أداء )RMSE\n0.980(')).toBe('(معامل p <\n0.0001). أداء (RMSE\n0.980)');
     });
 
     it('drops debris lines and moves a stray first letter back', () => {

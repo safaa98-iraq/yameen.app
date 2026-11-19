@@ -6,6 +6,7 @@
         ['fix', 'fix*', 'nav.fix'],
         ['fonts', 'fonts*', 'nav.fonts'],
         ['pdf-fix', 'pdf-fix', 'nav.pdf'],
+        ['garbled', 'garbled', 'nav.garbled'],
         ['clean', 'clean', 'nav.clean'],
     ];
 @endphp

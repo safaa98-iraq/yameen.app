@@ -18,6 +18,7 @@ Route::get('/fix', [ToolController::class, 'fix'])->name('fix');
 Route::get('/fix/{software}', [ToolController::class, 'fix'])->name('fix.software')->where('software', $software);
 Route::get('/pdf-fix', [ToolController::class, 'pdfFix'])->name('pdf-fix');
 Route::get('/clean', [ToolController::class, 'clean'])->name('clean');
+Route::get('/garbled-text', [ToolController::class, 'garbled'])->name('garbled');
 
 // Fonts
 Route::get('/fonts', [FontController::class, 'index'])->name('fonts');

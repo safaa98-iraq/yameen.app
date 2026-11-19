@@ -77,13 +77,30 @@ function* swapVariants(word) {
 // corrupted ligature, so fewer swaps is more likely right («الطبيني» → «الطبيين»,
 // not «الطيبين»). Swaps of pairs already seen swapped in the same text are cheap.
 const SWAP_COST = 10;
+const LIKELY_SWAP_COST = 3;
 const CONFIRMED_SWAP_COST = 2;
+
+// Letter pairs that Arabic fonts commonly draw as one ligature, in logical order.
+// The PDF problem stores them reversed, so the keys we look for are these pairs
+// reversed (e.g. «في» appears as «يف», «ين» as «ني», «شر» as «رش»).
+const LIGATURES = [
+    ['ل', 'اأإآجحخمىيه'],
+    ['بتثنيئ', 'رزىينمجحخه'],
+    ['م', 'اجحخمى'],
+    ['جحخ', 'مى'],
+    ['سشصض', 'رىي'],
+    ['فق', 'ىي'],
+];
+const LIKELY = new Set();
+for (const [firsts, seconds] of LIGATURES) {
+    for (const a of firsts) for (const b of seconds) LIKELY.add(b + a);
+}
 
 // Short function words that this corruption turns into other (rare) words.
 // Only applied when the text clearly has the problem.
 const COMMON_SWAPS = {
     يف: 'في', هلا: 'لها', هبا: 'بها', هلم: 'لهم', هبم: 'بهم', هلن: 'لهن',
-    هلذا: 'لهذا', هبذا: 'بهذا', هلذه: 'لهذه', هبذه: 'بهذه', فيام: 'فيما', بيام: 'بيما', كام: 'كما', مما: 'مما',
+    هلذا: 'لهذا', هبذا: 'بهذا', هلذه: 'لهذه', هبذه: 'بهذه', فيام: 'فيما', بيام: 'بيما', كام: 'كما',
 };
 
 /**
@@ -109,11 +126,16 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
         for (const v of swapVariants(base.word)) variants.push({ word: v.word, keys: [...base.keys, ...v.keys] });
         for (const v of variants) {
             if (v.word === word) continue;
-            const seen = (k) => (confirmed?.get(k) ?? 0) >= 2;
-            if (known && !v.keys.every(seen)) continue;
+            const count = (k) => confirmed?.get(k) ?? 0;
+            const seen = (k) => count(k) >= 2;
+            // Known words: every swap must be confirmed in this text (once is enough for ligature pairs).
+            if (known && !v.keys.every((k) => seen(k) || (LIKELY.has(k) && count(k) >= 1))) continue;
+            // A correct word starting with the article keeps it («الفردي» never becomes «لافردي»).
+            if (known && word.startsWith('ال') && !v.word.startsWith('ال')) continue;
             const r = wordRank(dict, v.word);
             if (r === Infinity) continue;
-            const score = (r + 1) * v.keys.reduce((c, k) => c * (seen(k) ? CONFIRMED_SWAP_COST : SWAP_COST), 1);
+            const cost = (k) => (seen(k) ? CONFIRMED_SWAP_COST : LIKELY.has(k) ? LIKELY_SWAP_COST : SWAP_COST);
+            const score = (r + 1) * v.keys.reduce((c, k) => c * cost(k), 1);
             if (score < bestScore) {
                 best = v;
                 bestScore = score;
@@ -160,22 +182,31 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
         }
     }
 
+    // Split into parts so the UI can highlight changed words.
+    const parts = [];
     let fixed = 0;
-    const out = text.replace(TOKEN, (token) => {
-        const r = cache.get(bare(token));
-        if (!r) return token;
+    let last = 0;
+    for (const m of text.matchAll(TOKEN)) {
+        const r = cache.get(bare(m[0]));
+        if (!r || r.word === bare(m[0])) continue;
+        if (m.index > last) parts.push({ text: text.slice(last, m.index) });
+        parts.push({ text: r.word, from: m[0] });
+        last = m.index + m[0].length;
         fixed++;
-        return r.word;
-    });
-    return { text: out, fixed };
+    }
+    if (last < text.length) parts.push({ text: text.slice(last) });
+    return { text: parts.map((p) => p.text).join(''), fixed, parts };
 }
 
-/** Brackets come out mirrored from the same PDFs: «)2017-2024(». Swap them per line when the first one is a closer. */
-export function fixMirroredBrackets(line) {
-    const first = line.match(/[()[\]{}]/)?.[0];
-    if (!first || !')]}'.includes(first)) return line;
+/**
+ * Brackets come out mirrored from the same PDFs: «)2017-2024(». When the first
+ * bracket of the text is a closer, swap every bracket (pairs often span lines).
+ */
+export function fixMirroredBrackets(text) {
+    const first = text.match(/[()[\]{}]/)?.[0];
+    if (!first || !')]}'.includes(first)) return text;
     const swap = { '(': ')', ')': '(', '[': ']', ']': '[', '{': '}', '}': '{' };
-    return line.replace(/[()[\]{}]/g, (c) => swap[c]);
+    return text.replace(/[()[\]{}]/g, (c) => swap[c]);
 }
 
 /** Lines made only of marks and punctuation («ً», «ً.») are layout debris from the PDF. */
@@ -190,11 +221,12 @@ function isDebris(line) {
  * - a first letter that the PDF moved to the end of the line («ؤدي … ت» → «تؤدي …»).
  */
 export function repairLines(text, dict) {
-    const lines = text.split(/\r?\n/);
+    const lines = fixMirroredBrackets(text).split(/\r?\n/);
     const out = [];
     for (let line of lines) {
         if (isDebris(line)) continue;
-        line = fixMirroredBrackets(line);
+        // Stray diacritics standing alone between spaces («0.0005) ً، مما»).
+        line = line.replace(/(^|\s)[\u064B-\u0652]+(?=\s|[،.؛:]|$)/g, '$1');
         const m = line.match(/^(\S+)(.*)\s([ء-ي])\s*$/);
         if (m) {
             const [, first, middle, letter] = m;

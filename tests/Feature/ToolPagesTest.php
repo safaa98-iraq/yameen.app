@@ -52,3 +52,8 @@ it('serves content pages from a serializing cache store', function () {
     $this->get('/fix/unity')->assertOk();
     $this->get('/fix/unity')->assertOk()->assertSee('TextMeshPro');
 });
+
+it('renders the garbled words tool in both locales', function () {
+    $this->get('/garbled-text')->assertOk()->assertSee('x-data="garbledFixer"', false)->assertSee('تصحيح الكلمات المشوهة');
+    $this->get('/en/garbled-text')->assertOk()->assertSee('Fix garbled words');
+});

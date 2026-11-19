@@ -3,17 +3,21 @@
 Build resources/js/data/ar-words.txt: Arabic words ranked by frequency, used by
 the PDF fix to repair swapped letter pairs.
 
-Source: FrequencyWords by Hermit Dave (OpenSubtitles 2018, Arabic, ar_full.txt),
-https://github.com/hermitdave/FrequencyWords, licensed CC BY-SA 4.0. The
-generated list is a derivative and is distributed under the same licence.
+Sources (merged; each word takes its better rank of the two):
+- FrequencyWords by Hermit Dave (OpenSubtitles 2018, Arabic, ar_full.txt),
+  https://github.com/hermitdave/FrequencyWords, CC BY-SA 4.0. Everyday language.
+- wikipedia-word-frequency by Ilya Semenov (arwiki-2022-08-29.txt),
+  https://github.com/IlyaSemenov/wikipedia-word-frequency, MIT; counts from
+  Arabic Wikipedia text (CC BY-SA). Formal and technical language.
+The generated list is a derivative and is distributed under CC BY-SA 4.0.
 
-Usage: python3 scripts/content/build_dictionary.py path/to/ar_full.txt
+Usage: python3 scripts/content/build_dictionary.py ar_full.txt arwiki-2022-08-29.txt
 """
 import re
 import sys
 from pathlib import Path
 
-LIMIT = 320_000
+LIMIT = 300_000
 OUT = Path(__file__).resolve().parents[2] / "resources" / "js" / "data" / "ar-words.txt"
 LETTERS = re.compile(r"^[ء-غف-ي]{2,20}$")
 # Spellings that cannot occur in correct Arabic (they come from corrupted text).
@@ -21,22 +25,32 @@ IMPOSSIBLE = re.compile(r"ى.|ة.|^ا[أإآ]|^ا[جحخ]ل")
 CORRUPTED_WORDS = {"يف", "هلا", "هبا", "هلم", "هبم", "هلذا", "هبذا", "هلذه", "هبذه"}
 PREFIXES = ["وال", "فال", "بال", "كال", "لل", "ال", "و", "ف", "ب", "ل", "ك"]
 
-words, seen = [], set()
-for line in open(sys.argv[1], encoding="utf-8"):
-    parts = line.split()
-    if not parts:
-        continue
-    w = parts[0]
-    if LETTERS.match(w) and not IMPOSSIBLE.search(w) and w not in CORRUPTED_WORDS and w not in seen:
-        seen.add(w)
-        words.append(w)
-        if len(words) >= LIMIT:
-            break
+def ranked(path):
+    """Words in file order (most frequent first), filtered."""
+    out, seen = [], set()
+    for line in open(path, encoding="utf-8"):
+        parts = line.split()
+        if not parts:
+            continue
+        w = parts[0]
+        if LETTERS.match(w) and not IMPOSSIBLE.search(w) and w not in CORRUPTED_WORDS and w not in seen:
+            seen.add(w)
+            out.append(w)
+    return out
 
-# Drop words that are a prefix plus another listed word: the JS strips prefixes itself.
+best = {}
+for path in sys.argv[1:]:
+    for rank, w in enumerate(ranked(path)):
+        if rank < best.get(w, float("inf")):
+            best[w] = rank
+words = sorted(best, key=lambda w: (best[w], w))[:LIMIT]
+
+# Drop article forms («الفردي») of listed words: the JS strips the article itself.
+# One-letter prefixes are kept: «فردي» is not «ف» + «ردي».
+ARTICLES = ["وال", "فال", "بال", "كال", "لل", "ال"]
 present = set(words)
 def derivable(w):
-    for p in PREFIXES:
+    for p in ARTICLES:
         if len(w) >= len(p) + 3 and w.startswith(p):
             rest = w[len(p):]
             if rest in present or ("ال" + rest) in present:

@@ -23,7 +23,7 @@ The fonts shown on Yameen are free fonts licensed under the SIL Open Font Licens
 
 ## Open data
 
-PDF fix uses an Arabic word list derived from FrequencyWords by Hermit Dave, licensed under CC BY-SA 4.0.
+PDF fix uses an Arabic word list derived from FrequencyWords by Hermit Dave (CC BY-SA 4.0) and from wikipedia-word-frequency by Ilya Semenov, built from Arabic Wikipedia.
 
 ## Contact
 

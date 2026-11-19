@@ -157,6 +157,49 @@ export function registerTools(Alpine) {
         };
     });
 
+    // Garbled words from PDFs: always repairs, highlights each changed word.
+    Alpine.data('garbledFixer', () => {
+        let memo = null;
+        return {
+            ...copyable(),
+            pdf: null,
+            words: null,
+            dict: null,
+            dictState: 'idle', // idle | loading | ready | failed
+            async init() {
+                [this.pdf, this.words] = await Promise.all([import('./text/pdf'), import('./text/pdf-words')]);
+                this.loadDictionary();
+            },
+            async loadDictionary() {
+                if (this.dictState !== 'idle') return;
+                this.dictState = 'loading';
+                try {
+                    const { default: url } = await import('./data/ar-words.txt?url');
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error(String(response.status));
+                    this.dict = this.words.buildDictionary(await response.text());
+                    this.dictState = 'ready';
+                } catch {
+                    this.dictState = 'failed';
+                }
+            },
+            get result() {
+                const text = this.$store.text.value;
+                const empty = { text: '', fixed: 0, parts: [] };
+                if (!this.dict || !text.trim()) return empty;
+                const key = text + '\u0000' + this.dictState;
+                if (memo?.key === key) return memo.value;
+                const logical = this.pdf.normalizePresentationForms(text);
+                const lines = this.words.repairLines(logical, this.dict);
+                const value = this.words.repairSwappedWords(lines, this.dict, {
+                    aggressive: this.words.swapSignals(logical) >= 1,
+                });
+                memo = { key, value };
+                return value;
+            },
+        };
+    });
+
     Alpine.data('cleaner', () => ({
         ...copyable(),
         lib: null,

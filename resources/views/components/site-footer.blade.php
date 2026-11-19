@@ -1,6 +1,6 @@
 @php
     $groups = [
-        'tools' => ['fix', 'pdf-fix', 'clean'],
+        'tools' => ['fix', 'pdf-fix', 'garbled', 'clean'],
         'fonts' => ['fonts', 'fonts-compare' => 'fonts.compare', 'fonts-pairing' => 'fonts.pairing'],
         'site' => ['about', 'blog', 'contact', 'privacy', 'terms'],
     ];

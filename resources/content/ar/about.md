@@ -23,7 +23,7 @@ intro: أداة للمصممين ومحرري الفيديو ومطوري الأ
 
 ## مصادر مفتوحة
 
-يستخدم إصلاح نص PDF قائمة كلمات عربية مشتقة من مشروع FrequencyWords لـ Hermit Dave، والمرخصة بموجب رخصة CC BY-SA 4.0.
+يستخدم إصلاح نص PDF قائمة كلمات عربية مشتقة من مشروع FrequencyWords لـ Hermit Dave (رخصة CC BY-SA 4.0)، ومن قائمة wikipedia-word-frequency لـ Ilya Semenov المبنية على ويكيبيديا العربية.
 
 ## التواصل
 

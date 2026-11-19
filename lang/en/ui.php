@@ -10,6 +10,7 @@ return [
         'label' => 'Main navigation',
         'fix' => 'Fix text',
         'pdf' => 'Fix PDF text',
+        'garbled' => 'Garbled words',
         'clean' => 'Clean text',
         'fonts' => 'Fonts',
         'export' => 'Export',
@@ -67,6 +68,7 @@ return [
         'tools_title' => 'More tools',
         'tools' => [
             'pdf-fix' => 'Text copied from a PDF looks reversed? Restore it.',
+            'garbled' => 'Words like «يف» and «عىل» instead of «في» and «على»? We fix them.',
             'clean' => 'Remove diacritics and tatweel, unify letters and digits.',
             'fonts.compare' => 'Compare two fonts with the same text.',
             'fonts.pairing' => 'Arabic fonts with matching Latin fonts.',
@@ -225,6 +227,17 @@ return [
         'cta_button' => 'Open the tool',
     ],
 
+    'garbled' => [
+        'input_label' => 'Garbled text',
+        'placeholder' => 'Paste text with words like «يف», «عىل» or «اجلماهريية»',
+        'loading' => 'Loading the dictionary…',
+        'legend' => 'Fixed words are highlighted like this:',
+        'legend_sample' => 'word',
+        'was' => 'Was:',
+        'fixed' => ':count words fixed. Hover a highlighted word to see the original, and check the result before using it.',
+        'none' => 'No garbled words found in this text.',
+    ],
+
     'placeholder' => [
         'title' => 'This page is being prepared',
         'body' => 'This tool is coming soon. You can use the fixer on the home page.',
@@ -234,6 +247,7 @@ return [
     'pages' => [
         'fix' => 'Arabic text fixer',
         'pdf-fix' => 'Fix Arabic text copied from PDF',
+        'garbled' => 'Fix garbled words',
         'clean' => 'Text cleaner',
         'fonts' => 'Arabic fonts',
         'fonts-compare' => 'Compare fonts',

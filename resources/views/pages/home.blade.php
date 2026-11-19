@@ -55,7 +55,7 @@
     {{-- 3. Other tools --}}
     <section class="mt-18" aria-labelledby="tools">
         <h2 id="tools" class="text-h3 font-semibold">{{ __('ui.home.tools_title') }}</h2>
-        <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             @foreach (__('ui.home.tools') as $route => $desc)
                 <li>
                     <a href="{{ lroute($route) }}" class="block h-full rounded-panel border border-line bg-surface p-5 no-underline transition-colors hover:border-lav-200 hover:bg-lav-50">

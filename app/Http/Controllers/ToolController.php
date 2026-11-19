@@ -27,6 +27,11 @@ class ToolController extends Controller
         return view('pages.pdf-fix', ['page' => $this->content->get('pdf-fix')]);
     }
 
+    public function garbled(): View
+    {
+        return view('pages.garbled', ['page' => $this->content->get('garbled')]);
+    }
+
     public function clean(): View
     {
         return view('pages.clean', ['page' => $this->content->get('clean')]);

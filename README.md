@@ -90,7 +90,7 @@ Only browser-side tools work there; accounts, credits and payments need the PHP 
 - Page text lives in `resources/content/{ar,en}/*.md` (front matter: `title`,
   `description`, `h1`, `intro`, `faq`, plus `paste_steps`/`paste_note` on app pages).
   Blog guides are in `resources/content/{ar,en}/blog/`. Search for `TODO(verify)` before launch.
-- `resources/js/data/ar-words.txt` (PDF word repair) is derived from FrequencyWords by Hermit Dave, CC BY-SA 4.0; see `resources/js/data/README.md`.
+- `resources/js/data/ar-words.txt` (PDF word repair) is derived from FrequencyWords (Hermit Dave, CC BY-SA 4.0) and wikipedia-word-frequency (Ilya Semenov, MIT; Wikipedia counts); see `resources/js/data/README.md`.
 - `scripts/content/software_pages.py` generated the first drafts of the `/fix/{app}` pages;
   edit the Markdown directly (re-running the script overwrites it).
 - Every page has a canonical URL, hreflang, Open Graph tags and JSON-LD
