@@ -59,6 +59,8 @@ return [
         'result_hint' => 'As it will appear in your app',
         'paste_title' => 'How to paste in :app',
         'font_note' => 'Use a font that includes connected Arabic letter forms in your app, or you will see boxes instead of letters.',
+        'restored' => 'Your text was already fixed or copied from an app or PDF, so it was restored before fixing.',
+        'reversed_note' => 'Pasted into something that supports Arabic, such as a browser or WhatsApp, the result looks reversed. That is expected.',
     ],
 
     'pdf' => [

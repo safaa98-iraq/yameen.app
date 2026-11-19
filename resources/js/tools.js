@@ -47,6 +47,10 @@ export function registerTools(Alpine) {
         get output() {
             return this.lib ? this.lib.fixText(this.$store.text.value, this.opts) : '';
         },
+        // The input was already fixed (or copied from a PDF/app) and is restored first.
+        get restored() {
+            return Boolean(this.lib?.hasPresentationForms(this.$store.text.value));
+        },
     }));
 
     Alpine.data('pdfFixer', () => ({

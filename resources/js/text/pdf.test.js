@@ -34,6 +34,13 @@ describe('detectReversed', () => {
         expect(detectReversed('ذهبت إلى المكتبة').reversed).toBe(false);
     });
 
+    it('treats text made only of isolated forms as copied from an app (visual order)', () => {
+        // "أهلا وسهلا" as shown by an app without Arabic support
+        const broken = '\uFE8D\uFEDD\uFEE9\uFEB1\uFEED \uFE8D\uFEDD\uFEE9\uFE83';
+        expect(detectReversed(broken).reversed).toBe(true);
+        expect(fixPdfText(broken).text).toBe('أهلا وسهلا');
+    });
+
     it('is unsure on very short text', () => {
         expect(detectReversed('من').reversed).toBe(null);
     });

@@ -122,4 +122,15 @@ describe('fixText', () => {
         // شيء: sheen initial, yeh final, hamza isolated
         expect(shape('شيء')).toBe(u(0xfeb7, 0xfef2, 0x0621));
     });
+
+    it('restores already-fixed input before fixing, so fixing twice changes nothing', () => {
+        for (const s of ['السلام عليكم ورحمة الله', 'مرحبا بكم في يمين 2026', 'أهلا وسهلا', 'أنا أحب Photoshop']) {
+            const once = fixText(s);
+            expect(fixText(once)).toBe(once);
+        }
+    });
+
+    it('fixes text copied out of an app without Arabic support (isolated forms, reversed)', () => {
+        expect(fixText('\uFE8D\uFEDD\uFEE9\uFEB1\uFEED \uFE8D\uFEDD\uFEE9\uFE83')).toBe(fixText('أهلا وسهلا'));
+    });
 });

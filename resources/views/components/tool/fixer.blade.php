@@ -10,6 +10,7 @@
      x-data="fixer({ fonts: @js($appFonts->map->toClient()->values()), font: @js($selected?->slug) })">
     <section class="rounded-panel bg-lav-50 border border-line p-4 md:p-6 flex flex-col gap-4" aria-label="{{ __('ui.tool.input_label') }}">
         <x-tool.input :id="$id.'-input'" />
+        <p class="text-small text-lav-700 -mt-2" x-show="restored" x-cloak role="status" data-restored>{{ __('ui.fixer.restored') }}</p>
 
         <fieldset>
             <legend class="label">{{ __('ui.tool.options_label') }}</legend>
@@ -54,6 +55,6 @@
             </button>
             <a href="{{ lroute('export') }}" class="btn btn-secondary">{{ __('ui.tool.export_image') }}</a>
         </div>
-        <p class="text-meta text-muted">{{ __('ui.fixer.font_note') }}</p>
+        <p class="text-meta text-muted">{{ __('ui.fixer.font_note') }} {{ __('ui.fixer.reversed_note') }}</p>
     </section>
 </div>

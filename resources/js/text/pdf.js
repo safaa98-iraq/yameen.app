@@ -17,6 +17,8 @@ for (const [iso, fin] of Object.values(LAM_ALEF)) {
     FORM_POSITION.set(fin, FINAL);
 }
 
+const LIGATURES = new Set(Object.values(LAM_ALEF).flat());
+
 /** NFKC applied to the Arabic presentation blocks only; everything else is untouched. */
 export function normalizePresentationForms(text) {
     return text.replace(/[\uFB50-\uFDFF\uFE70-\uFEFF]/g, (ch) => {
@@ -36,6 +38,13 @@ const LETTERS_ONLY = /[\u064B-\u065F\u0670ـ]/g;
 export function detectReversed(text) {
     let logical = 0;
     let visual = 0;
+
+    // Text copied out of an app without Arabic support is all isolated forms
+    // (one standalone shape per letter), which only happens in visual order.
+    const forms = Array.from(text).filter((c) => FORM_POSITION.has(c) && !LIGATURES.has(c));
+    if (forms.length >= 3 && forms.every((c) => FORM_POSITION.get(c) === ISOLATED)) {
+        visual += forms.length;
+    }
 
     for (const raw of text.match(WORD) ?? []) {
         const chars = Array.from(raw);
