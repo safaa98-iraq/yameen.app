@@ -45,8 +45,7 @@ return [
         // Plans (one-time payments that extend Pro).
         'plan_monthly_price' => 5,
         'plan_monthly_days' => 30,
-        'plan_yearly_price' => 40,
-        'plan_yearly_days' => 365,
+        'plan_lifetime_price' => 40,
     ],
 
 

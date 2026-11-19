@@ -42,16 +42,30 @@ it('rounds the IQD amount up to the next 250', function () {
         ->and(Payments::amountIqd(40, 1365))->toBe(54750); // 54600 → 54750
 });
 
-it('shows USD prices with the IQD amount from the admin rate', function () {
+it('shows USD prices only, with a one-time lifetime plan', function () {
     Setting::put('usd_to_iqd_rate', 1365);
-    $this->get('/pricing')->assertOk()->assertSee('$40')->assertSee('يُدفع 54,750 د.ع')->assertSee('يعادل 8 أشهر');
+    $this->get('/pricing')->assertOk()->assertSee('$40')->assertSee('$5')->assertSee('مدى الحياة')->assertSee('مرة واحدة')
+        ->assertDontSee('د.ع')->assertDontSee('54,750')->assertDontSee('سنوي');
+});
+
+it('grants lifetime Pro that never expires and is not reminded', function () {
+    Mail::fake();
+    $user = User::factory()->create();
+    $order = pendingOrder($user, 'lifetime');
+    expect($order->days)->toBe(0);
+    app(Payments::class)->markPaid($order->id);
+
+    $user->refresh();
+    expect($user->pro_lifetime)->toBeTrue()->and($user->pro_until)->toBeNull()->and($user->isPro())->toBeTrue();
+    $this->travel(20)->years();
+    expect($user->fresh()->isPro())->toBeTrue();
 });
 
 it('creates an order and redirects to the Wayl checkout', function () {
     Http::fake(['api.thewayl.com/api/v1/links' => Http::response(['data' => ['url' => 'https://pay.thewayl.com/x']], 201)]);
     $user = User::factory()->create();
 
-    $this->actingAs($user)->post('/checkout', ['plan' => 'yearly'])->assertRedirect('https://pay.thewayl.com/x');
+    $this->actingAs($user)->post('/checkout', ['plan' => 'lifetime'])->assertRedirect('https://pay.thewayl.com/x');
 
     $order = Order::sole();
     expect($order->status)->toBe('pending')->and($order->amount_iqd)->toBe(52500)->and((float) $order->rate_used)->toBe(1310.0);
@@ -106,8 +120,8 @@ it('ignores events that are not Paid', function () {
 
 it('extends Pro from the current end date when still active', function () {
     $user = User::factory()->create(['pro_until' => now()->addDays(10)]);
-    app(Payments::class)->markPaid(pendingOrder($user, 'yearly')->id);
-    expect((int) round(now()->diffInDays($user->fresh()->pro_until)))->toBe(375);
+    app(Payments::class)->markPaid(pendingOrder($user)->id);
+    expect((int) round(now()->diffInDays($user->fresh()->pro_until)))->toBe(40);
 
     $expired = User::factory()->create(['pro_until' => now()->subDays(5)]);
     app(Payments::class)->markPaid(pendingOrder($expired)->id);
@@ -141,21 +155,34 @@ it('requires a refund reason of 100 to 1500 characters and takes back Pro days',
     Http::fake(['api.thewayl.com/api/v1/refunds' => Http::response(['ok' => true])]);
     $admin = User::factory()->admin()->create();
     $user = User::factory()->create();
-    $order = pendingOrder($user, 'yearly');
+    $order = pendingOrder($user);
     app(Payments::class)->markPaid($order->id);
     $before = $user->fresh()->pro_until;
 
-    $this->actingAs($admin)->post("/admin/orders/{$order->id}/refund", ['amount' => 52500, 'reason' => str_repeat('a', 99)])
+    $this->actingAs($admin)->post("/admin/orders/{$order->id}/refund", ['amount' => 6750, 'reason' => str_repeat('a', 99)])
         ->assertSessionHasErrors('reason');
-    $this->post("/admin/orders/{$order->id}/refund", ['amount' => 52500, 'reason' => str_repeat('a', 1501)])
+    $this->post("/admin/orders/{$order->id}/refund", ['amount' => 6750, 'reason' => str_repeat('a', 1501)])
         ->assertSessionHasErrors('reason');
 
-    $this->post("/admin/orders/{$order->id}/refund", ['amount' => 52500, 'reason' => str_repeat('سبب ', 30)])
+    $this->post("/admin/orders/{$order->id}/refund", ['amount' => 6750, 'reason' => str_repeat('سبب ', 30)])
         ->assertSessionHasNoErrors();
 
     expect($order->fresh()->status)->toBe('refunded');
-    expect((int) round($user->fresh()->pro_until->diffInDays($before)))->toBe(365);
-    Http::assertSent(fn ($r) => $r['referenceId'] === $order->id && $r['amount'] === 52500 && mb_strlen($r['reason']) >= 100);
+    expect((int) round($user->fresh()->pro_until->diffInDays($before)))->toBe(30);
+    Http::assertSent(fn ($r) => $r['referenceId'] === $order->id && $r['amount'] === 6750 && mb_strlen($r['reason']) >= 100);
+});
+
+it('ends lifetime Pro only on a full refund', function () {
+    Http::fake(['api.thewayl.com/api/v1/refunds' => Http::response(['ok' => true])]);
+    $user = User::factory()->create();
+    $order = pendingOrder($user, 'lifetime');
+    app(Payments::class)->markPaid($order->id);
+    $reason = str_repeat('سبب ', 30);
+
+    app(Payments::class)->refund($order->fresh(), 10000, $reason);
+    expect($user->fresh()->pro_lifetime)->toBeTrue();
+    app(Payments::class)->refund($order->fresh(), 42500, $reason);
+    expect($user->fresh()->pro_lifetime)->toBeFalse()->and($order->fresh()->status)->toBe('refunded');
 });
 
 it('emails a reminder 3 days before Pro ends, once', function () {

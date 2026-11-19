@@ -18,7 +18,7 @@
             @foreach ($users as $user)
                 <tr class="border-b border-line align-top">
                     <td class="p-3" dir="ltr"><a href="{{ route('admin.users.show', $user) }}">{{ $user->email }}</a></td>
-                    <td class="p-3 tabular-nums">{{ $user->isPro() ? $user->pro_until->format('Y-m-d') : '—' }}</td>
+                    <td class="p-3 tabular-nums">{{ $user->pro_lifetime ? __('ui.pricing.lifetime') : ($user->isPro() ? $user->pro_until->format('Y-m-d') : '—') }}</td>
                     <td class="p-3">{{ $user->is_admin ? '✓' : '' }}</td>
                     <td class="p-3 tabular-nums">{{ $user->created_at->format('Y-m-d') }}</td>
                     <td class="p-3">

@@ -35,6 +35,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', SetLocale::
     Route::get('/users/{user}', [AdminController::class, 'user'])->name('users.show');
     Route::post('/users/{user}/pro', [AdminController::class, 'grantPro'])->name('users.pro');
     Route::post('/users/{user}/pro-until', [AdminController::class, 'setProUntil'])->name('users.pro_until');
+    Route::post('/users/{user}/lifetime', [AdminController::class, 'toggleLifetime'])->name('users.lifetime');
     Route::post('/users/{user}/revoke', [AdminController::class, 'revokePro'])->name('users.revoke');
     Route::post('/users/{user}/admin', [AdminController::class, 'toggleAdmin'])->name('users.admin');
     Route::post('/users/{user}/credits', [AdminController::class, 'resetCredits'])->name('users.credits');

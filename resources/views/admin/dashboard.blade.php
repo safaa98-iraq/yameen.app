@@ -2,7 +2,7 @@
     <div class="grid gap-3 grid-cols-2 lg:grid-cols-4">
         @foreach ([
             ['users', number_format($stats['users']), __('ui.admin.st_new', ['n' => $stats['new_users']])],
-            ['pro', number_format($stats['pro']), __('ui.admin.st_expiring', ['n' => $stats['expiring']])],
+            ['pro', number_format($stats['pro']), __('ui.admin.st_lifetime', ['n' => $stats['lifetime']]).' · '.__('ui.admin.st_expiring', ['n' => $stats['expiring']])],
             ['revenue_month', number_format($stats['revenue_month']).' '.__('ui.pricing.iqd'), __('ui.admin.st_orders', ['n' => $stats['paid_month']])],
             ['pending', number_format($stats['pending']), __('ui.admin.st_credits', ['n' => number_format($stats['credits_today'])])],
         ] as [$key, $value, $sub])

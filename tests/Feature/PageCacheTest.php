@@ -18,8 +18,8 @@ it('never caches for signed-in users or private pages', function () {
 it('drops cached pages when settings change', function () {
     $this->get('/pricing');
     $this->get('/pricing')->assertHeader('X-Page-Cache', 'HIT');
-    Setting::put('usd_to_iqd_rate', 1400);
-    $this->get('/pricing')->assertHeader('X-Page-Cache', 'MISS')->assertSee('7,000');
+    Setting::put('plan_monthly_price', 7);
+    $this->get('/pricing')->assertHeader('X-Page-Cache', 'MISS')->assertSee('$7');
 });
 
 it('does not put a CSRF token in pages cached for guests', function () {

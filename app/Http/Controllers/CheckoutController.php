@@ -18,7 +18,7 @@ class CheckoutController extends Controller
     {
         return view('pages.pricing', [
             'monthly' => Payments::plan('monthly'),
-            'yearly' => Payments::plan('yearly'),
+            'lifetime' => Payments::plan('lifetime'),
             'freeCredits' => Setting::get('credits_free'),
             'visitorCredits' => Setting::get('credits_visitor'),
         ]);
@@ -26,7 +26,7 @@ class CheckoutController extends Controller
 
     public function start(Request $request, Payments $payments, WaylClient $wayl): RedirectResponse
     {
-        $plan = $request->validate(['plan' => ['required', 'in:monthly,yearly']])['plan'];
+        $plan = $request->validate(['plan' => ['required', 'in:monthly,lifetime']])['plan'];
         if (! $wayl->configured()) {
             return back()->withErrors(['plan' => __('ui.pricing.unavailable')]);
         }

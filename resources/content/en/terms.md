@@ -12,7 +12,7 @@ You can use Yameen's tools for free within a daily credit limit that resets at m
 
 ## Pro plan
 
-Pro is a one-time payment for 30 or 365 days and does not renew automatically. Paying while Pro is active extends it from the current expiry date. Prices are shown in US dollars and charged in Iraqi dinars at the exchange rate shown at checkout.
+Pro comes in two plans: monthly, for 30 days with no automatic renewal, and lifetime, paid once. Paying for a month while Pro is active extends it from the current expiry date. Prices are shown in US dollars and payment is handled by Wayl.
 
 ## Refunds
 

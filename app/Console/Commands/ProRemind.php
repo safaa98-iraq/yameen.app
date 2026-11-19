@@ -16,7 +16,7 @@ class ProRemind extends Command
 
     public function handle(): int
     {
-        $users = User::whereBetween('pro_until', [now()->addDays(2), now()->addDays(3)])->get()
+        $users = User::where('pro_lifetime', false)->whereBetween('pro_until', [now()->addDays(2), now()->addDays(3)])->get()
             ->filter(fn (User $u) => ! $u->pro_reminder_sent_for || ! $u->pro_reminder_sent_for->equalTo($u->pro_until));
 
         foreach ($users as $user) {

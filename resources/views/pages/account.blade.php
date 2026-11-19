@@ -12,9 +12,15 @@
             <h2 id="plan-title" class="font-semibold">{{ __('ui.account.plan') }}</h2>
             @if ($user->isPro())
                 <p class="mt-2 text-h3 font-semibold text-lav-700">Pro</p>
-                <p class="mt-1 text-small text-muted">{{ __('ui.account.pro_until', ['date' => $user->pro_until->timezone(config('yameen.credits_timezone'))->format('Y-m-d')]) }}</p>
+                @if ($user->pro_lifetime)
+                    <p class="mt-1 text-small text-muted">{{ __('ui.account.pro_lifetime') }}</p>
+                @else
+                    <p class="mt-1 text-small text-muted">{{ __('ui.account.pro_until', ['date' => $user->pro_until->timezone(config('yameen.credits_timezone'))->format('Y-m-d')]) }}</p>
+                @endif
                 <div class="mt-4 flex flex-wrap gap-2">
-                    <a href="{{ lroute('pricing') }}" class="btn btn-secondary">{{ __('ui.account.extend') }}</a>
+                    @unless ($user->pro_lifetime)
+                        <a href="{{ lroute('pricing') }}" class="btn btn-secondary">{{ __('ui.account.extend') }}</a>
+                    @endunless
                     <a href="{{ lroute('favorites') }}" class="btn btn-secondary">{{ __('ui.favorites.nav') }}</a>
                 </div>
             @else
@@ -44,7 +50,7 @@
                                 <tr class="border-b border-line last:border-0">
                                     <td class="py-2 tabular-nums">{{ $order->created_at->format('Y-m-d') }}</td>
                                     <td class="py-2">{{ __('ui.pricing.'.$order->plan) }}</td>
-                                    <td class="py-2 tabular-nums">{{ number_format($order->amount_iqd) }} {{ __('ui.pricing.iqd') }}</td>
+                                    <td class="py-2 tabular-nums" dir="ltr">${{ rtrim(rtrim(number_format($order->price_usd, 2), '0'), '.') }}</td>
                                     <td class="py-2">{{ __('ui.account.status_'.$order->status) }}</td>
                                 </tr>
                             @endforeach

@@ -34,6 +34,17 @@ it('sets an exact end date (end of day, Baghdad) or clears it', function () {
     expect($user->fresh()->pro_until)->toBeNull();
 });
 
+it('grants and removes lifetime Pro and logs it', function () {
+    $user = User::factory()->create();
+    $this->post("/admin/users/{$user->id}/lifetime");
+    expect($user->fresh()->isPro())->toBeTrue()->and($user->fresh()->pro_lifetime)->toBeTrue();
+    $this->get('/admin/users?filter=pro')->assertSee($user->email);
+
+    $this->post("/admin/users/{$user->id}/revoke");
+    expect($user->fresh()->isPro())->toBeFalse();
+    expect(\App\Models\AdminAction::pluck('action')->all())->toBe(['user.lifetime_on', 'user.pro_revoke']);
+});
+
 it('resets credits, toggles admin and deletes users with confirmation', function () {
     $user = User::factory()->create();
     DB::table('credit_usages')->insert(['user_id' => $user->id, 'day' => \App\Services\Credits::today(), 'action' => 'fix', 'cost' => 5, 'created_at' => now()]);
@@ -63,9 +74,9 @@ it('confirms a pending payment manually and can mark orders failed', function ()
 });
 
 it('edits plan prices and durations used by pricing and checkout', function () {
-    $this->post('/admin/settings', ['plan_monthly_price' => 6, 'plan_monthly_days' => 31, 'plan_yearly_price' => 48, 'plan_yearly_days' => 366])->assertSessionHasNoErrors();
-    expect(\App\Services\Payments::plan('yearly'))->toMatchArray(['price_usd' => 48.0, 'days' => 366]);
-    $this->get('/pricing')->assertSee('$48')->assertSee('يعادل 8 أشهر')->assertSee('31 يوماً');
+    $this->post('/admin/settings', ['plan_monthly_price' => 6, 'plan_monthly_days' => 31, 'plan_lifetime_price' => 48])->assertSessionHasNoErrors();
+    expect(\App\Services\Payments::plan('lifetime'))->toMatchArray(['price_usd' => 48.0, 'days' => 0]);
+    $this->get('/pricing')->assertSee('$48')->assertSee('$6')->assertSee('31 يوماً');
 });
 
 it('records every change in the log, visible to admins only', function () {

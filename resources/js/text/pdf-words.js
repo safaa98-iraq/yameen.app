@@ -87,6 +87,13 @@ const SWAP_COST = 10;
 const LIKELY_SWAP_COST = 3;
 const CONFIRMED_SWAP_COST = 2;
 
+// Some PDFs store a whole word in visual order: «رشنلل» for «للنشر». Reversal
+// is tried only for unknown words; it is cheap when the word cannot be correct
+// as written (it starts with «ة»/«ى» or ends with a reversed article «لا»).
+const REVERSE_COST = 6;
+const REVERSE_SIGNED_COST = 2;
+const REVERSED_SHAPE = /^[ةى]|[^ا]لا$|للا$|لاو$/;
+
 // Letter pairs that Arabic fonts commonly draw as one ligature, in logical order.
 // The PDF problem stores them reversed, so the keys we look for are these pairs
 // reversed (e.g. «في» appears as «يف», «ين» as «ني», «شر» as «رش»).
@@ -130,6 +137,13 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
     // them with a much more frequent word.
     const rare = original !== Infinity && original > RARE_RANK;
     const known = original !== Infinity && !rare;
+    // Known only through a prefix («بتكلا» = «ب» + a rare word) but shaped like a
+    // reversed word: take the reversal when it is far more frequent.
+    if (word.length >= 4 && !dict.has(word) && REVERSED_SHAPE.test(word) && !reconsiderKnown) {
+        const rev = Array.from(word).reverse().join('');
+        const r = wordRank(dict, rev);
+        if (r <= RARE_RANK && (r + 1) * 20 < original) return { word: rev, keys: ['rev'] };
+    }
     if (known && !reconsiderKnown) return null;
 
     const bases = [{ word, keys: [] }];
@@ -142,6 +156,9 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
         const variants = base.keys.length ? [base] : [];
         const allowed = (k) => LIKELY.has(k) || (confirmed?.get(k) ?? 0) >= 2;
         for (const v of swapVariants(base.word, allowed)) variants.push({ word: v.word, keys: [...base.keys, ...v.keys] });
+        if (!known && base.keys.length === 0 && word.length >= 4) {
+            variants.push({ word: Array.from(word).reverse().join(''), keys: ['rev'] });
+        }
         for (const v of variants) {
             if (v.word === word) continue;
             const count = (k) => confirmed?.get(k) ?? 0;
@@ -152,7 +169,9 @@ export function repairWord(dict, word, confirmed = null, { reconsiderKnown = fal
             if (known && word.startsWith('ال') && !v.word.startsWith('ال')) continue;
             const r = wordRank(dict, v.word);
             if (r === Infinity) continue;
-            const cost = (k) => (seen(k) ? CONFIRMED_SWAP_COST : LIKELY.has(k) ? LIKELY_SWAP_COST : SWAP_COST);
+            const cost = (k) => k === 'rev'
+                ? (seen(k) || REVERSED_SHAPE.test(word) ? REVERSE_SIGNED_COST : REVERSE_COST)
+                : seen(k) ? CONFIRMED_SWAP_COST : LIKELY.has(k) ? LIKELY_SWAP_COST : SWAP_COST;
             const score = (r + 1) * v.keys.reduce((c, k) => c * cost(k), 1);
             if (score < bestScore) {
                 best = v;
@@ -207,6 +226,19 @@ export function repairSwappedWords(text, dict, { aggressive = false } = {}) {
             if (cache.get(w) || wordRank(dict, w) === Infinity) continue;
             if (COMMON_SWAPS[w]) cache.set(w, { word: COMMON_SWAPS[w], keys: [], common: true });
             else cache.set(w, repairWord(dict, w, confirmed, { reconsiderKnown: true }));
+        }
+    }
+
+    // «إلجراء»: when this text writes the article with its alef («اإلجراء»), a
+    // word starting «إل»/«أل» without it is the preposition («لإجراء», «لأنه»),
+    // unless the same word also appears with the alef («األربعني» / «ألربعني»).
+    if (words.some((w) => /^ا[أإ]ل/.test(w))) {
+        const set = new Set(words);
+        for (const w of words) {
+            const r = cache.get(w);
+            if (/^[أإ]ل/.test(w) && r?.word === 'ال' + w[0] + w.slice(2) && !set.has('ا' + w)) {
+                cache.set(w, { word: 'ل' + w[0] + r.word.slice(3), keys: r.keys });
+            }
         }
     }
 

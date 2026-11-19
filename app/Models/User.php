@@ -22,12 +22,19 @@ class User extends Authenticatable
             'pro_until' => 'datetime',
             'pro_reminder_sent_for' => 'datetime',
             'is_admin' => 'boolean',
+            'pro_lifetime' => 'boolean',
         ];
     }
 
     public function isPro(): bool
     {
-        return $this->pro_until !== null && $this->pro_until->isFuture();
+        return $this->pro_lifetime || ($this->pro_until !== null && $this->pro_until->isFuture());
+    }
+
+    /** Users with Pro right now: lifetime, or a period that has not ended. */
+    public function scopePro($query)
+    {
+        return $query->where(fn ($w) => $w->where('pro_lifetime', true)->orWhere('pro_until', '>', now()));
     }
 
     public function orders(): HasMany

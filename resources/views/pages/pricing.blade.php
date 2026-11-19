@@ -1,6 +1,6 @@
 @php
     $features = __('ui.pricing.features');
-    $plans = ['yearly' => $yearly, 'monthly' => $monthly];
+    $plans = ['lifetime' => $lifetime, 'monthly' => $monthly];
 @endphp
 <x-layouts.app :title="__('ui.pricing.title')" :description="__('ui.pricing.description')"
                :breadcrumbs="[[__('ui.nav.pricing'), lroute('pricing')]]">
@@ -32,23 +32,18 @@
             @foreach ($plans as $key => $plan)
                 <section @class([
                     'rounded-panel bg-surface p-5 md:p-6 flex flex-col',
-                    'border-2 border-lav-700 md:-my-2' => $key === 'yearly',
-                    'border border-line' => $key !== 'yearly',
+                    'border-2 border-lav-700 md:-my-2' => $key === 'lifetime',
+                    'border border-line' => $key !== 'lifetime',
                 ]) aria-labelledby="plan-{{ $key }}">
                     <div class="flex items-center justify-between gap-2">
                         <h2 id="plan-{{ $key }}" class="font-semibold">Pro · {{ __('ui.pricing.'.$key) }}</h2>
-                        @if ($key === 'yearly')
+                        @if ($key === 'lifetime')
                             <span class="rounded-full bg-lav-100 px-3 py-1 text-meta text-lav-800">{{ __('ui.pricing.recommended') }}</span>
                         @endif
                     </div>
                     <p class="mt-3"><span class="text-h2 font-semibold tabular-nums" dir="ltr">${{ rtrim(rtrim(number_format($plan['price_usd'], 2), '0'), '.') }}</span>
-                        <span class="text-small text-muted">/ {{ trans_choice('ui.pricing.per_days', $plan['days'], ['days' => $plan['days']]) }}</span></p>
-                    <p class="text-small text-muted tabular-nums">{{ __('ui.pricing.charged', ['amount' => number_format($plan['amount_iqd'])]) }}</p>
-                    @if ($key === 'yearly')
-                        @if (($months = \App\Services\Payments::yearlyEquivalentMonths()) > 0 && $months < 12)
-                            <p class="mt-1 text-small font-medium text-lav-700">{{ __('ui.pricing.yearly_value', ['n' => $months]) }}</p>
-                        @endif
-                    @endif
+                        <span class="text-small text-muted">/ {{ $key === 'lifetime' ? __('ui.pricing.once') : trans_choice('ui.pricing.per_days', $plan['days'], ['days' => $plan['days']]) }}</span></p>
+                    <p class="text-small text-muted">{{ __('ui.pricing.'.$key.'_note') }}</p>
                     <ul class="mt-5 space-y-2 text-small flex-1">
                         @foreach ($features as $f)
                             <li class="flex gap-2"><span class="text-lav-700" aria-hidden="true">✓</span>{{ $f }}</li>
@@ -58,10 +53,10 @@
                         <form method="POST" action="{{ lroute('checkout') }}" class="mt-6">
                             @csrf
                             <input type="hidden" name="plan" value="{{ $key }}">
-                            <button @class(['btn btn-primary-lg w-full', 'btn-primary' => $key === 'yearly', 'btn-secondary' => $key !== 'yearly'])>{{ __('ui.pricing.buy') }}</button>
+                            <button @class(['btn btn-primary-lg w-full', 'btn-primary' => $key === 'lifetime', 'btn-secondary' => $key !== 'lifetime'])>{{ __('ui.pricing.buy') }}</button>
                         </form>
                     @else
-                        <a href="{{ lroute('login') }}" @class(['btn btn-primary-lg mt-6', 'btn-primary' => $key === 'yearly', 'btn-secondary' => $key !== 'yearly'])>{{ __('ui.pricing.login_to_buy') }}</a>
+                        <a href="{{ lroute('login') }}" @class(['btn btn-primary-lg mt-6', 'btn-primary' => $key === 'lifetime', 'btn-secondary' => $key !== 'lifetime'])>{{ __('ui.pricing.login_to_buy') }}</a>
                     @endauth
                 </section>
             @endforeach

@@ -20,9 +20,12 @@ class Payments
         return (int) (ceil(round($priceUsd * $rate, 6) / 250) * 250);
     }
 
-    public const PLANS = ['monthly', 'yearly'];
+    public const PLANS = ['monthly', 'lifetime'];
 
-    /** Plan price and duration come from admin settings. */
+    /**
+     * Plan price and duration come from admin settings. The lifetime plan is
+     * paid once and has no duration (days = 0).
+     */
     public static function plan(string $plan): array
     {
         if (! in_array($plan, self::PLANS, true)) {
@@ -32,17 +35,9 @@ class Payments
 
         return [
             'price_usd' => $price,
-            'days' => (int) Setting::get('plan_'.$plan.'_days'),
+            'days' => $plan === 'lifetime' ? 0 : (int) Setting::get('plan_'.$plan.'_days'),
             'amount_iqd' => self::amountIqd($price, (float) Setting::get('usd_to_iqd_rate')),
         ];
-    }
-
-    /** "Same as N months" for the yearly plan, from the two prices. */
-    public static function yearlyEquivalentMonths(): int
-    {
-        $monthly = (float) Setting::get('plan_monthly_price');
-
-        return $monthly > 0 ? (int) round((float) Setting::get('plan_yearly_price') / $monthly) : 0;
     }
 
     /** Create a pending order and its Wayl payment link. */
@@ -82,8 +77,12 @@ class Payments
             }
 
             $user = User::whereKey($order->user_id)->lockForUpdate()->first();
-            $from = $user->pro_until && $user->pro_until->isFuture() ? $user->pro_until : now();
-            $user->forceFill(['pro_until' => $from->copy()->addDays($order->days)])->save();
+            if ($order->plan === 'lifetime') {
+                $user->forceFill(['pro_lifetime' => true])->save();
+            } else {
+                $from = $user->pro_until && $user->pro_until->isFuture() ? $user->pro_until : now();
+                $user->forceFill(['pro_until' => $from->copy()->addDays($order->days)])->save();
+            }
 
             $order->update(['status' => 'paid', 'paid_at' => now(), 'wayl_code' => $waylCode ?? $order->wayl_code]);
 
@@ -109,7 +108,12 @@ class Payments
             $days = (int) round($order->days * $amountIqd / $order->amount_iqd);
 
             $user = User::whereKey($order->user_id)->lockForUpdate()->first();
-            if ($user->pro_until) {
+            if ($order->plan === 'lifetime') {
+                // A full refund ends lifetime access; a partial one keeps it.
+                if ($order->refunded_iqd + $amountIqd >= $order->amount_iqd) {
+                    $user->forceFill(['pro_lifetime' => false])->save();
+                }
+            } elseif ($user->pro_until) {
                 $user->forceFill(['pro_until' => $user->pro_until->copy()->subDays($days)])->save();
             }
 

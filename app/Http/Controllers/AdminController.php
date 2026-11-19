@@ -30,8 +30,7 @@ class AdminController extends Controller
         'ad_slot_sidebar' => ['nullable', 'string', 'max:20', 'regex:/^\d*$/'],
         'plan_monthly_price' => ['numeric', 'min:0.5', 'max:1000'],
         'plan_monthly_days' => ['integer', 'min:1', 'max:3650'],
-        'plan_yearly_price' => ['numeric', 'min:0.5', 'max:10000'],
-        'plan_yearly_days' => ['integer', 'min:1', 'max:3650'],
+        'plan_lifetime_price' => ['numeric', 'min:0.5', 'max:10000'],
     ];
 
     public function dashboard(): View
@@ -43,8 +42,9 @@ class AdminController extends Controller
             'stats' => [
                 'users' => User::count(),
                 'new_users' => User::where('created_at', '>=', now()->subDays(7))->count(),
-                'pro' => User::where('pro_until', '>', now())->count(),
-                'expiring' => User::whereBetween('pro_until', [now(), now()->addDays(7)])->count(),
+                'pro' => User::pro()->count(),
+                'lifetime' => User::where('pro_lifetime', true)->count(),
+                'expiring' => User::where('pro_lifetime', false)->whereBetween('pro_until', [now(), now()->addDays(7)])->count(),
                 'paid_month' => Order::where('status', 'paid')->where('paid_at', '>=', $monthStart)->count(),
                 'revenue_month' => (int) Order::where('status', 'paid')->where('paid_at', '>=', $monthStart)->sum(DB::raw('amount_iqd - refunded_iqd')),
                 'pending' => Order::where('status', 'pending')->count(),
@@ -107,7 +107,7 @@ class AdminController extends Controller
         $filter = $request->query('filter');
         $users = User::query()
             ->when($q !== '', fn ($w) => $w->where('email', 'like', '%'.$q.'%'))
-            ->when($filter === 'pro', fn ($w) => $w->where('pro_until', '>', now()))
+            ->when($filter === 'pro', fn ($w) => $w->pro())
             ->when($filter === 'admins', fn ($w) => $w->where('is_admin', true))
             ->latest()->paginate(50)->withQueryString();
 
@@ -149,9 +149,18 @@ class AdminController extends Controller
         return back()->with('status', __('ui.admin.saved'));
     }
 
+    /** Turn lifetime Pro on or off by hand. */
+    public function toggleLifetime(User $user): RedirectResponse
+    {
+        $user->forceFill(['pro_lifetime' => ! $user->pro_lifetime])->save();
+        AdminAction::record($user->pro_lifetime ? 'user.lifetime_on' : 'user.lifetime_off', 'user:'.$user->id);
+
+        return back()->with('status', __('ui.admin.saved'));
+    }
+
     public function revokePro(User $user): RedirectResponse
     {
-        $user->forceFill(['pro_until' => null])->save();
+        $user->forceFill(['pro_until' => null, 'pro_lifetime' => false])->save();
         AdminAction::record('user.pro_revoke', 'user:'.$user->id);
 
         return back()->with('status', __('ui.admin.saved'));
@@ -202,7 +211,7 @@ class AdminController extends Controller
         $data = $request->validate(collect(self::SETTINGS)->map(fn ($rules) => array_merge(['sometimes'], $rules))->all());
         foreach ($data as $key => $value) {
             $value = match ($key) {
-                'usd_to_iqd_rate', 'plan_monthly_price', 'plan_yearly_price' => (float) $value,
+                'usd_to_iqd_rate', 'plan_monthly_price', 'plan_lifetime_price' => (float) $value,
                 'ads_enabled' => (bool) $value,
                 'adsense_client', 'ad_slot_tool', 'ad_slot_grid', 'ad_slot_sidebar' => (string) $value,
                 default => (int) $value,

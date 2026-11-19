@@ -4,7 +4,9 @@
         <section class="rounded-panel border border-line bg-surface p-5 space-y-4" aria-labelledby="sub-title">
             <h2 id="sub-title" class="font-semibold">{{ __('ui.admin.subscription') }}</h2>
             <p class="text-small">
-                @if ($user->isPro())
+                @if ($user->pro_lifetime)
+                    <span class="font-semibold text-lav-700">Pro</span> · {{ __('ui.pricing.lifetime') }}
+                @elseif ($user->isPro())
                     <span class="font-semibold text-lav-700">Pro</span> · {{ __('ui.account.pro_until', ['date' => $user->pro_until->timezone($tz)->format('Y-m-d H:i')]) }}
                     <span class="text-muted">({{ __('ui.admin.days_left', ['n' => (int) ceil(now()->diffInDays($user->pro_until))]) }})</span>
                 @else
@@ -35,7 +37,9 @@
                 <button class="btn btn-secondary">{{ __('ui.admin.save') }}</button>
             </form>
 
-            @if ($user->pro_until)
+            <form method="POST" action="{{ route('admin.users.lifetime', $user) }}">@csrf<button class="btn btn-secondary">{{ $user->pro_lifetime ? __('ui.admin.lifetime_off') : __('ui.admin.lifetime_on') }}</button></form>
+
+            @if ($user->pro_until || $user->pro_lifetime)
                 <form method="POST" action="{{ route('admin.users.revoke', $user) }}">@csrf<button class="btn btn-secondary text-warn">{{ __('ui.admin.revoke') }}</button></form>
             @endif
         </section>
