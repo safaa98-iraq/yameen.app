@@ -102,6 +102,12 @@ return [
         'status_logical' => 'The order is correct; letters were restored to their base forms.',
         'status_manual' => 'Order reversed manually.',
         'status_kept' => 'Order kept as is.',
+        'words_loading' => 'Some words have swapped letters from the PDF. Loading the dictionary to repair them…',
+        'words_failed' => 'The dictionary could not be loaded, so words with swapped letters were not repaired.',
+        'words_fixed' => ':count words with letters swapped by the PDF were repaired. Check the result before using it.',
+        'words_off' => 'Word repair is off.',
+        'words_undo' => 'Undo word repair',
+        'words_redo' => 'Repair words',
     ],
 
     'cleaner' => [

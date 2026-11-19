@@ -21,6 +21,10 @@ All text processing happens in your browser using open-source libraries. Your te
 
 The fonts shown on Yameen are free fonts licensed under the SIL Open Font License, and they belong to their designers. Each font is shown with its designer and licence text, with a link to its official source for download.
 
+## Open data
+
+PDF fix uses an Arabic word list derived from FrequencyWords by Hermit Dave, licensed under CC BY-SA 4.0.
+
 ## Contact
 
 To suggest a feature or report a bug, use the contact page. TODO(verify): owner/company details if they must be listed.

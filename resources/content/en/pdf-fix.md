@@ -4,6 +4,8 @@ description: Repair Arabic text that comes out reversed or with odd characters a
 h1: Fix Arabic text copied from PDF
 intro: Paste the text as you copied it from the PDF. Yameen restores the original letters and reverses the order when needed.
 faq:
+- q: Why do I see words like «يف» and «عىل» instead of «في» and «على»?
+  a: Some PDFs exported from Word with certain fonts store connected letter pairs in reverse order. Yameen detects this and repairs the words with an Arabic dictionary, showing how many it fixed. Check the result; you can undo the repair with one button.
 - q: Why is text copied from a PDF reversed?
   a: Some PDFs store letters in the order they appear on screen rather than the order they were written, so copied text comes out reversed.
 - q: Why doesn’t search work on the copied text?

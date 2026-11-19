@@ -21,6 +21,14 @@
             <span x-show="status === 'manual-kept'">{{ __('ui.pdf.status_kept') }}</span>
         </p>
 
+        <div class="mt-2 text-small" x-show="swapped" x-cloak role="status" data-words-status>
+            <p x-show="dictState === 'loading'" class="text-muted">{{ __('ui.pdf.words_loading') }}</p>
+            <p x-show="dictState === 'failed'" class="text-warn">{{ __('ui.pdf.words_failed') }}</p>
+            <p x-show="dictState === 'ready' && repairWords" class="text-lav-700"
+               x-text="@js(__('ui.pdf.words_fixed', ['count' => '__N__'])).replace('__N__', result.wordsFixed)"></p>
+            <p x-show="dictState === 'ready' && !repairWords" class="text-muted">{{ __('ui.pdf.words_off') }}</p>
+        </div>
+
         <div class="mt-4 flex flex-wrap items-center gap-3">
             <button type="button" class="btn btn-primary btn-primary-lg min-w-48" data-primary-action
                     @click="copy(result.text)" :disabled="!result.text">
@@ -29,6 +37,9 @@
             </button>
             <button type="button" class="btn btn-secondary" @click="toggleReverse()" :disabled="!result.text"
                     x-text="result.reversedApplied ? @js(__('ui.pdf.undo_reverse')) : @js(__('ui.pdf.reverse'))">{{ __('ui.pdf.reverse') }}</button>
+            <button type="button" class="btn btn-secondary" x-show="swapped && dictState === 'ready'" x-cloak
+                    @click="repairWords = !repairWords"
+                    x-text="repairWords ? @js(__('ui.pdf.words_undo')) : @js(__('ui.pdf.words_redo'))"></button>
         </div>
     </section>
 </div>

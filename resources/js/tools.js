@@ -87,29 +87,75 @@ export function registerTools(Alpine) {
         },
     }));
 
-    Alpine.data('pdfFixer', () => ({
+    Alpine.data('pdfFixer', () => {
+        // Last computed result, outside Alpine's reactive data so caching it
+        // inside a getter doesn't trigger another render.
+        let memo = null;
+        return {
         ...copyable(),
         lib: null,
+        words: null, // swapped-pair repair (pdf-words.js)
+        dict: null,
+        dictState: 'idle', // idle | loading | ready | failed
+        repairWords: true,
         force: null, // null = automatic detection, true/false = user override
         async init() {
-            this.lib = await import('./text/pdf');
-            this.$watch('$store.text.value', () => (this.force = null));
+            [this.lib, this.words] = await Promise.all([import('./text/pdf'), import('./text/pdf-words')]);
+            this.$watch('$store.text.value', () => {
+                this.force = null;
+                this.ensureDictionary();
+            });
+            this.ensureDictionary();
+        },
+        get swapped() {
+            return Boolean(this.words?.hasSwappedPairs(this.$store.text.value));
+        },
+        // The word list (~850 KB) is only downloaded for text that needs it.
+        async ensureDictionary() {
+            if (this.dictState !== 'idle' || !this.swapped) return;
+            this.dictState = 'loading';
+            try {
+                const { default: url } = await import('./data/ar-words.txt?url');
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(String(response.status));
+                this.dict = this.words.buildDictionary(await response.text());
+                this.dictState = 'ready';
+            } catch {
+                this.dictState = 'failed';
+            }
         },
         get result() {
-            if (!this.lib) return { text: '', detection: { reversed: null }, reversedApplied: false };
-            return this.lib.fixPdfText(this.$store.text.value, { reverse: this.force ?? 'auto' });
+            const empty = { text: '', detection: { reversed: null }, reversedApplied: false, wordsFixed: 0 };
+            if (!this.lib) return empty;
+            const text = this.$store.text.value;
+            const key = [text, this.force, this.repairWords, this.dictState].join('\u0000');
+            if (memo?.key === key) return memo.value;
+
+            // Text with swapped pairs is already in logical order: don't reverse it automatically.
+            const swapped = this.swapped;
+            const reverse = this.force ?? (swapped ? false : 'auto');
+            let r = { ...this.lib.fixPdfText(text, { reverse }), wordsFixed: 0 };
+            if (swapped && this.repairWords && this.dict) {
+                const lines = this.words.repairLines(r.text, this.dict);
+                const w = this.words.repairSwappedWords(lines, this.dict, { aggressive: true });
+                r = { ...r, text: w.text, wordsFixed: w.fixed };
+            }
+            memo = { key, value: r };
+            return r;
         },
         get status() {
             const r = this.result;
             if (!this.$store.text.value.trim()) return 'empty';
             if (this.force !== null) return r.reversedApplied ? 'manual-reversed' : 'manual-kept';
             if (r.reversedApplied) return 'auto-reversed';
+            if (this.swapped) return 'logical';
             return r.detection.reversed === null ? 'unsure' : 'logical';
         },
         toggleReverse() {
             this.force = !this.result.reversedApplied;
         },
-    }));
+        };
+    });
 
     Alpine.data('cleaner', () => ({
         ...copyable(),
