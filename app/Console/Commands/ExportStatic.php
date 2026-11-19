@@ -90,14 +90,15 @@ class ExportStatic extends Command
             }
         }
 
-        // Font files: previews and licences only (TTF/full WOFF2 are for the exporter).
+        // Font files (full WOFF2 files are not needed by any page).
         $src = config('yameen.fonts.path').'/files';
         if (! is_dir($src)) {
             return;
         }
         foreach (File::allFiles($src) as $file) {
             $name = $file->getFilename();
-            if (preg_match('/-(arabic|latin)\.[0-9a-f]+\.woff2$|^og\.[0-9a-f]+\.png$/', $name) || $name === 'OFL.txt') {
+            // Previews, share images, licences, and the TTFs the image exporter needs.
+            if (preg_match('/-(arabic|latin)\.[0-9a-f]+\.woff2$|^[a-z0-9-]+-\d+\.[0-9a-f]+\.ttf$|^og\.[0-9a-f]+\.png$/', $name) || $name === 'OFL.txt') {
                 $dest = $out.'/font-files/'.$file->getRelativePath().'/'.$name;
                 File::ensureDirectoryExists(dirname($dest));
                 File::copy($file->getPathname(), $dest);
