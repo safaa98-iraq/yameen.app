@@ -21,13 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-      APP_ENV: production
-      APP_DEBUG: 'false'
-      DB_CONNECTION: sqlite
-      DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
-      CACHE_STORE: array
-      SESSION_DRIVER: array
-      SEO_NOINDEX: 'true' # the preview must not be indexed
     steps:
       - uses: actions/checkout@v4
 
@@ -60,6 +53,14 @@ jobs:
           php artisan key:generate
           touch database/database.sqlite
           php artisan migrate --force
+        env:
+          APP_ENV: production
+          APP_DEBUG: 'false'
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
+          CACHE_STORE: file
+          SESSION_DRIVER: file
+          SEO_NOINDEX: 'true' # the preview must not be indexed
 
       - name: Tests
         run: |
@@ -79,6 +80,14 @@ jobs:
 
       - name: Build fonts
         run: php artisan fonts:sync
+        env:
+          APP_ENV: production
+          APP_DEBUG: 'false'
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
+          CACHE_STORE: file
+          SESSION_DRIVER: file
+          SEO_NOINDEX: 'true' # the preview must not be indexed
 
       # Browser checks against the real app: smoke test (fix/copy, fonts, limit) and WCAG audit.
       - name: Browser tests
@@ -92,12 +101,24 @@ jobs:
           BASE_URL=http://127.0.0.1:8000 node tests/e2e/a11y.mjs
         env:
           APP_ENV: local
+          APP_DEBUG: 'false'
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
           CACHE_STORE: file
+          SESSION_DRIVER: file
 
       - name: Export static site
         run: |
           ASSET_URL="$BASE_URL" npm run build
           ASSET_URL="$BASE_URL" php artisan site:export _site --base-url="$BASE_URL"
+        env:
+          APP_ENV: production
+          APP_DEBUG: 'false'
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
+          CACHE_STORE: file
+          SESSION_DRIVER: file
+          SEO_NOINDEX: 'true' # the preview must not be indexed
 
       # GitHub Pages serves the gh-pages branch (Settings > Pages > Deploy from a branch).
       - name: Publish to gh-pages
