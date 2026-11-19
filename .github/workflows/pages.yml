@@ -31,9 +31,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Fails fast if Pages is not enabled (Settings > Pages > Source: GitHub Actions).
-      - uses: actions/configure-pages@v5
-
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
@@ -92,6 +89,7 @@ jobs:
         with:
           path: _site
 
+  # Requires Pages to be enabled once: Settings > Pages > Source: GitHub Actions.
   deploy:
     needs: build
     runs-on: ubuntu-latest
