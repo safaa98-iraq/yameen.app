@@ -16,7 +16,7 @@
             <div class="section-num text-h3 leading-none" aria-hidden="true">{{ sprintf('%02d', $i + 1) }}</div>
             <div class="min-w-0">
                 <h2 class="text-small text-muted">
-                    <a href="{{ lroute('fonts.show', ['font' => $ar->slug]) }}" dir="ltr">{{ $ar->name }}</a>
+                    <a href="{{ lroute('fonts.show', ['font' => $ar->slug]) }}" dir="ltr" class="underline">{{ $ar->name }}</a>
                     + <span dir="ltr">{{ $pair['latin_name'] }}</span>
                     · {{ __('ui.fonts.pairing_use.'.$pair['use']) }}
                 </h2>

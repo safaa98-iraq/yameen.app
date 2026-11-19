@@ -71,5 +71,7 @@
         </div>
     </div>
 
+    <x-ad placement="tool" class="max-w-3xl mx-auto mt-8" />
+
     <x-related-tools except="export" />
 </x-layouts.app>

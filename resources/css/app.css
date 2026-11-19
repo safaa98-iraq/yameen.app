@@ -199,7 +199,8 @@
     }
 
     .chip:has(input:checked),
-    .chip[aria-pressed='true'] {
+    .chip[aria-pressed='true'],
+    .chip[aria-current='page'] {
         background: var(--lav-100);
         border-color: var(--lav-200);
     }
@@ -246,8 +247,14 @@
     .section-num {
         font-family: var(--font-mark);
         font-weight: 500;
-        color: var(--lav-500);
+        /* --lav-500 only passes contrast at 24px and up; small numbers use --lav-700. */
+        color: var(--lav-700);
         font-variant-numeric: tabular-nums;
+    }
+
+    /* Large section numbers may use the lighter brand tint (3.55:1 is fine at 24px+). */
+    .section-num.text-h3 {
+        color: var(--lav-500);
     }
 
     .prose-ui p + p {
@@ -273,6 +280,10 @@
 
     .content-md li + li {
         margin-block-start: 0.5rem;
+    }
+
+    .content-md a {
+        text-decoration: underline;
     }
 
     .content-md strong {

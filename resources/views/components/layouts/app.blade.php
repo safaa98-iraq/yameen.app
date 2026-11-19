@@ -60,6 +60,11 @@
         <script type="application/ld+json">{!! Seo::json($data) !!}</script>
     @endforeach
     {{ $head ?? '' }}
+    {{-- Preload the body font of the current script: the largest text paints sooner (LCP). --}}
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="{{ \Illuminate\Support\Facades\Vite::asset($locale === 'ar'
+              ? 'node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2'
+              : 'node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen flex flex-col antialiased">
@@ -75,5 +80,6 @@
     </main>
 
     <x-site-footer />
+    <x-ad-loader />
 </body>
 </html>

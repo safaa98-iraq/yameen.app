@@ -38,6 +38,10 @@ return [
         'usd_to_iqd_rate' => 1310,
         'ads_enabled' => false,
         'adsense_client' => '',
+        // AdSense ad unit IDs per placement (data-ad-slot).
+        'ad_slot_tool' => '',
+        'ad_slot_grid' => '',
+        'ad_slot_sidebar' => '',
     ],
 
     'plans' => [

@@ -8,7 +8,7 @@
                 <label class="block">
                     <span class="label">{{ __('ui.admin.s_'.$key) }}</span>
                     <input name="{{ $key }}" value="{{ old($key, $value) }}" class="field mt-1 h-11 px-3" dir="ltr"
-                           @if ($key !== 'adsense_client') type="number" step="{{ $key === 'usd_to_iqd_rate' ? '0.01' : '1' }}" @endif>
+                           @if (! in_array($key, ['adsense_client', 'ad_slot_tool', 'ad_slot_grid', 'ad_slot_sidebar'])) type="number" step="{{ $key === 'usd_to_iqd_rate' ? '0.01' : '1' }}" @endif>
                     @error($key) <span class="text-meta text-warn">{{ $message }}</span> @enderror
                 </label>
             @endif

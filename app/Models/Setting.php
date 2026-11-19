@@ -35,5 +35,6 @@ class Setting extends Model
     {
         static::updateOrCreate(['key' => $key], ['value' => $value]);
         Cache::forget('settings:all');
+        \App\Http\Middleware\CacheGuestPages::bump(); // ads and prices appear on cached pages
     }
 }

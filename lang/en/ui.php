@@ -431,6 +431,10 @@ return [
         's_cost_png' => 'PNG export cost',
         's_ads_enabled' => 'Ads enabled',
         's_adsense_client' => 'AdSense client ID (ca-pub-…)',
+        's_ad_slot_tool' => 'Ad unit: below the tool',
+        's_ad_slot_grid' => 'Ad unit: in the font grid',
+        's_ad_slot_sidebar' => 'Ad unit: sidebar',
+        'ad_label' => 'Advertisement',
     ],
 
     'placeholder' => [

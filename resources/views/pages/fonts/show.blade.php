@@ -45,7 +45,7 @@
                 <dt class="text-muted">{{ __('ui.fonts.designer') }}</dt><dd dir="ltr" class="text-start">{{ $font->designer ?: '—' }}</dd>
                 <dt class="text-muted">{{ __('ui.fonts.license') }}</dt>
                 <dd>SIL Open Font License
-                    @if ($font->licenseUrl()) · <a href="{{ $font->licenseUrl() }}">{{ __('ui.fonts.license_file') }}</a> @endif
+                    @if ($font->licenseUrl()) · <a href="{{ $font->licenseUrl() }}" class="underline">{{ __('ui.fonts.license_file') }}</a> @endif
                 </dd>
             </dl>
             <div class="mt-6 flex flex-wrap gap-2">

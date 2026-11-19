@@ -42,10 +42,10 @@
                 <fieldset>
                     <legend class="label">{{ __('ui.fonts.filters') }}</legend>
                     <div class="mt-2 flex flex-wrap gap-2">
-                        <a href="{{ lroute('fonts') }}" class="chip no-underline" @if (! $activeStyle) aria-pressed="true" aria-current="page" @endif>{{ __('ui.fonts.all_styles') }}</a>
+                        <a href="{{ lroute('fonts') }}" class="chip no-underline" @if (! $activeStyle) aria-current="page" @endif>{{ __('ui.fonts.all_styles') }}</a>
                         @foreach (config('yameen.font_styles') as $s)
                             <a href="{{ lroute('fonts.style', ['style' => $s]) }}" class="chip no-underline"
-                               @if ($activeStyle === $s) aria-pressed="true" aria-current="page" @endif>{{ __('ui.styles.'.$s) }}</a>
+                               @if ($activeStyle === $s) aria-current="page" @endif>{{ __('ui.styles.'.$s) }}</a>
                         @endforeach
                         <label class="chip"><input type="checkbox" class="sr-only" x-model="apps"> {{ __('ui.fonts.only_apps') }}</label>
                         <label class="chip"><input type="checkbox" class="sr-only" x-model="diacritics"> {{ __('ui.fonts.only_diacritics') }}</label>
@@ -70,6 +70,9 @@
             <div class="mt-3 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($fonts as $font)
                     <x-font-card :font="$font" />
+                    @if ($loop->iteration % 12 === 0 && ! $loop->last)
+                        <x-ad placement="grid" class="sm:col-span-2 lg:col-span-3 my-0" :height="250" />
+                    @endif
                 @endforeach
             </div>
             <p x-show="visibleCount === 0" x-cloak class="mt-6 text-muted">{{ __('ui.fonts.no_results') }}</p>

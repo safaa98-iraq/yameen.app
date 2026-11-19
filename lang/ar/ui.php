@@ -431,6 +431,10 @@ return [
         's_cost_png' => 'تكلفة تصدير PNG',
         's_ads_enabled' => 'تفعيل الإعلانات',
         's_adsense_client' => 'معرّف AdSense (ca-pub-…)',
+        's_ad_slot_tool' => 'رقم وحدة الإعلان: أسفل الأداة',
+        's_ad_slot_grid' => 'رقم وحدة الإعلان: بين الخطوط',
+        's_ad_slot_sidebar' => 'رقم وحدة الإعلان: العمود الجانبي',
+        'ad_label' => 'إعلان',
     ],
 
     'placeholder' => [

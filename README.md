@@ -125,3 +125,15 @@ Cron (every minute): `php /path/artisan schedule:run` — runs `wayl:reconcile` 
 `pro:remind` daily. Queue worker for webhook processing: `php artisan queue:work --tries=5`
 (Supervisor), or on shared hosting add a cron: `php artisan queue:work --stop-when-empty`.
 Make yourself admin: `php artisan tinker --execute="App\Models\User::where('email','you@…')->update(['is_admin'=>true]);"`
+
+### Caching
+
+- Public pages are cached for guests for 10 minutes (`CacheGuestPages`); changing settings or
+  re-importing fonts clears them. Run `php artisan cache:clear` after deploying new content.
+- `/build/*` and `/font-files/*` have fingerprinted names: serve them with
+  `Cache-Control: public, max-age=31536000, immutable` (done in `public/.htaccess` for Apache).
+  For nginx:
+  ```nginx
+  location ~ ^/(build|font-files)/ { add_header Cache-Control "public, max-age=31536000, immutable"; try_files $uri =404; }
+  ```
+  In Cloudflare, add a Cache Rule for `/font-files/*` and `/build/*` (respect origin headers).

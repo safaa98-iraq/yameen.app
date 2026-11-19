@@ -80,6 +80,20 @@ jobs:
       - name: Build fonts
         run: php artisan fonts:sync
 
+      # Browser checks against the real app: smoke test (fix/copy, fonts, limit) and WCAG audit.
+      - name: Browser tests
+        run: |
+          npm install --no-save playwright@1.63.0
+          npx playwright@1.63.0 install --with-deps chromium
+          npm run build
+          php artisan serve --port=8000 > /tmp/serve.log 2>&1 &
+          until curl -s -o /dev/null http://127.0.0.1:8000/up; do sleep 1; done
+          BASE_URL=http://127.0.0.1:8000 node tests/e2e/smoke.mjs
+          BASE_URL=http://127.0.0.1:8000 node tests/e2e/a11y.mjs
+        env:
+          APP_ENV: local
+          CACHE_STORE: file
+
       - name: Export static site
         run: |
           ASSET_URL="$BASE_URL" npm run build

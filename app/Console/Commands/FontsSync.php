@@ -111,6 +111,7 @@ class FontsSync extends Command
         });
 
         cache()->forget('fonts:all');
+        \App\Http\Middleware\CacheGuestPages::bump();
 
         return count($seen);
     }

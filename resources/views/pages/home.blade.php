@@ -9,6 +9,8 @@
         <x-hero-input :h1="__('ui.home.h1')" :lead="__('ui.home.lead')" />
     </x-slot:hero>
 
+    <x-ad placement="tool" class="max-w-3xl mx-auto mt-8" />
+
     {{-- 1. Your text in every font --}}
     <section class="pt-10" aria-labelledby="pick-font"
              x-data="fontGrid({ sample: @js($sample), fonts: @js($fonts->map(fn ($f) => ['slug' => $f->slug, 'name' => $f->name, 'style' => $f->style, 'apps' => true, 'diacritics' => $f->diacritics])->values()) })">

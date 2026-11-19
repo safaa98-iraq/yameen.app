@@ -36,6 +36,8 @@
 
     </div>
 
+    <x-ad placement="tool" class="max-w-3xl mx-auto mt-8" />
+
     <div class="mt-18">
         <x-content-body :page="$page" />
         <x-related-tools :except="$software ? null : 'fix'" :software="$software" />

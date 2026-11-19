@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WaylWebhookController;
 use App\Http\Controllers\ProAssetController;
 use App\Http\Controllers\SeoController;
+use App\Http\Middleware\CacheGuestPages;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,6 @@ Route::get('/auth/google/callback', [AuthController::class, 'googleCallback'])->
 foreach (config('yameen.locales') as $locale => $meta) {
     Route::prefix($meta['prefix'])
         ->name($locale.'.')
-        ->middleware(SetLocale::class.':'.$locale)
+        ->middleware([SetLocale::class.':'.$locale, CacheGuestPages::class])
         ->group(base_path('routes/localized.php'));
 }

@@ -22,6 +22,9 @@ class AdminController extends Controller
         'cost_png' => ['integer', 'min:0', 'max:100'],
         'ads_enabled' => ['boolean'],
         'adsense_client' => ['nullable', 'string', 'max:64', 'regex:/^(ca-pub-\d+)?$/'],
+        'ad_slot_tool' => ['nullable', 'string', 'max:20', 'regex:/^\d*$/'],
+        'ad_slot_grid' => ['nullable', 'string', 'max:20', 'regex:/^\d*$/'],
+        'ad_slot_sidebar' => ['nullable', 'string', 'max:20', 'regex:/^\d*$/'],
     ];
 
     public function orders(Request $request): View
@@ -94,12 +97,12 @@ class AdminController extends Controller
     public function saveSettings(Request $request): RedirectResponse
     {
         $request->merge(['ads_enabled' => $request->boolean('ads_enabled')]);
-        $data = $request->validate(collect(self::SETTINGS)->map(fn ($rules) => array_merge(['present'], $rules))->all());
+        $data = $request->validate(collect(self::SETTINGS)->map(fn ($rules) => array_merge(['sometimes'], $rules))->all());
         foreach ($data as $key => $value) {
             $value = match ($key) {
                 'usd_to_iqd_rate' => (float) $value,
                 'ads_enabled' => (bool) $value,
-                'adsense_client' => (string) $value,
+                'adsense_client', 'ad_slot_tool', 'ad_slot_grid', 'ad_slot_sidebar' => (string) $value,
                 default => (int) $value,
             };
             Setting::put($key, $value);
