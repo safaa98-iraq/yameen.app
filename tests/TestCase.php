@@ -6,5 +6,11 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    //
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Preview builds set SEO_NOINDEX=true; tests always start from production behaviour.
+        config(['yameen.seo.noindex' => false]);
+    }
 }
