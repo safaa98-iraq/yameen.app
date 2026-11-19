@@ -49,7 +49,7 @@
             <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-small">
                 <dt class="text-muted">{{ __('ui.admin.joined') }}</dt><dd class="tabular-nums">{{ $user->created_at->format('Y-m-d') }}</dd>
                 <dt class="text-muted">Google</dt><dd>{{ $user->google_id ? '✓' : '—' }}</dd>
-                <dt class="text-muted">{{ __('ui.admin.credits_today') }}</dt><dd class="tabular-nums">{{ $creditsToday }}</dd>
+                <dt class="text-muted">{{ __('ui.admin.credits_used') }}</dt><dd class="tabular-nums">{{ $user->isPro() ? '—' : __('ui.admin.credits_of', ['used' => $creditsUsed, 'limit' => \App\Models\Setting::get('credits_free')]) }}</dd>
                 <dt class="text-muted">Admin</dt><dd>{{ $user->is_admin ? '✓' : '—' }}</dd>
             </dl>
             <div class="flex flex-wrap gap-2">

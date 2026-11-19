@@ -1,4 +1,4 @@
-// Daily credits: the server decides; the browser asks before each charged
+// Credits (one balance, no daily reset): the server decides; the browser asks before each charged
 // operation. If the API is unreachable (e.g. the static preview), operations
 // are allowed: limits are a convenience, not security (Pro features are
 // protected server-side).
@@ -35,7 +35,6 @@ export function createCreditsStore() {
         limit: null,
         pro: false,
         signedIn: false,
-        resetsAt: null,
         blocked: false,
         reason: null, // 'limit' | 'pro'
         apply(status) {
@@ -46,7 +45,6 @@ export function createCreditsStore() {
             this.limit = status.limit;
             this.pro = status.pro;
             this.signedIn = status.signed_in;
-            this.resetsAt = status.resets_at;
         },
         async refresh() {
             const status = await request('/credits');
@@ -61,9 +59,6 @@ export function createCreditsStore() {
             this.blocked = !status.ok;
             this.reason = status.ok ? null : status.reason;
             return status.ok;
-        },
-        get msUntilReset() {
-            return this.resetsAt ? Math.max(0, new Date(this.resetsAt) - Date.now()) : 0;
         },
     };
 }

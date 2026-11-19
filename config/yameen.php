@@ -36,6 +36,7 @@ return [
         'credits_visitor' => 8,
         'credits_free' => 15,
         'cost_fix' => 1,
+        'cost_app' => 1,
         'cost_preview' => 1,
         'cost_png' => 2,
         'usd_to_iqd_rate' => 1310,

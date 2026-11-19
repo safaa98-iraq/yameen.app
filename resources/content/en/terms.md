@@ -1,6 +1,6 @@
 ---
 title: Terms of use | Yameen
-description: 'Yameen terms of use: free use and daily credits, Pro plan, payments, refunds and font licences.'
+description: 'Yameen terms of use: free use and credits, Pro plan, payments, refunds and font licences.'
 h1: Terms of use
 intro: 'Draft: needs legal review before launch.'
 updated: '2026-11-19'
@@ -8,7 +8,7 @@ updated: '2026-11-19'
 
 ## Using the site
 
-You can use Yameen's tools for free within a daily credit limit that resets at midnight Baghdad time. You can raise the limit with a free account or a Pro plan. Automated use aimed at bypassing limits or overloading the servers is not allowed.
+You can use Yameen's tools for free within a limited starter balance of credits that does not renew; fixing, copying for apps, previews and exports use credits. A free account gives you more credits, and Pro gives unlimited use. Automated use aimed at bypassing limits or overloading the servers is not allowed.
 
 ## Pro plan
 

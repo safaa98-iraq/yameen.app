@@ -10,9 +10,9 @@ updated: '2026-11-19'
 
 Text is processed entirely in your browser. It is never sent to or stored on our servers. We keep it temporarily in your browser's session storage so it stays when you switch tools; it is removed when you close the browser.
 
-## Daily credits
+## Credits
 
-To apply the free daily limit, we compute a visitor identifier from your IP address passed through a keyed hash (HMAC) that cannot be reversed, plus a random identifier stored in a first-party cookie. We don't store your raw IP address. When counting credits we send a fingerprint (hash) of the text, not the text itself. TODO(verify): retention period.
+To apply the free credit limit, we compute a visitor identifier from your IP address passed through a keyed hash (HMAC) that cannot be reversed, plus a random identifier stored in a first-party cookie. We don't store your raw IP address. When counting credits we send a fingerprint (hash) of the text, not the text itself. TODO(verify): retention period.
 
 ## Account
 

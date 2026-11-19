@@ -9,16 +9,17 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Daily credits. The server is the source of truth; the browser asks before
- * running an operation. Visitors are identified by an HMAC of their IP and of
- * a first-party cookie ID (whichever has consumed more counts). Raw IPs are
- * never stored. Credits reset at 00:00 Asia/Baghdad.
+ * Credits: one balance that does not renew (no daily reset). The server is the
+ * source of truth; the browser asks before running an operation. Visitors are
+ * identified by an HMAC of their IP and of a first-party cookie ID (whichever
+ * has consumed more counts). Raw IPs are never stored. The `day` column only
+ * records when a credit was used (Asia/Baghdad), for the admin statistics.
  */
 class Credits
 {
-    public const ACTIONS = ['fix', 'preview', 'png', 'svg', 'batch'];
+    public const ACTIONS = ['fix', 'app', 'preview', 'png', 'svg', 'batch'];
 
-    /** Actions charged once per distinct text per day. */
+    /** Actions charged once per distinct text. Copying for an app («app») is charged on every click. */
     private const DEDUPED = ['fix', 'preview'];
 
     /** Actions only Pro users may run. */
@@ -31,11 +32,6 @@ class Credits
     public static function today(): string
     {
         return Carbon::now(config('yameen.credits_timezone'))->toDateString();
-    }
-
-    public static function resetsAt(): Carbon
-    {
-        return Carbon::now(config('yameen.credits_timezone'))->addDay()->startOfDay();
     }
 
     public function user(): ?User
@@ -57,6 +53,7 @@ class Credits
     {
         return match ($action) {
             'fix' => (int) Setting::get('cost_fix'),
+            'app' => (int) Setting::get('cost_app'),
             'preview' => (int) Setting::get('cost_preview'),
             'png' => (int) Setting::get('cost_png'),
             default => 0,
@@ -65,8 +62,7 @@ class Credits
 
     public function used(): int
     {
-        $day = self::today();
-        $query = fn () => DB::table('credit_usages')->where('day', $day);
+        $query = fn () => DB::table('credit_usages');
 
         if ($user = $this->user()) {
             return (int) $query()->where('user_id', $user->id)->sum('cost');
@@ -79,7 +75,7 @@ class Credits
         return max($byIp, $byCookie);
     }
 
-    /** @return array{ok: bool, remaining: ?int, limit: ?int, resets_at: string, pro: bool, reason?: string} */
+    /** @return array{ok: bool, remaining: ?int, limit: ?int, pro: bool, reason?: string} */
     public function status(bool $ok = true, ?string $reason = null): array
     {
         $limit = $this->limit();
@@ -87,7 +83,6 @@ class Credits
             'ok' => $ok,
             'remaining' => $limit === null ? null : max(0, $limit - $this->used()),
             'limit' => $limit,
-            'resets_at' => self::resetsAt()->toIso8601String(),
             'pro' => $limit === null,
             'signed_in' => $this->user() !== null,
         ];
@@ -111,7 +106,7 @@ class Credits
         }
 
         $day = self::today();
-        if ($textHash && in_array($action, self::DEDUPED, true) && $this->alreadyCharged($day, $action, $textHash)) {
+        if ($textHash && in_array($action, self::DEDUPED, true) && $this->alreadyCharged($action, $textHash)) {
             return $this->status();
         }
 
@@ -134,9 +129,9 @@ class Credits
         return $this->status();
     }
 
-    private function alreadyCharged(string $day, string $action, string $textHash): bool
+    private function alreadyCharged(string $action, string $textHash): bool
     {
-        $q = DB::table('credit_usages')->where('day', $day)->where('action', $action)->where('text_hash', $textHash);
+        $q = DB::table('credit_usages')->where('action', $action)->where('text_hash', $textHash);
         if ($user = $this->user()) {
             return $q->where('user_id', $user->id)->exists();
         }

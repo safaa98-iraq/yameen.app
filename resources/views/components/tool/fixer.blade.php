@@ -38,7 +38,7 @@
 
         <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
             <button type="button" class="btn btn-primary btn-primary-lg min-w-48" data-primary-action
-                    @click="copy(output)" :disabled="!output">
+                    @click="copy(output, 'app')" :disabled="!output">
                 <span x-show="!copied">{{ __('ui.tool.copy_for_app') }}</span>
                 <span x-show="copied" x-cloak>{{ __('ui.tool.copied') }}</span>
             </button>

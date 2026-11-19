@@ -18,10 +18,12 @@ it('gives visitors 8 credits and sets a visitor cookie', function () {
         ->assertCookie('yv');
 });
 
-it('charges once per distinct text per day for fixes and previews', function () use ($h) {
+it('charges once per distinct text for fixes and previews', function () use ($h) {
     consume('fix', $h('a'))->assertJson(['ok' => true, 'remaining' => 7]);
     consume('fix', $h('a'))->assertJson(['ok' => true, 'remaining' => 7]);
     consume('preview', $h('a'))->assertJson(['ok' => true, 'remaining' => 6]);
+    $this->travel(2)->days();
+    consume('fix', $h('a'))->assertJson(['ok' => true, 'remaining' => 6]); // still the same text
     consume('png')->assertJson(['ok' => true, 'remaining' => 4]); // PNG costs 2, never deduplicated
 });
 
@@ -61,19 +63,24 @@ it('keeps SVG export and batch for Pro users', function () {
     consume('batch')->assertJson(['ok' => true]);
 });
 
-it('resets at midnight Asia/Baghdad, not UTC', function () use ($h) {
-    // 23:30 in Baghdad (20:30 UTC): still the same Baghdad day
-    Carbon::setTestNow(Carbon::parse('2026-11-19 20:30:00', 'UTC'));
+it('does not renew: the balance stays spent the next day and the next month', function () use ($h) {
     foreach (range(1, 8) as $i) {
         consume('fix', $h("t$i"));
     }
-    consume('fix', $h('x'))->assertJson(['ok' => false]);
-    expect(consume('fix', $h('x'))->json('resets_at'))->toBe('2026-11-20T00:00:00+03:00');
+    consume('fix', $h('x'))->assertJson(['ok' => false, 'remaining' => 0])->assertJsonMissingPath('resets_at');
 
-    // 00:05 in Baghdad (21:05 UTC, still the 19th in UTC): a new day
-    Carbon::setTestNow(Carbon::parse('2026-11-19 21:05:00', 'UTC'));
-    consume('fix', $h('x'))->assertJson(['ok' => true, 'remaining' => 7]);
-    Carbon::setTestNow();
+    $this->travel(1)->days();
+    consume('fix', $h('x'))->assertJson(['ok' => false, 'remaining' => 0]);
+    $this->travel(40)->days();
+    $this->getJson('/api/credits')->assertJson(['remaining' => 0]);
+});
+
+it('charges copying for an app on every click, even for the same text', function () use ($h) {
+    consume('app', $h('a'))->assertJson(['ok' => true, 'remaining' => 7]);
+    consume('app', $h('a'))->assertJson(['ok' => true, 'remaining' => 6]);
+    consume('app', $h('a'))->assertJson(['ok' => true, 'remaining' => 5]);
+    Setting::put('cost_app', 2);
+    consume('app', $h('a'))->assertJson(['ok' => true, 'remaining' => 3]);
 });
 
 it('reads limits and costs from admin settings', function () use ($h) {

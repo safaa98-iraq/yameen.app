@@ -27,6 +27,7 @@
                 <th class="py-2 text-start font-medium">{{ __('ui.admin.calc_who') }}</th>
                 <th class="py-2 text-start font-medium">{{ __('ui.admin.calc_credits') }}</th>
                 <th class="py-2 text-start font-medium">{{ __('ui.admin.calc_fix') }}</th>
+                <th class="py-2 text-start font-medium">{{ __('ui.admin.calc_app') }}</th>
                 <th class="py-2 text-start font-medium">{{ __('ui.admin.calc_preview') }}</th>
                 <th class="py-2 text-start font-medium">{{ __('ui.admin.calc_png') }}</th>
             </tr></thead>
@@ -36,6 +37,7 @@
                         <td class="py-2">{{ __('ui.admin.calc_'.$who) }}</td>
                         <td class="py-2" x-text="v.{{ $key }}"></td>
                         <td class="py-2" x-text="per(v.{{ $key }}, v.cost_fix)"></td>
+                        <td class="py-2" x-text="per(v.{{ $key }}, v.cost_app)"></td>
                         <td class="py-2" x-text="per(v.{{ $key }}, v.cost_preview)"></td>
                         <td class="py-2" x-text="per(v.{{ $key }}, v.cost_png)"></td>
                     </tr>
@@ -45,8 +47,8 @@
 
         <fieldset class="space-y-2">
             <legend class="label">{{ __('ui.admin.calc_try') }}</legend>
-            <div class="grid grid-cols-3 gap-2">
-                @foreach (['fix', 'preview', 'png'] as $a)
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                @foreach (['fix', 'app', 'preview', 'png'] as $a)
                     <label class="text-meta">{{ __('ui.admin.calc_'.$a) }}
                         <input type="number" min="0" max="999" x-model.number="use.{{ $a }}" class="field mt-1 h-11 px-3" dir="ltr">
                     </label>
@@ -73,21 +75,21 @@
             const t = @json($calcText);
             Alpine.data('creditCalc', () => ({
                 v: @json($calcValues),
-                use: { fix: 10, preview: 3, png: 2 },
+                use: { fix: 5, app: 10, preview: 3, png: 2 },
                 read(form) {
-                    for (const k of ['credits_visitor', 'credits_free', 'cost_fix', 'cost_preview', 'cost_png', 'plan_monthly_price', 'plan_monthly_days']) {
+                    for (const k of ['credits_visitor', 'credits_free', 'cost_fix', 'cost_app', 'cost_preview', 'cost_png', 'plan_monthly_price']) {
                         const el = form.elements[k];
                         if (el) this.v[k] = Number(el.value) || 0;
                     }
                 },
                 per(credits, cost) { return cost > 0 ? Math.floor(credits / cost) : '∞'; },
-                needed() { return this.use.fix * this.v.cost_fix + this.use.preview * this.v.cost_preview + this.use.png * this.v.cost_png; },
+                needed() { return this.use.fix * this.v.cost_fix + this.use.app * this.v.cost_app + this.use.preview * this.v.cost_preview + this.use.png * this.v.cost_png; },
                 need() { return t.need.replace(':n', this.needed()); },
                 level() { const n = this.needed(); return n <= this.v.credits_visitor ? 'visitor' : n <= this.v.credits_free ? 'free' : 'pro'; },
                 verdict() { return t[this.level()]; },
                 verdictClass() { return this.level() === 'pro' ? 'text-lav-700' : 'text-ink'; },
                 monthly() {
-                    const ops = (this.use.fix + this.use.preview + this.use.png) * (this.v.plan_monthly_days || 30);
+                    const ops = this.use.fix + this.use.app + this.use.preview + this.use.png;
                     return t.month.replace(':usd', ops ? (this.v.plan_monthly_price / ops).toFixed(4) : '0');
                 },
             }));

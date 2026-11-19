@@ -21,6 +21,7 @@ class AdminController extends Controller
         'credits_visitor' => ['integer', 'min:0', 'max:1000'],
         'credits_free' => ['integer', 'min:0', 'max:1000'],
         'cost_fix' => ['integer', 'min:0', 'max:100'],
+        'cost_app' => ['integer', 'min:0', 'max:100'],
         'cost_preview' => ['integer', 'min:0', 'max:100'],
         'cost_png' => ['integer', 'min:0', 'max:100'],
         'ads_enabled' => ['boolean'],
@@ -119,7 +120,7 @@ class AdminController extends Controller
         return view('admin.user', [
             'user' => $user,
             'orders' => $user->orders()->latest()->get(),
-            'creditsToday' => (int) DB::table('credit_usages')->where('user_id', $user->id)->where('day', \App\Services\Credits::today())->sum('cost'),
+            'creditsUsed' => (int) DB::table('credit_usages')->where('user_id', $user->id)->sum('cost'),
             'actions' => AdminAction::with('admin')->where('subject', 'user:'.$user->id)->latest('id')->limit(20)->get(),
         ]);
     }
@@ -177,7 +178,7 @@ class AdminController extends Controller
 
     public function resetCredits(User $user): RedirectResponse
     {
-        DB::table('credit_usages')->where('user_id', $user->id)->where('day', \App\Services\Credits::today())->delete();
+        DB::table('credit_usages')->where('user_id', $user->id)->delete(); // a full balance again
         AdminAction::record('user.credits_reset', 'user:'.$user->id);
 
         return back()->with('status', __('ui.admin.saved'));
