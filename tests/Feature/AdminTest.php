@@ -94,3 +94,8 @@ it('promotes a user to admin from the command line', function () {
     expect(User::where('email', 'owner@example.com')->first()->is_admin)->toBeTrue();
     $this->artisan('admin:make', ['email' => 'nope'])->assertFailed();
 });
+
+it('sends guests from the admin to the Arabic login page', function () {
+    auth()->logout();
+    $this->get('/admin')->assertRedirect('/login');
+});

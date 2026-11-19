@@ -25,7 +25,7 @@ Route::prefix('api')->middleware('throttle:60,1')->group(function () {
 Route::post('/webhooks/wayl', WaylWebhookController::class)->name('webhooks.wayl')->middleware('throttle:120,1');
 
 // Admin
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', SetLocale::class.':ar'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware([SetLocale::class.':ar', 'auth', 'admin'])->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
     Route::post('/orders/{order}/refund', [AdminController::class, 'refund'])->name('orders.refund');
